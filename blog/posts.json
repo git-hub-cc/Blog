@@ -19,5 +19,71 @@
     "date": "2023-10-25",
     "summary": "我的第一篇文章！介绍了这个博客是如何用纯前端技术构建的。",
     "category": "programming"
+  },
+
+  {
+    "file": "programming/3-deep-dive-js.md",
+    "title": "深入 JavaScript 异步编程",
+    "date": "2023-10-27",
+    "summary": "从回调地狱到 Promise，再到 Async/Await，一文看懂 JavaScript 异步的演进之路。",
+    "category": "programming"
+  },
+  {
+    "file": "programming/2-markdown-syntax.md",
+    "title": "Markdown 语法演示",
+    "date": "2023-10-26",
+    "summary": "展示了在这个博客中可以使用的各种 Markdown 语法，包括列表、代码块和引用。",
+    "category": "programming"
+  },
+  {
+    "file": "programming/1-getting-started.md",
+    "title": "欢迎来到我的博客",
+    "date": "2023-10-25",
+    "summary": "我的第一篇文章！介绍了这个博客是如何用纯前端技术构建的。",
+    "category": "programming"
+  },
+
+  {
+    "file": "programming/3-deep-dive-js.md",
+    "title": "深入 JavaScript 异步编程",
+    "date": "2023-10-27",
+    "summary": "从回调地狱到 Promise，再到 Async/Await，一文看懂 JavaScript 异步的演进之路。",
+    "category": "programming"
+  },
+  {
+    "file": "programming/2-markdown-syntax.md",
+    "title": "Markdown 语法演示",
+    "date": "2023-10-26",
+    "summary": "展示了在这个博客中可以使用的各种 Markdown 语法，包括列表、代码块和引用。",
+    "category": "programming"
+  },
+  {
+    "file": "programming/1-getting-started.md",
+    "title": "欢迎来到我的博客",
+    "date": "2023-10-25",
+    "summary": "我的第一篇文章！介绍了这个博客是如何用纯前端技术构建的。",
+    "category": "programming"
+  },
+
+  {
+    "file": "programming/3-deep-dive-js.md",
+    "title": "深入 JavaScript 异步编程",
+    "date": "2023-10-27",
+    "summary": "从回调地狱到 Promise，再到 Async/Await，一文看懂 JavaScript 异步的演进之路。",
+    "category": "programming"
+  },
+  {
+    "file": "programming/2-markdown-syntax.md",
+    "title": "Markdown 语法演示",
+    "date": "2023-10-26",
+    "summary": "展示了在这个博客中可以使用的各种 Markdown 语法，包括列表、代码块和引用。",
+    "category": "programming"
+  },
+  {
+    "file": "programming/1-getting-started.md",
+    "title": "欢迎来到我的博客",
+    "date": "2023-10-25",
+    "summary": "我的第一篇文章！介绍了这个博客是如何用纯前端技术构建的。",
+    "category": "programming"
   }
 ]
