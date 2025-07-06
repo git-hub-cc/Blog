@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN"> <!-- 默认 scheme 会被 JS 覆盖 -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>500 - 服务器错误</title>
+    <!-- 引用主博客的 CSS 文件 -->
+    <link rel="stylesheet" href="blog/css/style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- 内联样式，用于构建此特定页面的布局 -->
+    <style>
+        /* 继承主题的 body 背景和颜色 */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            text-align: center;
+        }
+        /* 错误卡片，模仿 .post-content 样式 */
+        .error-card {
+            background: var(--color-card-bg);
+            padding: 3rem 4rem;
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 4px 12px var(--color-shadow);
+        }
+        .error-code {
+            font-size: 6rem;
+            font-weight: 700;
+            font-family: var(--font-heading);
+            color: var(--accent-color);
+            margin: 0;
+            line-height: 1;
+        }
+        .error-message {
+            font-size: 1.75rem;
+            font-family: var(--font-heading);
+            color: var(--color-fg);
+            margin: 1.5rem 0 1rem;
+        }
+        .error-description {
+            color: var(--color-fg-muted);
+            margin-bottom: 2.5rem;
+            font-size: 1rem;
+        }
+        /* 使链接看起来像一个按钮 */
+        .home-link {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white; /* 按钮文字通常是白色 */
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity var(--transition-speed);
+        }
+        .home-link:hover {
+            opacity: 0.85;
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .error-card {
+                padding: 2rem 1.5rem;
+            }
+            .error-code {
+                font-size: 4rem;
+            }
+            .error-message {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+    <!--
+      添加一个迷你的主题切换脚本，确保错误页面也能正确显示亮/暗色模式。
+      这段代码是从 app.js 简化而来的，只保留了初始化主题的功能。
+    -->
+    <script>
+        const colorSchemeKey = 'MyBlogColorScheme';
+        const osDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+        function applyScheme(scheme) {
+            document.documentElement.setAttribute('data-scheme', scheme);
+        }
+
+        function detectAndApplyScheme() {
+            const savedScheme = localStorage.getItem(colorSchemeKey);
+            if (savedScheme) {
+                applyScheme(savedScheme);
+            } else if (osDarkScheme.matches) {
+                applyScheme('dark');
+            } else {
+                applyScheme('light');
+            }
+        }
+        detectAndApplyScheme();
+    </script>
+</head>
+<body>
+
+<div class="error-card">
+    <div class="error-code">500</div>
+    <div class="error-message">服务器内部错误</div>
+    <p class="error-description">服务器遇到了一些临时问题，我们的技术团队正在紧急处理。请稍后重试。</p>
+    <a href="/" class="home-link">返回首页</a>
+</div>
+
+</body>
+</html>
