@@ -1,88 +1,57 @@
 [
   {
+    "file": "zcool/原则/grow.md",
+    "title": "GROW 原则：明确目标，实现成长",
+    "date": "2025-07-06",
+    "summary": "了解管理学中的 GROW 原则：目标（Goal）、现实（Reality）、选择（Options）、意愿（Will），一种有效解决问题、实现个人与团队成长的强大框架。",
+    "category": "zcool"
+  },
+  {
+    "file": "zcool/原则/star.md",
+    "title": "STAR 法则：在面试中清晰展示你的价值",
+    "date": "2025-07-06",
+    "summary": "学习如何在面试中运用 STAR 法则（情境、任务、行动、结果），结构化地讲述你的经历，给面试官留下深刻印象。",
+    "category": "zcool"
+  },
+  {
+    "file": "zcool/原则/pdca.md",
+    "title": "PDCA 循环：持续改进的质量管理秘诀",
+    "date": "2025-07-06",
+    "summary": "掌握戴明环 PDCA（计划-执行-检查-行动）原则，将其应用于任何工作与活动中，实现问题的有效解决与效率的持续提升。",
+    "category": "zcool"
+  },
+  {
+    "file": "zcool/原则/mece.md",
+    "title": "MECE 原则：做到“相互独立，完全穷尽”的思考艺术",
+    "date": "2025-07-06",
+    "summary": "探索麦肯锡的 MECE 原则，学习如何对事物进行清晰分类，确保分析全面、无重叠、无遗漏，提升你的结构化思维能力。",
+    "category": "zcool"
+  },
+  {
+    "file": "zcool/原则/five-second-rule.md",
+    "title": "五秒法则：克服拖延，立即行动的心理技巧",
+    "date": "2025-07-06",
+    "summary": "了解梅尔·罗宾斯的“五秒法则”，一个简单而强大的心理工具，通过倒数5秒来战胜犹豫，将想法转化为即时行动。",
+    "category": "zcool"
+  },
+  {
     "file": "programming/3-deep-dive-js.md",
     "title": "深入 JavaScript 异步编程",
-    "date": "2023-10-27",
+    "date": "2025-07-06",
     "summary": "从回调地狱到 Promise，再到 Async/Await，一文看懂 JavaScript 异步的演进之路。",
     "category": "programming"
   },
   {
     "file": "programming/2-markdown-syntax.md",
     "title": "Markdown 语法演示",
-    "date": "2023-10-26",
+    "date": "2025-07-06",
     "summary": "展示了在这个博客中可以使用的各种 Markdown 语法，包括列表、代码块和引用。",
     "category": "programming"
   },
   {
     "file": "programming/1-getting-started.md",
     "title": "欢迎来到我的博客",
-    "date": "2023-10-25",
-    "summary": "我的第一篇文章！介绍了这个博客是如何用纯前端技术构建的。",
-    "category": "programming"
-  },
-
-  {
-    "file": "programming/3-deep-dive-js.md",
-    "title": "深入 JavaScript 异步编程",
-    "date": "2023-10-27",
-    "summary": "从回调地狱到 Promise，再到 Async/Await，一文看懂 JavaScript 异步的演进之路。",
-    "category": "programming"
-  },
-  {
-    "file": "programming/2-markdown-syntax.md",
-    "title": "Markdown 语法演示",
-    "date": "2023-10-26",
-    "summary": "展示了在这个博客中可以使用的各种 Markdown 语法，包括列表、代码块和引用。",
-    "category": "programming"
-  },
-  {
-    "file": "programming/1-getting-started.md",
-    "title": "欢迎来到我的博客",
-    "date": "2023-10-25",
-    "summary": "我的第一篇文章！介绍了这个博客是如何用纯前端技术构建的。",
-    "category": "programming"
-  },
-
-  {
-    "file": "programming/3-deep-dive-js.md",
-    "title": "深入 JavaScript 异步编程",
-    "date": "2023-10-27",
-    "summary": "从回调地狱到 Promise，再到 Async/Await，一文看懂 JavaScript 异步的演进之路。",
-    "category": "programming"
-  },
-  {
-    "file": "programming/2-markdown-syntax.md",
-    "title": "Markdown 语法演示",
-    "date": "2023-10-26",
-    "summary": "展示了在这个博客中可以使用的各种 Markdown 语法，包括列表、代码块和引用。",
-    "category": "programming"
-  },
-  {
-    "file": "programming/1-getting-started.md",
-    "title": "欢迎来到我的博客",
-    "date": "2023-10-25",
-    "summary": "我的第一篇文章！介绍了这个博客是如何用纯前端技术构建的。",
-    "category": "programming"
-  },
-
-  {
-    "file": "programming/3-deep-dive-js.md",
-    "title": "深入 JavaScript 异步编程",
-    "date": "2023-10-27",
-    "summary": "从回调地狱到 Promise，再到 Async/Await，一文看懂 JavaScript 异步的演进之路。",
-    "category": "programming"
-  },
-  {
-    "file": "programming/2-markdown-syntax.md",
-    "title": "Markdown 语法演示",
-    "date": "2023-10-26",
-    "summary": "展示了在这个博客中可以使用的各种 Markdown 语法，包括列表、代码块和引用。",
-    "category": "programming"
-  },
-  {
-    "file": "programming/1-getting-started.md",
-    "title": "欢迎来到我的博客",
-    "date": "2023-10-25",
+    "date": "2025-07-06",
     "summary": "我的第一篇文章！介绍了这个博客是如何用纯前端技术构建的。",
     "category": "programming"
   }
