@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
             button.addEventListener('click', () => {
                 const code = block.querySelector('code').innerText;
                 navigator.clipboard.writeText(code).then(() => {
-                    button.innerText = '已复制!';
+                    button.innerText = '已复制';
                     setTimeout(() => { button.innerText = '复制'; }, 2000);
                 });
             });

@@ -1,4 +1,4 @@
-/* --- Stack Theme Inspired Stylesheet --- */
+/* --- Stack Theme Inspired Stylesheet (Final Fix with Fine-tuning) --- */
 
 /* 1. 全局变量与基本设置 */
 :root {
@@ -19,8 +19,8 @@
     --font-heading: 'Montserrat', sans-serif;
     --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
 
-    --sidebar-width: 280px;
-    --sidebar-width-compact: 220px;
+    --sidebar-width: 260px; /* -- 调整 -- 侧边栏宽度减小 */
+    --sidebar-width-compact: 210px; /* -- 调整 -- 紧凑模式侧边栏宽度减小 */
     --transition-speed: 0.3s;
 }
 
@@ -39,13 +39,24 @@
     --color-shadow: rgba(0,0,0,0.2);
 }
 
+/* --- 核心变更点 1: 创建应用式布局基础 --- */
+html, body {
+    height: 100%;
+    overflow: hidden; /* 禁止整个页面滚动 */
+}
+/* --- ------------------------------------ --- */
+
 * { box-sizing: border-box; }
+
+html {
+    font-size: 15px; /* -- 调整 -- 降低基础字号，影响所有rem单位 */
+}
 
 body {
     font-family: var(--font-body);
     background-color: var(--color-bg);
     color: var(--color-fg);
-    line-height: 1.6;
+    line-height: 1.65; /* -- 调整 -- 略微增加行高以提高可读性 */
     margin: 0;
     transition: background-color var(--transition-speed), color var(--transition-speed);
 }
@@ -58,28 +69,28 @@ a:hover {
     text-decoration: underline;
 }
 
+/* --- 核心变更点 2: 让容器撑满视口高度 --- */
 .container {
     display: flex;
     max-width: 1400px;
     margin: 0 auto;
+    height: 100vh; /* 容器高度为100%视口高度 */
 }
+/* --- ------------------------------------ --- */
 
 /* 2. 左侧边栏 */
 .left-sidebar {
     width: var(--sidebar-width);
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
+    flex-shrink: 0; /* 防止侧边栏在flex布局中被压缩 */
     background-color: var(--color-card-bg);
     border-right: 1px solid var(--color-border);
-    padding: 2.5rem;
+    padding: 2rem; /* -- 调整 -- 减小内边距 */
     display: flex;
     flex-direction: column;
-    transition: all var(--transition-speed);
-}
-.left-sidebar.sticky {
-    position: sticky;
+    /* --- 核心变更点 3: 让侧边栏自身滚动 --- */
+    overflow-y: auto; /* 如果侧边栏内容超长，它自己滚动 */
+    /* position 和 height 不再需要，flex会处理 */
+    /* --- ------------------------------------ --- */
 }
 
 .left-sidebar header { text-align: center; }
@@ -94,7 +105,7 @@ a:hover {
 .site-meta .site-name a {
     color: var(--color-fg);
     font-family: var(--font-heading);
-    font-size: 1.5rem;
+    font-size: 1.4rem; /* -- 调整 -- 减小站点标题字号 */
     font-weight: 700;
 }
 .site-meta .site-description {
@@ -103,10 +114,10 @@ a:hover {
     margin: 0.5rem 0 0;
 }
 
-/* 新增：搜索框样式 */
+/* 搜索框样式 */
 .search-form {
     display: flex;
-    margin: 2rem 0 1rem;
+    margin: 1.5rem 0; /* -- 调整 -- 减小垂直外边距 */
 }
 .search-input {
     flex-grow: 1;
@@ -137,10 +148,10 @@ a:hover {
 .site-nav .menu { list-style: none; padding: 0; }
 .site-nav .nav-link {
     display: block;
-    padding: 0.75rem 0;
+    padding: 0.6rem 0; /* -- 调整 -- 减小垂直内边距 */
     color: var(--color-fg-muted);
     font-weight: 500;
-    font-size: 1.1rem;
+    font-size: 1rem; /* -- 调整 -- 减小导航链接字号 */
     transition: color var(--transition-speed);
 }
 .site-nav .nav-link:hover, .site-nav .nav-link.active {
@@ -151,7 +162,6 @@ a:hover {
     border-top: 1px solid var(--color-border);
     margin: 0.5rem 0;
 }
-
 
 .menu-bottom-section {
     margin-top: auto;
@@ -204,12 +214,15 @@ a:hover {
 
 .copyright { font-size: 0.8rem; color: var(--color-fg-muted); }
 
-/* 3. 主内容区 */
+/* --- 核心变更点 4: 让主内容区成为滚动容器 --- */
 .main-content {
     flex-grow: 1;
-    width: calc(100% - var(--sidebar-width));
+    overflow-y: auto;
+    min-width: 0;
 }
-.loader { text-align: center; font-size: 1.2rem; color: var(--color-fg-muted); margin-top: 5rem; }
+/* --- ------------------------------------ --- */
+
+.loader { text-align: center; font-size: 1.2rem; color: var(--color-fg-muted); margin: 4rem; }
 
 #main-content-wrapper {
     transition: opacity var(--transition-speed) ease;
@@ -220,8 +233,8 @@ a:hover {
 /* 4. 文章列表 */
 .post-summary {
     background: var(--color-card-bg);
-    padding: 2rem;
-    margin: 3rem;
+    padding: 1.5rem 2rem; /* -- 调整 -- 减小内边距 */
+    margin: 2rem; /* -- 调整 -- 减小外边距 */
     border-radius: 8px;
     border: 1px solid var(--color-border);
     transition: all var(--transition-speed) ease;
@@ -231,22 +244,39 @@ a:hover {
     box-shadow: 0 4px 12px var(--color-shadow);
     border-color: var(--accent-color);
 }
-.post-summary h2 { font-family: var(--font-heading); margin: 0 0 0.5rem; }
+.post-summary h2 {
+    font-family: var(--font-heading);
+    margin: 0 0 0.75rem;
+    font-size: 1.5rem; /* -- 调整 -- 明确并减小文章列表标题字号 */
+}
 .post-summary h2 a { color: var(--color-fg); text-decoration: none; }
 .post-summary .meta { font-size: 0.9rem; color: var(--color-fg-muted); margin-bottom: 1rem; }
-.post-summary p { margin: 0; }
+.post-summary p { margin: 0; font-size: 0.95rem; line-height: 1.6; } /* -- 调整 -- 设定摘要字体大小和行高 */
 
 /* 5. 单篇文章 */
 .post-content {
     background: var(--color-card-bg);
-    padding: 3rem;
-    margin: 4rem;
+    padding: 2.5rem 3rem; /* -- 调整 -- 减小内边距 */
+    margin: 2rem; /* -- 调整 -- 减小外边距 */
     border-radius: 8px;
     border: 1px solid var(--color-border);
 }
+.post-content p {
+    line-height: 1.75; /* -- 调整 -- 为正文段落增加行高，提升阅读体验 */
+}
 .post-content > h1:first-child { font-family: var(--font-heading); margin-top: 0; }
-.post-content .meta { font-size: 0.9rem; color: var(--color-fg-muted); margin-bottom: 2.5rem; }
-.post-content h1, .post-content h2, .post-content h3 { font-family: var(--font-heading); padding-bottom: 0.5rem; border-bottom: 1px solid var(--color-border); margin-top: 2.5rem; }
+.post-content .meta { font-size: 0.9rem; color: var(--color-fg-muted); margin-bottom: 2rem; } /* -- 调整 -- 减小元信息下外边距 */
+.post-content h1, .post-content h2, .post-content h3 {
+    font-family: var(--font-heading);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border);
+    margin-top: 2rem; /* -- 调整 -- 减小标题上外边距 */
+}
+/* -- 调整 -- 为各级标题设定明确且和谐的字号 */
+.post-content h1 { font-size: 2.2rem; }
+.post-content h2 { font-size: 1.8rem; }
+.post-content h3 { font-size: 1.5rem; }
+
 .post-content blockquote {
     margin: 1.5em 0;
     padding: 0.5em 1.5em;
@@ -276,7 +306,8 @@ a:hover {
 
 /* 6. 分页 */
 #pagination-container {
-    display: flex; justify-content: center; align-items: center; margin-top: 3rem;
+    display: flex; justify-content: center; align-items: center; margin-top: 2rem; /* -- 调整 -- 减小上外边距 */
+    padding-bottom: 3rem; /* 增加一点底部空间 */
 }
 #pagination-container a {
     padding: 0.5rem 1rem; margin: 0 0.25rem; border: 1px solid var(--color-border); border-radius: 5px; background: var(--color-card-bg); color: var(--color-fg-muted); font-weight: 500; transition: all var(--transition-speed);
@@ -294,32 +325,90 @@ a:hover {
 /* 7. 移动端汉堡菜单 */
 .hamburger { display: none; }
 
+/* --- 9. 美化滚动条 (新增) --- */
+
+/* 针对 WebKit 内核浏览器 (Chrome, Safari, Edge) */
+.left-sidebar::-webkit-scrollbar,
+.main-content::-webkit-scrollbar,
+.post-content pre::-webkit-scrollbar {
+    width: 8px;   /* 垂直滚动条宽度 */
+    height: 8px;  /* 水平滚动条高度 (主要用于代码块) */
+}
+
+/* 滚动条轨道 (背景) */
+.left-sidebar::-webkit-scrollbar-track,
+.main-content::-webkit-scrollbar-track,
+.post-content pre::-webkit-scrollbar-track {
+    background: transparent; /* 或者使用 var(--color-bg) */
+}
+
+/* 滚动条滑块 (可拖动部分) */
+.left-sidebar::-webkit-scrollbar-thumb,
+.main-content::-webkit-scrollbar-thumb,
+.post-content pre::-webkit-scrollbar-thumb {
+    background-color: var(--color-fg-subtle);
+    border-radius: 10px;
+    border: 2px solid var(--color-bg); /* 使用背景色作为边框，产生内边距效果 */
+}
+
+/* 鼠标悬停在滑块上时 */
+.left-sidebar::-webkit-scrollbar-thumb:hover,
+.main-content::-webkit-scrollbar-thumb:hover,
+.post-content pre::-webkit-scrollbar-thumb:hover {
+    background-color: var(--accent-color);
+}
+
+
+/* 针对 Firefox 浏览器 */
+/* 注意：Firefox 的自定义能力较弱，只能设置宽度和颜色 */
+.left-sidebar,
+.main-content,
+.post-content pre {
+    scrollbar-width: thin; /* 可以是 auto, thin, none */
+    scrollbar-color: var(--color-fg-subtle) transparent; /* 滑块颜色 和 轨道颜色 */
+}
+
 /* 8. 响应式设计 */
 @media (max-width: 992px) {
-    .post-content {
-        margin: 1rem;
-        padding: 1rem;
-    }
     :root { --sidebar-width: var(--sidebar-width-compact); }
+    .post-summary {
+        margin: 1.5rem; /* -- 调整 -- 适配中等屏幕外边距 */
+    }
+    .post-content {
+        margin: 1.5rem; /* -- 调整 -- 适配中等屏幕外边距 */
+        padding: 2rem; /* -- 调整 -- 适配中等屏幕内边距 */
+    }
 }
 
 @media (max-width: 768px) {
-    .container { flex-direction: column; }
+    /* 移动端恢复正常滚动 */
+    html, body {
+        height: auto;
+        overflow: auto;
+    }
+    .container {
+        flex-direction: column;
+        height: auto;
+    }
+    .main-content {
+        overflow-y: visible; /* 在移动端恢复默认滚动行为 */
+    }
+
     .left-sidebar {
-        width: 100%; height: auto; position: static; border-right: none;
+        width: 100%; height: auto;
+        overflow-y: visible; /* 恢复默认 */
+        border-right: none;
         border-bottom: 1px solid var(--color-border); z-index: 10;
         flex-direction: row; align-items: center; justify-content: space-between;
-        flex-wrap: wrap; /* <<< BUG修复 1/2: 允许flex子项换行 */
+        flex-wrap: wrap;
         padding: 1rem 1.5rem;
     }
     .left-sidebar header { text-align: left; }
-    .site-avatar { display: none; } /* Hide avatar on mobile header */
+    .site-avatar { display: none; }
     .site-meta .site-name { font-size: 1.2rem; }
     .site-meta .site-description { display: none; }
 
     .search-form, .site-nav, .menu-bottom-section {
-        /* <<< BUG修复 2/2: 移除了 position: absolute, top: 100%, left: 0 */
-        /* 现在元素会根据flex-wrap的设置在容器内自然堆叠，而不是在同一位置重叠 */
         display: none;
         width: 100%; background: var(--color-card-bg);
         border-bottom: 1px solid var(--color-border);
@@ -344,5 +433,19 @@ a:hover {
     .left-sidebar.is-active .hamburger-inner::after { bottom: 0; transform: rotate(-90deg); }
 
     .main-content { width: 100%; }
-    .post-summary, .post-content { padding: 1.5rem; margin: 0;}
+    /* -- 调整 -- 在移动端，为文章摘要卡片之间添加下边距以作区分 */
+    .post-summary {
+        padding: 1.5rem;
+        margin: 0;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+    .post-summary:not(:last-child) {
+        border-bottom: 6px solid var(--color-bg);
+    }
+    .post-content {
+        padding: 1.5rem;
+        margin: 0;
+    }
 }
