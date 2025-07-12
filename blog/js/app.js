@@ -75,13 +75,11 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             const hash = window.location.hash;
             if (hash.startsWith('#/post=')) {
-                // --- 核心改动在此 ---
-                // 解码从 URL 获取的文件名，以处理中文或特殊字符
                 const fileName = decodeURIComponent(hash.substring(7));
                 renderSinglePost(fileName);
             } else if (hash.startsWith('#/category/')) {
                 const parts = hash.substring(11).split('/page/');
-                const category = decodeURIComponent(parts[0]); // 同时为分类也加上解码，以备不时之需
+                const category = decodeURIComponent(parts[0]);
                 const page = parts[1] ? parseInt(parts[1], 10) : 1;
                 renderPostList(category, page);
             } else if (hash.startsWith('#/search/')) {
@@ -116,13 +114,33 @@ document.addEventListener('DOMContentLoaded', () => {
         const startIndex = (page - 1) * config.postsPerPage;
         const postsToShow = filteredPosts.slice(startIndex, startIndex + config.postsPerPage);
 
+        // --- MODIFICATION START ---
         mainContentWrapper.innerHTML = postsToShow.map(post => `
-                <article class="post-summary">
-                    <h2><a href="#/post=${post.file}">${post.title}</a></h2>
+                <article class="post-summary" data-post-file="${post.file}">
+                    <h2><a href="#/post=${post.file}" data-prevent-default="true">${post.title}</a></h2>
                     <div class="meta">发布于 ${post.date}</div>
                     <p>${post.summary}</p>
                 </article>
             `).join('');
+
+        // Add event listeners to each post-summary article
+        document.querySelectorAll('.post-summary').forEach(article => {
+            article.addEventListener('click', (event) => {
+                // Check if the click originated from the <a> tag itself or an ancestor of it
+                // We want to prevent default for the <a> tag within the article,
+                // but let the article click handler handle navigation.
+                // The `data-prevent-default="true"` on the <a> tag is a safeguard
+                // to make sure its default navigation is stopped.
+                if (event.target.closest('a')) {
+                    event.preventDefault(); // Prevent <a> tag's default navigation
+                }
+                const fileName = article.dataset.postFile;
+                if (fileName) {
+                    window.location.hash = `#/post=${fileName}`;
+                }
+            });
+        });
+        // --- MODIFICATION END ---
 
         renderPagination(page, totalPages, category);
         updateActiveNav(category || 'home');
@@ -140,8 +158,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let contentHTML = `<h1>搜索结果: "${query}"</h1>`;
         if (results.length > 0) {
             contentHTML += results.map(post => `
-                    <article class="post-summary">
-                        <h2><a href="#/post=${post.file}">${post.title}</a></h2>
+                    <article class="post-summary" data-post-file="${post.file}">
+                        <h2><a href="#/post=${post.file}" data-prevent-default="true">${post.title}</a></h2>
                         <div class="meta">发布于 ${post.date}</div>
                         <p>${post.summary}</p>
                     </article>
@@ -150,6 +168,21 @@ document.addEventListener('DOMContentLoaded', () => {
             contentHTML += `<p class="loader">未找到相关文章。</p>`;
         }
         mainContentWrapper.innerHTML = contentHTML;
+
+        // --- MODIFICATION START (Same as renderPostList, for search results) ---
+        document.querySelectorAll('.post-summary').forEach(article => {
+            article.addEventListener('click', (event) => {
+                if (event.target.closest('a')) {
+                    event.preventDefault();
+                }
+                const fileName = article.dataset.postFile;
+                if (fileName) {
+                    window.location.hash = `#/post=${fileName}`;
+                }
+            });
+        });
+        // --- MODIFICATION END ---
+
         updateActiveNav(null); // No active nav for search results
     }
 
