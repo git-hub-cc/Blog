@@ -1,125 +1,114 @@
-# Pure Front-End Static Blog Template
+# An Exquisite Single-Page Static Blog
 
-This is a lightweight, elegant, and full-featured pure front-end static blog template. It's built with basic HTML, CSS, and Vanilla JavaScript, requiring no complex build tools or backend services. Simply upload the files to any static hosting platform (like GitHub Pages, Vercel, Netlify, or your own server) to have your own blog up and running.
+This is a modern, responsive, single-page application (SPA) static blog built with pure HTML, CSS, and JavaScript. It requires no backend service or database. All content is driven by Markdown files, making it easy to deploy on any static site hosting platform (like GitHub Pages, Vercel, etc.).
 
-The design of this template is inspired by the [Stack theme](https://github.com/CaiJimmy/hugo-theme-stack) and has been simplified and customized.
+The project's design is inspired by Apple's aesthetics, featuring a smooth "Frosted Glass" effect and a fully integrated dark/light mode toggle, aiming to provide the ultimate reading experience.
 
 [中文版](./README-cn.md)
 
-## ✨ Features
+## ✨ Key Features
 
-*   **Purely Static, Zero Dependencies**: No Node.js, no database, no build process. Deployment is simple.
-*   **Responsive Design**: Perfectly adapts to desktop, tablet, and mobile devices.
-*   **Light/Dark Mode**: Supports manual switching and automatically adapts to your OS preference. Remembers user's choice.
-*   **Single Page Application (SPA)**: Uses URL Hash for routing, providing a smooth, refresh-free page switching experience.
-*   **Markdown Support**: Posts are written in Markdown and rendered in real-time on the client side using `marked.js`.
-*   **Code Syntax Highlighting**: Supports syntax highlighting for various programming languages using `highlight.js`, including a one-click copy-to-clipboard button.
-*   **Client-side Search**: Built-in instant search for post titles and summaries.
-*   **Post Categories**: Easily filter posts by category through the navigation menu.
-*   **Pagination**: Automatically paginates the post list when the number of posts exceeds a set limit.
-*   **Custom Pages**: Supports creating standalone pages like "About Me".
-*   **Custom Error Pages**: Provides well-designed `404` and `50x` error pages.
+- **Single-Page Application (SPA) Architecture**: Utilizes URL Hash for front-end routing, enabling smooth, refresh-free page transitions with fade-in/fade-out animations.
+- **Responsive & Mobile-First**: Perfectly adapted for desktop, tablet, and mobile devices. On mobile, the sidebar automatically collapses into a compact hamburger menu.
+- **Dark/Light Mode**:
+    - Automatically detects and matches the operating system's color preference.
+    - Provides a manual toggle switch and saves the user's choice locally.
+- **Markdown-Driven**: All posts and the "About" page are written in Markdown, making content creation and maintenance easy.
+- **Dynamic Content Loading**: The blog post index and Markdown content are loaded asynchronously via the `fetch` API for high performance.
+- **Client-Side Full-Text Search**: Instantly search through all post titles and summaries on the front-end, with no backend required.
+- **Post Categorization & Pagination**: Supports filtering posts by category and automatically generates pagination when the post list is long.
+- **Code Syntax Highlighting**: Integrates `highlight.js` to automatically beautify code blocks in posts, with support for multiple themes.
+- **One-Click Code Copy**: A "Copy" button automatically appears on hover in the top-right corner of each code block for reader convenience.
+- **Print-Friendly**: Provides dedicated print styles that automatically remove navigation, buttons, and other irrelevant elements, optimizing the post layout to save paper.
+- **SEO Optimized**: Includes basic `meta` tags in `index.html` to help with search engine optimization.
+- **Modern Design Aesthetics**: Employs an elegant system of typography, spacing, and shadows, combined with a "Frosted Glass" background for a stunning visual effect.
 
-## 🚀 Quick Start
+## 📸 Preview
 
-Setting up your own blog with this template is very simple.
+| Light Mode | Dark Mode |
+| :---: | :---: |
+| ![Light](screenshots/light.png) | ![Dark](screenshots/dark.png) |
 
-### 1. Get the Code
+## 🛠️ Tech Stack
 
-Clone or download this project to your local machine.
+- **Frontend**: `HTML5`, `CSS3` (Flexbox, CSS Variables), `JavaScript (ES6+)`
+- **Core Libraries**:
+    - `marked.js`: For parsing Markdown into HTML in real-time.
+    - `highlight.js`: For syntax highlighting of code blocks.
+- **Architecture**: Single-Page Application (SPA), Static Site
+
+## 🚀 How to Use
+
+### 1. Clone or Download the Project
 
 ```bash
-git clone https://github.com/git-hub-cc/blog
+git clone https://github.com/git-hub-cc/Blog.git
+cd Blog
 ```
 
-### 2. Customize Basic Information
+### 2. Preview Locally
 
-Open the `index.html` file and modify the following content according to your needs:
+Because the project uses the `fetch` API to load local files, you **cannot** simply open `index.html` in your browser via the `file://` protocol. You need a local web server to preview it.
 
-*   **Site Title**: Modify the `<title>` tag and the content within `.site-name`.
-*   **Avatar**: Replace the `src` path of the `.site-logo` (`blog/img/head/my.png`).
-*   **Site Description**: Modify the text within `.site-description`.
-*   **Navigation Menu**: Add or modify category links in `.site-nav`. The `data-nav-id` attribute should correspond to the `category` value in `posts.json`.
-*   **Social Links**: Modify the `<a>` tags in `.social-links` to point to your own social media profiles.
-*   **Copyright/Footer Info**: Modify the text within `.copyright`.
+Here are a few recommended simple methods:
 
-### 3. Publish a New Post
+- **Using VS Code's Live Server extension**: Right-click `index.html` and select "Open with Live Server".
+- **Using Node.js's `serve` package**:
+  ```bash
+  # If you don't have serve, install it globally first
+  npm install -g serve
+  # Run in the project root directory
+  serve
+  ```
+- **Using Python's built-in HTTP server**:
+  ```bash
+  # Python 3.x
+  python -m http.server
+  # Python 2.x
+  python -m SimpleHTTPServer
+  ```
+Then, visit the address displayed in your browser (e.g., `http://localhost:3000`).
 
-Publishing a new post is a two-step process:
+### 3. Customize Your Blog
+
+#### a. Modify Site Information
+Open `index.html` and you can change the following:
+- **Site Title**: `<title>Blog</title>`
+- **SEO Information**: `<meta name="description" ...>` and `<meta name="keywords" ...>`
+- **Avatar**: Modify the `src` attribute of `<img src="blog/img/head/my.png" ...>`.
+- **Site Description**: Modify `<h2 class="site-description">...</h2>`.
+- **Navigation Categories**: Modify the `<li>` elements within `<nav class="site-nav">`.
+    - The `href` attribute defines the category route, e.g., `#/category/programming`.
+    - The `data-nav-id` is used to highlight the active navigation item and should match the category name.
+- **Social Links**: Modify the `<a>` tags inside `<div class="social-links">`.
+- **Copyright Information**: Modify `<div class="copyright">...</div>`.
+
+#### b. Add or Modify Posts
+This is the core step, divided into two parts:
 
 **Step 1: Create a Markdown File**
-
-Create a new `.md` file in the `blog/md/` directory (or a subdirectory, like `blog/md/programming/`). You can use any Markdown editor you like for writing.
+Create or modify `.md` files in the `blog/md/` directory. It's recommended to use meaningful English filenames (e.g., `my-first-post.md`).
 
 **Step 2: Update the Post Index**
-
-Open the `blog/posts.json` file and add a new JSON object to the **very beginning** of the array to describe your new post. The object should contain the following fields:
-
-*   `file` (string): **Required**. The path to the Markdown file, relative to the `blog/md/` directory.
-*   `title` (string): **Required**. The title of the post.
-*   `date` (string): **Required**. The publication date, recommended format is `YYYY-MM-DD`.
-*   `summary` (string): **Required**. A short summary of the post, which will be displayed on the post list page.
-*   `category` (string): **Required**. The category of the post. This value needs to match the `data-nav-id` attribute of a navigation link in `index.html` for the current category to be highlighted.
-
-For example, to add a new post named `my-new-post.md`:
+Open the `blog/posts.json` file. It's a JSON array where each object represents a post. Add a new post object to the **beginning** of the array to maintain reverse chronological order:
 
 ```json
-[
-  {
-    "file": "life/my-new-post.md",
-    "title": "My New Post",
-    "date": "2024-05-21",
-    "summary": "This is my first post about life, documenting some interesting things.",
-    "category": "life" 
-  }
-]
-```
-> **Note**: `posts.json` is an array. The object for a new post should be added to the beginning of the array to ensure the post list is sorted in reverse chronological order.
-
-### 4. Modify the "About" Page
-
-Simply edit the `blog/md/about.md` file to update the content of the "About" page.
-
-### 5. Deploy
-
-Upload the entire project folder to any web server or hosting platform that supports static files.
-
-*   **GitHub Pages**: Push the code to your GitHub repository and enable the Pages feature in the repository settings.
-*   **Vercel/Netlify**: Link your GitHub repository directly, and the platform will handle the deployment automatically.
-*   **Cloud Server**: Use a web server like Nginx or Apache and point the root directory to the project folder.
-
-## 📁 File Structure
-
-Here is the main file structure of the project with explanations:
-
-```
-.
-├── index.html              # Main entry point and layout file
-├── 40x.html                # Custom 404 error page
-├── 50x.html                # Custom 500 error page
-├── README.md               # Project README file
-└── blog/
-    ├── css/
-    │   └── style.css       # Global stylesheet
-    ├── js/
-    │   └── app.js          # Core JavaScript logic
-    ├── lib/                # Third-party libraries
-    │   ├── marked.min.js   # Markdown parsing library
-    │   ├── highlight.min.js # Code highlighting library
-    │   └── atom-one-dark.min.css # Theme for highlight.js
-    ├── md/
-    │   ├── about.md        # Source file for the "About" page
-    │   └── ...             # Directory for your post .md files
-    ├── img/
-    │   └── ...             # Directory for image assets
-    └── posts.json          # Post index "database"
+{
+  "file": "your-post-filename.md",
+  "title": "Your Post Title",
+  "date": "2024-08-15",
+  "category": "programming",
+  "summary": "This is a brief summary of the post, which will be displayed on the post list page. Plain text is supported."
+}
 ```
 
-## 🔧 Dependencies and Acknowledgements
+**Note**: The value of `category` should match the category ID (`data-nav-id`) and route (`#/category/{category}`) you set up in the `index.html` navigation menu.
 
-This project relies on the following excellent open-source libraries:
+#### c. Modify Styles and Themes
+- **Colors, Fonts, Spacing**: The `blog/css/style.css` file makes extensive use of CSS Variables. You can easily modify global styles in the `:root` and `[data-scheme="dark"]` selectors at the top of the file.
+- **Code Highlighting Theme**: If you don't like the default `atom-one-dark` theme, you can download other theme CSS files from the `highlight.js` website, replace `atom-one-dark.min.css` in `blog/lib/`, and update the link in `index.html`.
 
-*   [marked.js](https://github.com/markedjs/marked): A low-level compiler for parsing Markdown without caching or blocking for long periods.
-*   [highlight.js](https://github.com/highlightjs/highlight.js): A versatile syntax highlighter.
-
-The UI design is inspired by the [Hugo Stack Theme](https://github.com/CaiJimmy/hugo-theme-stack).
+### 4. Deploy
+After making all your changes, simply upload the entire project folder to any server that supports static file hosting. For example:
+- **GitHub Pages**: Push your project to a GitHub repository and enable the GitHub Pages feature in the repository settings.
+- **Vercel / Netlify**: Connect your Git repository to them, and they will automatically handle the build and deployment process.

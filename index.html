@@ -1,100 +1,127 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-scheme="light"> <!-- data-scheme 用于切换主题 -->
+<html lang="zh-CN"> <!-- 移除 data-scheme="light" -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO Meta Tags (优化添加) -->
-    <meta name="description" content="我的博客 - 一个专注于编程技术、系统知识、效率原则和软件应用的静态博客。分享 JavaScript、Markdown，记录学习与成长。">
-    <meta name="keywords" content="博客, 个人博客, 技术博客, 静态博客, 编程, JavaScript, 前端, 系统, 软件, 个人成长, Markdown">
+    <!-- SEO Meta 标签 -->
+    <meta name="description" content="Blog - 一个专注于编程技术、系统知识、效率原则和软件应用的静态博客。分享 JavaScript、Markdown，记录学习与成长。">
+    <meta name="keywords" content="Blog, 博客, 个人博客, 技术博客, 静态博客, 编程, 个人成长, Markdown, JavaScript, 系统, 软件">
     <meta name="author" content="git-hub-cc">
-    <!-- End of SEO Meta Tags -->
 
-    <title>我的博客</title>
+    <title>Blog</title>
 
+    <!--
+      !!! 优化关键：在 CSS 加载前执行的内联脚本，用于消除主题闪烁 !!!
+    -->
+    <script>
+        (function() {
+            const colorSchemeKey = 'MyBlogColorScheme';
+            const osDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+            function getInitialScheme() {
+                const savedScheme = localStorage.getItem(colorSchemeKey);
+                if (savedScheme) {
+                    return savedScheme;
+                }
+                return osDarkScheme.matches ? 'dark' : 'light';
+            }
+
+            document.documentElement.setAttribute('data-scheme', getInitialScheme());
+        })();
+    </script>
+
+    <!-- 引入样式表 -->
     <link rel="stylesheet" href="blog/css/style.css">
-    <link rel="stylesheet" href="blog/lib/atom-one-dark.min.css">
 </head>
 <body>
 
+<!-- 主应用容器：液态玻璃效果窗口 -->
 <div class="container">
-    <!-- 左侧边栏 (Stack Theme Style) -->
+    <!-- 左侧边栏导航面板 -->
     <aside class="left-sidebar sticky">
-        <!-- 移动端汉堡菜单按钮 -->
+        <!-- ... (aside 内容保持不变) ... -->
+        <!-- 移动端汉堡菜单按钮 (仅在小屏幕上显示) -->
         <button class="hamburger" type="button" id="toggle-menu" aria-label="切换菜单">
-<span class="hamburger-box">
-<span class="hamburger-inner"></span>
-</span>
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
         </button>
 
+        <!-- 站点头部信息 -->
         <header>
             <figure class="site-avatar">
                 <a href="#">
-                    <!-- 你可以在这里换成你的头像图片 -->
-                    <img src="blog/img/head/my.png" width="100" height="100" class="site-logo" alt="Avatar">
+                    <!-- 你的头像图片，可替换 -->
+                    <img src="blog/img/head/my.png" width="100" height="100" class="site-logo" alt="站点头像">
                 </a>
             </figure>
             <div class="site-meta">
-                <h1 class="site-name"><a href="#">我的博客</a></h1>
                 <h2 class="site-description">一个简单而优雅的静态博客</h2>
             </div>
         </header>
 
         <!-- 搜索框 -->
-        <form class="search-form" id="search-form">
-            <input type="search" id="search-input" class="search-input" placeholder="搜索文章..." aria-label="搜索文章">
-            <button type="submit" class="search-button" aria-label="搜索">🔍</button>
+        <form class="search-form" id="search-form" role="search">
+            <label for="search-input" class="sr-only"></label> <!-- 辅助阅读器隐藏标签 -->
+            <input type="search" id="search-input" class="search-input" placeholder="搜索文章..." aria-label="搜索文章内容">
+            <button type="submit" class="search-button" aria-label="执行搜索">🔍</button>
         </form>
 
+        <!-- 主导航菜单 -->
         <nav class="site-nav">
             <ul class="menu">
-                <li><a href="#" class="nav-link active" data-nav-id="home">所有文章</a></li>
+                <li><a href="#/" class="nav-link active" data-nav-id="home">所有文章</a></li>
                 <li><a href="#/category/zcool" class="nav-link" data-nav-id="zcool">知库</a></li>
                 <li><a href="#/category/system" class="nav-link" data-nav-id="system">系统</a></li>
                 <li><a href="#/category/programming" class="nav-link" data-nav-id="programming">编程</a></li>
                 <li><a href="#/category/software" class="nav-link" data-nav-id="software">软件</a></li>
-                <li><hr class="nav-separator"></li>
-                <li><a href="#about" class="nav-link" data-nav-id="about">关于</a></li>
+                <li><hr class="nav-separator"></li> <!-- 分隔线 -->
+                <li><a href="#/about" class="nav-link" data-nav-id="about">关于</a></li>
             </ul>
         </nav>
 
+        <!-- 底部功能区：社交链接与深色模式切换 -->
         <div class="menu-bottom-section">
             <div class="social-links">
-                <a href="https://github.com/git-hub-cc/Blog" target="_blank" aria-label="GitHub">G</a>
-                <a href="https://space.bilibili.com/269093875" target="_blank" aria-label="Bilibili">B</a>
+                <a href="https://github.com/git-hub-cc/Blog" target="_blank" rel="noopener noreferrer" aria-label="GitHub 主页">G</a>
+                <a href="https://space.bilibili.com/269093875" target="_blank" rel="noopener noreferrer" aria-label="Bilibili 空间">B</a>
             </div>
             <!-- 深色模式切换器 -->
             <div class="dark-mode-toggle">
-                <label for="dark-mode-switch">
-                    <span>☀️</span>
-                    <input type="checkbox" id="dark-mode-switch" />
-                    <span class="slider"></span>
-                    <span>🌙</span>
+                <label for="dark-mode-switch" aria-label="切换深色模式">
+                    <span>☀️</span> <!-- 亮色图标 -->
+                    <input type="checkbox" id="dark-mode-switch" role="switch" aria-checked="false" />
+                    <span class="slider"></span> <!-- 切换滑块 -->
+                    <span>🌙</span> <!-- 暗色图标 -->
                 </label>
             </div>
+            <!-- 版权信息 -->
             <div class="copyright">
-                ©粤ICP备2024271251号
+                © 2024 git-hub-cc | 粤ICP备2024271251号
             </div>
         </div>
     </aside>
 
-    <!-- 右侧主内容区 -->
-    <main class="main-content">
+    <!-- 右侧主内容区域 -->
+    <main class="main-content" role="main">
+        <!-- 主要内容包裹器，用于动态加载文章列表或单篇文章 -->
         <div id="main-content-wrapper">
-            <!-- 内容将在这里动态插入  -->
-            <div class="loader">正在加载...</div>
+            <!-- 初始加载状态或内容占位符 -->
+            <div class="loader">正在加载内容，请稍候...</div>
         </div>
-        <footer id="pagination-container">
-            <!-- 分页控件将在这里动态插入 -->
+        <!-- 分页控件容器 -->
+        <footer id="pagination-container" role="navigation" aria-label="分页导航">
+            <!-- 分页链接将在这里动态插入 -->
         </footer>
     </main>
 </div>
 
-<!-- 引入第三方库 -->
-<script src="blog/lib/marked.min.js"></script>
-<script src="blog/lib/highlight.min.js"></script>
+<!-- 引入第三方库 (置于 body 底部，优化加载性能) -->
+<script src="blog/lib/marked.min.js"></script> <!-- Markdown 解析库 -->
+<script src="blog/lib/highlight.min.js"></script> <!-- 代码高亮库 -->
 
-<!-- 引入我们自己的脚本 -->
+<!-- 引入自定义应用脚本 -->
 <script src="blog/js/app.js"></script>
 
 </body>

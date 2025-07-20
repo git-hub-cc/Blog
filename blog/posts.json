@@ -1,5 +1,47 @@
 [
   {
+    "file": "software/使用/软件管理.md",
+    "title": "Windows 软件管理完全指南：从入门到精通 Scoop",
+    "date": "2025-07-20",
+    "summary": "在 Windows 上管理软件，你可能经历过从第三方下载站、软件管家，到官网下载的演变。每种方式都有其优缺点。本文将对比这些方式，并重点介绍一种更优雅、更现代化的解决方案——**Scoop**，一个强大的 Windows 命令行包管理器。\n",
+    "category": "software"
+  },
+  {
+    "file": "software/使用/markdown.md",
+    "title": "Markdown 语法详解",
+    "date": "2025-07-20",
+    "summary": "Markdown 是一种轻量级标记语言，广泛用于编写文档、博客、说明书、GitHub README 等。",
+    "category": "software"
+  },
+  {
+    "file": "software/使用/下载/linux.md",
+    "title": "Linux 命令行下载工具对比：Wget, Curl 和 Aria2",
+    "date": "2025-07-20",
+    "summary": "本文详细对比了 Linux 下三款主流命令行下载工具：wget、curl 和 aria2。通过功能特性表和常用命令示例，分析了它们在简单下载、API 交互、多线程加速及 BT 下载等场景下的优劣，帮助用户根据需求选择最合适的工具。",
+    "category": "software"
+  },
+  {
+    "file": "software/使用/虚拟机/linux/win子系统.md",
+    "title": "WSL 入门到实践：安装、配置 SSH 与 Docker 的完整指南",
+    "date": "2025-07-20",
+    "summary": "提供在 Windows 10/11 上安装与配置 WSL (Windows Subsystem for Linux) 的详尽指南。内容涵盖自动化与手动安装、Ubuntu 初始设置、配置 SSH 服务以实现远程连接、网络代理设置，以及在 WSL2 环境下通过 Docker Desktop 高效使用 Docker 的最佳实践。",
+    "category": "software"
+  },
+  {
+    "file": "software/使用/虚拟机/android.md",
+    "title": "在 Windows 上运行安卓应用：WSA 与安卓模拟器深度对比指南",
+    "date": "2025-07-20",
+    "summary": "本文详细对比了在 Windows 电脑上运行安卓应用的两种主流方案：官方的 Windows Subsystem for Android (WSA) 与第三方安卓模拟器。通过分析各自的优缺点、系统集成度、游戏性能和纯净度，并提供详细的安装教程，帮助用户根据自身需求（如日常使用或游戏娱乐）做出最佳选择。",
+    "category": "software"
+  },
+  {
+    "file": "software/使用/笔记软件.md",
+    "title": "现代笔记软件选择与 Obsidian 深度使用指南",
+    "date": "2025-07-20",
+    "summary": "本文旨在帮助用户选择合适的笔记软件，并精通 Obsidian。首先横向对比了 Notion、Obsidian、Typora 和有道云笔记的优劣；随后提供了一份详尽的 Obsidian 入门与进阶指南，涵盖核心语法、双向链接、插件生态及个人最佳实践，助你从零开始构建强大的个人知识库。",
+    "category": "software"
+  },
+  {
     "file": "zcool/原则/grow.md",
     "title": "GROW 原则：明确目标，实现成长",
     "date": "2025-07-06",
