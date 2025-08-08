@@ -2,99 +2,113 @@
   {
     "file": "software/使用/软件管理.md",
     "title": "Windows 软件管理完全指南：从入门到精通 Scoop",
-    "date": "2025-07-20",
-    "summary": "在 Windows 上管理软件，你可能经历过从第三方下载站、软件管家，到官网下载的演变。每种方式都有其优缺点。本文将对比这些方式，并重点介绍一种更优雅、更现代化的解决方案——**Scoop**，一个强大的 Windows 命令行包管理器。\n",
-    "category": "software"
-  },
-  {
-    "file": "software/使用/markdown.md",
-    "title": "Markdown 语法详解",
-    "date": "2025-07-20",
-    "summary": "Markdown 是一种轻量级标记语言，广泛用于编写文档、博客、说明书、GitHub README 等。",
-    "category": "software"
+    "date": "2025-07-25",
+    "summary": "在 Windows 上管理软件，你可能经历过从第三方下载站、软件管家，到官网下载的演变。每种方式都有其优缺点。本文将对比这些方式，并重点介绍一种更优雅、更现代化的解决方案——**Scoop**，一个强大的 Windows 命令行包管理器。",
+    "category": "software",
+    "tags": ["Windows", "Scoop", "CLI", "效率"]
   },
   {
     "file": "software/使用/下载/linux.md",
     "title": "Linux 命令行下载工具对比：Wget, Curl 和 Aria2",
-    "date": "2025-07-20",
+    "date": "2025-07-22",
     "summary": "本文详细对比了 Linux 下三款主流命令行下载工具：wget、curl 和 aria2。通过功能特性表和常用命令示例，分析了它们在简单下载、API 交互、多线程加速及 BT 下载等场景下的优劣，帮助用户根据需求选择最合适的工具。",
-    "category": "software"
+    "category": "software",
+    "tags": ["Linux", "CLI", "Wget", "Curl", "Aria2"]
   },
   {
     "file": "software/使用/虚拟机/linux/win子系统.md",
     "title": "WSL 入门到实践：安装、配置 SSH 与 Docker 的完整指南",
     "date": "2025-07-20",
     "summary": "提供在 Windows 10/11 上安装与配置 WSL (Windows Subsystem for Linux) 的详尽指南。内容涵盖自动化与手动安装、Ubuntu 初始设置、配置 SSH 服务以实现远程连接、网络代理设置，以及在 WSL2 环境下通过 Docker Desktop 高效使用 Docker 的最佳实践。",
-    "category": "software"
+    "category": "software",
+    "tags": ["Linux", "WSL", "Docker", "Windows"]
   },
   {
     "file": "software/使用/虚拟机/android.md",
     "title": "在 Windows 上运行安卓应用：WSA 与安卓模拟器深度对比指南",
-    "date": "2025-07-20",
+    "date": "2025-07-18",
     "summary": "本文详细对比了在 Windows 电脑上运行安卓应用的两种主流方案：官方的 Windows Subsystem for Android (WSA) 与第三方安卓模拟器。通过分析各自的优缺点、系统集成度、游戏性能和纯净度，并提供详细的安装教程，帮助用户根据自身需求（如日常使用或游戏娱乐）做出最佳选择。",
-    "category": "software"
+    "category": "software",
+    "tags": ["Windows", "Android", "WSA", "模拟器"]
   },
   {
     "file": "software/使用/笔记软件.md",
     "title": "现代笔记软件选择与 Obsidian 深度使用指南",
-    "date": "2025-07-20",
+    "date": "2025-07-16",
     "summary": "本文旨在帮助用户选择合适的笔记软件，并精通 Obsidian。首先横向对比了 Notion、Obsidian、Typora 和有道云笔记的优劣；随后提供了一份详尽的 Obsidian 入门与进阶指南，涵盖核心语法、双向链接、插件生态及个人最佳实践，助你从零开始构建强大的个人知识库。",
-    "category": "software"
+    "category": "software",
+    "tags": ["Obsidian", "笔记", "效率", "Markdown"]
+  },
+  {
+    "file": "software/使用/markdown.md",
+    "title": "Markdown 语法详解",
+    "date": "2025-07-15",
+    "summary": "Markdown 是一种轻量级标记语言，广泛用于编写文档、博客、说明书、GitHub README 等。",
+    "category": "software",
+    "tags": ["Markdown", "语法"]
   },
   {
     "file": "zcool/原则/grow.md",
     "title": "GROW 原则：明确目标，实现成长",
-    "date": "2025-07-06",
+    "date": "2025-07-12",
     "summary": "了解管理学中的 GROW 原则：目标（Goal）、现实（Reality）、选择（Options）、意愿（Will），一种有效解决问题、实现个人与团队成长的强大框架。",
-    "category": "zcool"
+    "category": "zcool",
+    "tags": ["思维模型", "成长", "管理"]
   },
   {
     "file": "zcool/原则/star.md",
     "title": "STAR 法则：在面试中清晰展示你的价值",
-    "date": "2025-07-06",
+    "date": "2025-07-11",
     "summary": "学习如何在面试中运用 STAR 法则（情境、任务、行动、结果），结构化地讲述你的经历，给面试官留下深刻印象。",
-    "category": "zcool"
+    "category": "zcool",
+    "tags": ["思维模型", "面试", "沟通"]
   },
   {
     "file": "zcool/原则/pdca.md",
     "title": "PDCA 循环：持续改进的质量管理秘诀",
-    "date": "2025-07-06",
+    "date": "2025-07-10",
     "summary": "掌握戴明环 PDCA（计划-执行-检查-行动）原则，将其应用于任何工作与活动中，实现问题的有效解决与效率的持续提升。",
-    "category": "zcool"
+    "category": "zcool",
+    "tags": ["思维模型", "质量管理", "效率"]
   },
   {
     "file": "zcool/原则/mece.md",
     "title": "MECE 原则：做到“相互独立，完全穷尽”的思考艺术",
-    "date": "2025-07-06",
+    "date": "2025-07-09",
     "summary": "探索麦肯锡的 MECE 原则，学习如何对事物进行清晰分类，确保分析全面、无重叠、无遗漏，提升你的结构化思维能力。",
-    "category": "zcool"
+    "category": "zcool",
+    "tags": ["思维模型", "结构化思维", "麦肯锡"]
   },
   {
     "file": "zcool/原则/five-second-rule.md",
     "title": "五秒法则：克服拖延，立即行动的心理技巧",
-    "date": "2025-07-06",
+    "date": "2025-07-08",
     "summary": "了解梅尔·罗宾斯的“五秒法则”，一个简单而强大的心理工具，通过倒数5秒来战胜犹豫，将想法转化为即时行动。",
-    "category": "zcool"
+    "category": "zcool",
+    "tags": ["心理学", "拖延症", "行动力"]
   },
   {
     "file": "programming/3-deep-dive-js.md",
     "title": "深入 JavaScript 异步编程",
-    "date": "2025-07-06",
+    "date": "2025-07-07",
     "summary": "从回调地狱到 Promise，再到 Async/Await，一文看懂 JavaScript 异步的演进之路。",
-    "category": "programming"
-  },
-  {
-    "file": "programming/2-markdown-syntax.md",
-    "title": "Markdown 语法演示",
-    "date": "2025-07-06",
-    "summary": "展示了在这个博客中可以使用的各种 Markdown 语法，包括列表、代码块和引用。",
-    "category": "programming"
+    "category": "programming",
+    "tags": ["JavaScript", "异步", "Promise", "AsyncAwait"]
   },
   {
     "file": "programming/1-getting-started.md",
     "title": "欢迎来到我的博客",
     "date": "2025-07-06",
     "summary": "我的第一篇文章！介绍了这个博客是如何用纯前端技术构建的。",
-    "category": "programming"
+    "category": "programming",
+    "tags": ["博客", "前端", "JavaScript"]
+  },
+  {
+    "file": "programming/2-markdown-syntax.md",
+    "title": "Markdown 语法演示",
+    "date": "2025-07-05",
+    "summary": "展示了在这个博客中可以使用的各种 Markdown 语法，包括列表、代码块和引用。",
+    "category": "programming",
+    "tags": ["Markdown", "示例"]
   }
 ]

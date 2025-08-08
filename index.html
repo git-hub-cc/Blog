@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN"> <!-- 移除 data-scheme="light" -->
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,8 @@
     <title>Blog</title>
 
     <!--
-      !!! 优化关键：在 CSS 加载前执行的内联脚本，用于消除主题闪烁 !!!
+      !!! 优化关键：此内联脚本在 CSS 加载前执行，用于消除主题切换时的闪烁（FOUC）!!!
+      它会立即根据 localStorage 或系统偏好设置 `data-scheme` 属性。
     -->
     <script>
         (function() {
@@ -31,16 +32,18 @@
         })();
     </script>
 
-    <!-- 引入样式表 -->
-    <link rel="stylesheet" href="blog/css/style.css">
+    <!-- 引入拆分后的样式表 (顺序至关重要) -->
+    <link rel="stylesheet" href="blog/css/base.css">
+    <link rel="stylesheet" href="blog/css/layout.css">
+    <link rel="stylesheet" href="blog/css/components.css">
+    <link rel="stylesheet" href="blog/css/theme.css">
 </head>
 <body>
 
-<!-- 主应用容器：液态玻璃效果窗口 -->
+<!-- 主应用容器：采用液态玻璃效果的浮动窗口 -->
 <div class="container">
-    <!-- 左侧边栏导航面板 -->
+    <!-- 左侧边栏：包含导航、搜索和功能区 -->
     <aside class="left-sidebar sticky">
-        <!-- ... (aside 内容保持不变) ... -->
         <!-- 移动端汉堡菜单按钮 (仅在小屏幕上显示) -->
         <button class="hamburger" type="button" id="toggle-menu" aria-label="切换菜单">
             <span class="hamburger-box">
@@ -49,21 +52,21 @@
         </button>
 
         <!-- 站点头部信息 -->
-        <header>
+        <header class="site-header">
             <figure class="site-avatar">
-                <a href="#">
-                    <!-- 你的头像图片，可替换 -->
-                    <img src="blog/img/head/my.png" width="100" height="100" class="site-logo" alt="站点头像">
+                <a href="#/">
+                    <img src="blog/img/head/my.png" width="100" height="100" class="site-logo" alt="站点头像" />
                 </a>
             </figure>
             <div class="site-meta">
+                <h1 class="site-name"><a href="#/">Blog</a></h1>
                 <h2 class="site-description">一个简单而优雅的静态博客</h2>
             </div>
         </header>
 
         <!-- 搜索框 -->
         <form class="search-form" id="search-form" role="search">
-            <label for="search-input" class="sr-only"></label> <!-- 辅助阅读器隐藏标签 -->
+            <label for="search-input" class="sr-only">搜索文章</label>
             <input type="search" id="search-input" class="search-input" placeholder="搜索文章..." aria-label="搜索文章内容">
             <button type="submit" class="search-button" aria-label="执行搜索">🔍</button>
         </form>
@@ -81,15 +84,15 @@
             </ul>
         </nav>
 
-        <!-- 底部功能区：社交链接与深色模式切换 -->
+        <!-- 底部功能区：包含社交链接、主题切换和版权信息 -->
         <div class="menu-bottom-section">
             <div class="social-links">
-                <a href="https://github.com/git-hub-cc/Blog" target="_blank" rel="noopener noreferrer" aria-label="GitHub 主页">G</a>
-                <a href="https://space.bilibili.com/269093875" target="_blank" rel="noopener noreferrer" aria-label="Bilibili 空间">B</a>
+                <a href="https://github.com/git-hub-cc/Blog" target="_blank" rel="noopener noreferrer" aria-label="访问我的 GitHub 主页">G</a>
+                <a href="https://space.bilibili.com/269093875" target="_blank" rel="noopener noreferrer" aria-label="访问我的 Bilibili 空间">B</a>
             </div>
             <!-- 深色模式切换器 -->
             <div class="dark-mode-toggle">
-                <label for="dark-mode-switch" aria-label="切换深色模式">
+                <label for="dark-mode-switch" aria-label="切换亮色/深色主题">
                     <span>☀️</span> <!-- 亮色图标 -->
                     <input type="checkbox" id="dark-mode-switch" role="switch" aria-checked="false" />
                     <span class="slider"></span> <!-- 切换滑块 -->
@@ -98,21 +101,29 @@
             </div>
             <!-- 版权信息 -->
             <div class="copyright">
-                © 2024 git-hub-cc | 粤ICP备2024271251号
+                © 2024 cc | 粤ICP备2024271251号
             </div>
         </div>
     </aside>
 
     <!-- 右侧主内容区域 -->
     <main class="main-content" role="main">
-        <!-- 主要内容包裹器，用于动态加载文章列表或单篇文章 -->
-        <div id="main-content-wrapper">
-            <!-- 初始加载状态或内容占位符 -->
-            <div class="loader">正在加载内容，请稍候...</div>
+        <div class="content-layout">
+            <!-- 主要内容包裹器，用于动态加载内容 -->
+            <div id="main-content-wrapper">
+                <div class="loader">正在加载内容，请稍候...</div>
+            </div>
+            <!-- 文章目录容器 (仅在文章页和宽屏下显示) -->
+            <aside id="toc-container" class="toc-sidebar"></aside>
         </div>
-        <!-- 分页控件容器 -->
-        <footer id="pagination-container" role="navigation" aria-label="分页导航">
-            <!-- 分页链接将在这里动态插入 -->
+
+        <footer class="main-content-footer">
+            <!-- 标签云容器 (在文章列表页显示) -->
+            <div id="tag-cloud-container"></div>
+            <!-- 分页控件容器 -->
+            <div id="pagination-container" role="navigation" aria-label="分页导航">
+                <!-- 分页链接将在此处通过 JavaScript 动态插入 -->
+            </div>
         </footer>
     </main>
 </div>
@@ -121,8 +132,8 @@
 <script src="blog/lib/marked.min.js"></script> <!-- Markdown 解析库 -->
 <script src="blog/lib/highlight.min.js"></script> <!-- 代码高亮库 -->
 
-<!-- 引入自定义应用脚本 -->
-<script src="blog/js/app.js"></script>
+<!-- 引入自定义应用脚本 (使用 ES Module) -->
+<script type="module" src="blog/js/app.js"></script>
 
 </body>
 </html>
