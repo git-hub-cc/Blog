@@ -1,0 +1,418 @@
+好的，这是一个符合您要求的 HTML 页面。它将所有 HTML, CSS, 和 JavaScript 代码整合在一个文件中，便于直接运行和理解。
+
+### 功能亮点：
+1.  **直观布局**: 左侧是组件库，右侧是画布，分界清晰。
+2.  **拖拽添加**: 从左侧拖动“文本块”或“按钮”到右侧画布上即可创建新组件。
+3.  **画布内拖拽**: 在画布上创建的组件可以自由拖动，改变位置。
+4.  **拉伸缩放**: 每个组件右下角都有一个 resize 角标，可以拖动它来改变组件的大小。
+5.  **内容编辑**: 单击组件内的文字或按钮，即可进入编辑模式，修改内容。按 Enter 或点击别处即可保存。
+6.  **层级管理**: 最新操作或点击的组件会自动置于顶层（z-index 最高）。
+7.  **状态高亮**: 被选中的组件会有蓝色边框高亮，非常清晰。
+8.  **健壮性**:
+    *   区分了单击（用于编辑）和拖拽，避免误操作。
+    *   对拖拽和缩放设置了最小尺寸，防止组件变得过小。
+    *   代码结构清晰，使用了大量注释，便于理解和扩展。
+9.  **美观性**: 使用了现代化的 CSS 样式，包括阴影、圆角、过渡效果和友好的颜色搭配，界面干净美观。
+
+---
+
+### 代码实现
+
+直接将以下代码复制到一个 `.html` 文件中，然后用浏览器打开即可体验。
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拖拽式画布编辑器</title>
+    <style>
+        /* --- 全局与布局 --- */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft Yahei', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #f0f2f5;
+            user-select: none; /* 防止拖拽时选中页面文字 */
+        }
+
+        .container {
+            display: flex;
+            height: 100%;
+        }
+
+        /* --- 左侧组件库 --- */
+        .sidebar {
+            width: 220px;
+            background-color: #ffffff;
+            border-right: 1px solid #e8e8e8;
+            padding: 20px;
+            box-shadow: 2px 0 8px rgba(0,0,0,0.05);
+            z-index: 10;
+        }
+
+        .sidebar h3 {
+            margin-top: 0;
+            color: #333;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .component {
+            padding: 12px 15px;
+            border: 1px dashed #d9d9d9;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            cursor: grab;
+            background-color: #fafafa;
+            text-align: center;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .component:hover {
+            border-color: #40a9ff;
+            background-color: #e6f7ff;
+            color: #1890ff;
+        }
+
+        .component:active {
+            cursor: grabbing;
+        }
+
+        /* --- 右侧画布区域 --- */
+        .canvas-area {
+            flex-grow: 1;
+            position: relative;
+            background-image:
+                linear-gradient(rgba(0,0,0,0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,0.08) 1px, transparent 1px);
+            background-size: 20px 20px;
+            overflow: hidden; /* 隐藏超出画布的内容 */
+        }
+
+        /* --- 画布上的组件 --- */
+        .canvas-component {
+            position: absolute;
+            min-width: 80px;
+            min-height: 40px;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            cursor: move;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box; /* 边框和内边距包含在宽高内 */
+            transition: border-color 0.2s;
+        }
+
+        .canvas-component.selected {
+            border-color: #1890ff;
+            box-shadow: 0 0 10px rgba(24, 144, 255, 0.5);
+        }
+
+        .canvas-component .content {
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            outline: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .canvas-component .content[contenteditable="true"] {
+            cursor: text;
+        }
+
+        /* 组件类型特定样式 */
+        .canvas-component[data-type="text"] {
+            background-color: rgba(255, 255, 255, 0.85);
+        }
+
+        .canvas-component[data-type="button"] {
+            background-color: #1890ff;
+            color: white;
+            border-radius: 6px;
+        }
+        .canvas-component[data-type="button"].selected {
+             border-color: #fff200;
+        }
+
+        /* --- 缩放角标 --- */
+        .resizer {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: #1890ff;
+            border: 2px solid white;
+            border-radius: 50%;
+            bottom: -7px;
+            right: -7px;
+            cursor: nwse-resize;
+            display: none; /* 默认隐藏 */
+        }
+
+        .canvas-component.selected .resizer {
+            display: block; /* 选中时显示 */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- 左侧组件库 -->
+        <div class="sidebar">
+            <h3>组件库</h3>
+            <div class="component" draggable="true" data-type="text">文本块</div>
+            <div class="component" draggable="true" data-type="button">按钮</div>
+        </div>
+
+        <!-- 右侧画布 -->
+        <div class="canvas-area" id="canvas">
+            <!-- 拖拽生成的组件将出现在这里 -->
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const sidebarComponents = document.querySelectorAll('.sidebar .component');
+        const canvas = document.getElementById('canvas');
+
+        let activeComponent = null; // 当前正在操作的组件
+        let isDragging = false;
+        let isResizing = false;
+        let hasMoved = false; // 用于区分点击和拖拽
+        
+        let startX, startY, startLeft, startTop, startWidth, startHeight;
+        let maxZIndex = 1;
+
+        // --- 1. 从侧边栏拖拽到画布 ---
+
+        sidebarComponents.forEach(component => {
+            component.addEventListener('dragstart', (e) => {
+                e.dataTransfer.setData('text/plain', component.dataset.type);
+                e.dataTransfer.effectAllowed = 'copy';
+            });
+        });
+
+        canvas.addEventListener('dragover', (e) => {
+            e.preventDefault(); // 必须阻止默认行为，才能触发 drop 事件
+        });
+
+        canvas.addEventListener('drop', (e) => {
+            e.preventDefault();
+            const type = e.dataTransfer.getData('text/plain');
+            const canvasRect = canvas.getBoundingClientRect();
+            
+            // 计算放置位置，相对于画布左上角
+            const x = e.clientX - canvasRect.left;
+            const y = e.clientY - canvasRect.top;
+
+            createComponent(type, x, y);
+        });
+
+        // --- 2. 创建并初始化画布上的组件 ---
+
+        function createComponent(type, x, y) {
+            const newComponent = document.createElement('div');
+            const id = `component-${Date.now()}`;
+            newComponent.id = id;
+            newComponent.className = 'canvas-component';
+            newComponent.dataset.type = type;
+            
+            // 初始内容
+            let contentText = '默认文本';
+            if (type === 'button') {
+                contentText = '按钮';
+            }
+
+            // 组件内部结构，包含内容区和缩放角标
+            newComponent.innerHTML = `
+                <div class="content" contenteditable="false">${contentText}</div>
+                <div class="resizer"></div>
+            `;
+            
+            // 设置初始位置和尺寸
+            newComponent.style.left = `${x - 60}px`; // 减去一半宽度，使其居中于鼠标
+            newComponent.style.top = `${y - 25}px`; // 减去一半高度
+            if(type === 'button'){
+                newComponent.style.width = '100px';
+                newComponent.style.height = '40px';
+            } else {
+                 newComponent.style.width = '150px';
+                 newComponent.style.height = '50px';
+            }
+
+            canvas.appendChild(newComponent);
+            
+            // 为新组件添加所有必要的事件监听器
+            addEventListenersToComponent(newComponent);
+
+            // 创建后立即选中
+            selectComponent(newComponent);
+        }
+
+        // --- 3. 为画布上的组件添加事件处理 ---
+
+        function addEventListenersToComponent(component) {
+            const content = component.querySelector('.content');
+            const resizer = component.querySelector('.resizer');
+
+            // --- 移动、缩放、编辑的 mousedown 入口 ---
+            component.addEventListener('mousedown', (e) => {
+                // 确保点击的是组件本身或内容区，而不是缩放角标
+                if (e.target.classList.contains('resizer')) return;
+
+                e.preventDefault();
+                isDragging = true;
+                hasMoved = false; // 重置移动标记
+                activeComponent = component;
+
+                selectComponent(component); // 选中组件并置顶
+
+                startX = e.clientX;
+                startY = e.clientY;
+                startLeft = component.offsetLeft;
+                startTop = component.offsetTop;
+            });
+
+            // --- 缩放 ---
+            resizer.addEventListener('mousedown', (e) => {
+                e.preventDefault();
+                e.stopPropagation(); // 阻止事件冒泡到父元素，防止触发移动
+                isResizing = true;
+                activeComponent = component;
+
+                startX = e.clientX;
+                startY = e.clientY;
+                startWidth = component.offsetWidth;
+                startHeight = component.offsetHeight;
+            });
+
+            // --- 编辑内容 ---
+            content.addEventListener('click', (e) => {
+                // 如果是拖拽结束时的click，则不触发编辑
+                if (hasMoved) {
+                    return;
+                }
+                content.setAttribute('contenteditable', 'true');
+                content.focus();
+                // 全选文字方便修改
+                document.execCommand('selectAll', false, null);
+            });
+
+            // 失去焦点时保存内容
+            content.addEventListener('blur', () => {
+                content.setAttribute('contenteditable', 'false');
+            });
+
+            // 按下回车键保存内容
+            content.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    content.blur();
+                }
+            });
+        }
+        
+        // --- 4. 全局 mousemove 和 mouseup 事件处理拖拽和缩放 ---
+
+        document.addEventListener('mousemove', (e) => {
+            if (!activeComponent) return;
+
+            // 标记已经移动
+            if (isDragging || isResizing) {
+                hasMoved = true; 
+            }
+
+            // 处理组件移动
+            if (isDragging) {
+                const dx = e.clientX - startX;
+                const dy = e.clientY - startY;
+                activeComponent.style.left = `${startLeft + dx}px`;
+                activeComponent.style.top = `${startTop + dy}px`;
+            }
+
+            // 处理组件缩放
+            if (isResizing) {
+                const dw = e.clientX - startX;
+                const dh = e.clientY - startY;
+                const newWidth = startWidth + dw;
+                const newHeight = startHeight + dh;
+                
+                // 健壮性：确保不小于最小尺寸
+                const minWidth = parseInt(getComputedStyle(activeComponent).minWidth);
+                const minHeight = parseInt(getComputedStyle(activeComponent).minHeight);
+
+                if (newWidth > minWidth) {
+                    activeComponent.style.width = `${newWidth}px`;
+                }
+                if (newHeight > minHeight) {
+                    activeComponent.style.height = `${newHeight}px`;
+                }
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            isResizing = false;
+            // 不重置 activeComponent，以便保持选中状态
+        });
+
+        // --- 5. 辅助函数 ---
+
+        // 选中组件的逻辑
+        function selectComponent(component) {
+            // 如果点击的已经是选中的组件，则不执行任何操作
+            if (activeComponent === component && component.classList.contains('selected')) {
+                 // 如果需要取消置顶，可以把z-index逻辑也放在这里判断
+            }
+
+            // 移除其他所有组件的选中状态
+            deselectAll();
+            
+            // 添加选中状态
+            component.classList.add('selected');
+            activeComponent = component;
+
+            // 置顶
+            maxZIndex++;
+            component.style.zIndex = maxZIndex;
+        }
+
+        // 取消所有组件的选中状态
+        function deselectAll() {
+             document.querySelectorAll('.canvas-component').forEach(c => {
+                c.classList.remove('selected');
+            });
+            activeComponent = null;
+        }
+
+        // 点击画布空白处，取消所有选中
+        canvas.addEventListener('mousedown', (e) => {
+            if (e.target === canvas) {
+                deselectAll();
+            }
+        });
+    });
+    </script>
+</body>
+</html>
+```
+
+### 如何使用
+1.  **保存**: 将上面的全部代码复制并粘贴到一个文本编辑器中。
+2.  **命名**: 将文件另存为 `canvas_editor.html` 或任何以 `.html` 结尾的名称。
+3.  **打开**: 使用任何现代浏览器（如 Chrome, Firefox, Edge）打开这个文件。
+4.  **操作**:
+    *   从左侧拖动“文本块”或“按钮”到右侧灰色网格区域。
+    *   在画布上拖动组件的任何位置（除了右下角）来移动它。
+    *   拖动组件右下角的蓝色圆点来改变其大小。
+    *   单击组件内的文字，光标出现后即可修改。修改完毕后按 `Enter` 键或点击页面其他地方。
+    *   点击不同的组件，可以看到被选中的组件会有一个蓝色的高亮边框，并自动浮到最上层。
+    *   点击画布的空白区域，可以取消所有组件的选中状态。
