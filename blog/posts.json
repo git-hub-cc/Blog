@@ -1,114 +1,1163 @@
 [
   {
-    "file": "software/使用/软件管理.md",
-    "title": "Windows 软件管理完全指南：从入门到精通 Scoop",
-    "date": "2025-07-25",
-    "summary": "在 Windows 上管理软件，你可能经历过从第三方下载站、软件管家，到官网下载的演变。每种方式都有其优缺点。本文将对比这些方式，并重点介绍一种更优雅、更现代化的解决方案——**Scoop**，一个强大的 Windows 命令行包管理器。",
+    "file": "00底层/02数据结构.md",
+    "title": "数据结构百科全书",
+    "date": "2025-07-03",
+    "summary": "一份详尽的数据结构百科，涵盖了线性结构、哈希、树、图及各类专用结构。内容包括基础概念、各类实现（数组、链表、BST、AVL、B树、堆、图）以及并发和概率数据结构等高级主题。",
+    "category": "backend",
+    "tags": [
+      "数据结构",
+      "算法",
+      "计算机科学",
+      "树",
+      "图",
+      "哈希表"
+    ]
+  },
+  {
+    "file": "00底层/03算法.md",
+    "title": "算法分类终极指南",
+    "date": "2025-07-02",
+    "summary": "对算法的广泛分类，基于设计范式（分治、动态规划、贪心）、问题领域（排序、搜索、图论、字符串）、实现特性（递归、并行）和计算模型（量子、流式）。一份完整的算法学习参考。",
+    "category": "backend",
+    "tags": [
+      "算法",
+      "计算机科学",
+      "排序",
+      "图论",
+      "动态规划",
+      "数据结构"
+    ]
+  },
+  {
+    "file": "00底层/04网络.md",
+    "title": "计算机网络综合分类指南",
+    "date": "2025-07-01",
+    "summary": "从多个维度对计算机网络进行系统性分类，包括地理范围（PAN、LAN、WAN）、拓扑结构、传输介质、架构（客户端-服务器、P2P）、交换技术以及用途（存储网、数据中心网、工业网）等。",
+    "category": "backend",
+    "tags": [
+      "网络",
+      "计算机网络",
+      "协议",
+      "OSI模型",
+      "TCP/IP"
+    ]
+  },
+  {
+    "file": "00底层/05协议.md",
+    "title": "网络协议百科全书",
+    "date": "2025-06-30",
+    "summary": "对网络协议的详细剖析，基于OSI模型进行分类（从应用层的HTTP、FTP、DNS到物理层标准），并按功能领域划分，如路由协议、安全协议（TLS、IPsec）、隧道协议和物联网协议（MQTT、CoAP）。",
+    "category": "backend",
+    "tags": [
+      "协议",
+      "网络",
+      "OSI模型",
+      "TCP/IP",
+      "HTTP",
+      "DNS"
+    ]
+  },
+  {
+    "file": "00底层/06格式.md",
+    "title": "文件格式终极百科",
+    "date": "2025-06-29",
+    "summary": "一份详尽的文件格式指南，按用途分类：办公文档、数据交换、图像（位图与矢量）、音频、视频、压缩包、源代码、网页格式，以及GIS和3D图形等专业格式。",
+    "category": "backend",
+    "tags": [
+      "文件格式",
+      "数据",
+      "图像",
+      "视频",
+      "音频",
+      "压缩"
+    ]
+  },
+  {
+    "file": "01语言或命令/01html/02html标签分类.md",
+    "title": "HTML 标签完整分类大全",
+    "date": "2025-08-11",
+    "summary": "一份全面的指南，将所有HTML标签按功能、级别（块级/内联）和语义进行分类，内容涵盖新增、已废弃和过时的标签。",
+    "category": "language",
+    "tags": [
+      "html",
+      "标签",
+      "前端",
+      "Web开发",
+      "语义化"
+    ]
+  },
+  {
+    "file": "01语言或命令/01html/03html属性分类.md",
+    "title": "HTML 属性完整分类大全",
+    "date": "2025-08-11",
+    "summary": "对HTML属性的完整分类，涵盖全局属性、功能类别（链接、表单、事件）以及已废弃的表现型属性，并强调最佳实践。",
+    "category": "language",
+    "tags": [
+      "html",
+      "属性",
+      "前端",
+      "Web开发",
+      "可访问性"
+    ]
+  },
+  {
+    "file": "01语言或命令/01html/04html5的新特性分类.md",
+    "title": "HTML5 新特性完整分类详解",
+    "date": "2025-08-11",
+    "summary": "详细剖析HTML5的新特性，包括语义化元素、多媒体支持、图形处理（Canvas、SVG）、增强型表单以及适用于现代Web应用的强大JavaScript API。",
+    "category": "language",
+    "tags": [
+      "html",
+      "html5",
+      "前端",
+      "新特性",
+      "API"
+    ]
+  },
+  {
+    "file": "01语言或命令/01html/05html代码规范.md",
+    "title": "Google HTML 风格指南 (Style Guide) 完整分类文档",
+    "date": "2025-08-11",
+    "summary": "一份完整的Google HTML风格指南，涵盖核心原则如关注点分离、格式化、语法规则（DOCTYPE、编码）、元素用法以及CSS/JS集成，旨在编写高质量、可维护的代码。",
+    "category": "language",
+    "tags": [
+      "html",
+      "代码规范",
+      "Google",
+      "前端",
+      "最佳实践"
+    ]
+  },
+  {
+    "file": "01语言或命令/01html/06html生疏或问题.md",
+    "title": "HTML 生疏点与问题记录",
+    "date": "2025-08-11",
+    "summary": "记录在学习HTML过程中遇到的生疏知识点（如 data-* 属性）和待解决的问题。",
+    "category": "language",
+    "tags": [
+      "html",
+      "笔记",
+      "问题记录",
+      "前端"
+    ]
+  },
+  {
+    "file": "01语言或命令/01html/07其它/02DOM渲染.md",
+    "title": "深度解析：从浏览器渲染原理到前端性能优化实践",
+    "date": "2025-08-11",
+    "summary": "深入剖析浏览器的关键渲染路径，从解析HTML/CSS到布局、绘制和合成。内容涵盖编码最佳实践和使用开发者工具进行性能问题分析。",
+    "category": "language",
+    "tags": [
+      "其它",
+      "浏览器渲染",
+      "性能优化",
+      "DOM",
+      "前端"
+    ]
+  },
+  {
+    "file": "01语言或命令/01html/07其它/03SEO优化.md",
+    "title": "SEO 优化全方位指南：从技术、内容到外链",
+    "date": "2025-08-11",
+    "summary": "一份全面的搜索引擎优化（SEO）指南，分为技术性SEO、页面上SEO和页面外SEO三类，详细介绍抓取、索引、内容优化和链接建设等策略。",
+    "category": "language",
+    "tags": [
+      "其它",
+      "SEO",
+      "搜索引擎优化",
+      "前端",
+      "网络营销"
+    ]
+  },
+  {
+    "file": "01语言或命令/02css/02css选择器.md",
+    "title": "CSS 选择器完整分类与深度解析",
+    "date": "2025-08-11",
+    "summary": "一份全面的CSS选择器指南，分类讲解基础选择器、组合器、伪类、伪元素和属性选择器，并包含优先级和最佳实践的讨论。",
+    "category": "language",
+    "tags": [
+      "css",
+      "选择器",
+      "前端",
+      "Web开发",
+      "样式"
+    ]
+  },
+  {
+    "file": "01语言或命令/02css/03css属性.md",
+    "title": "CSS 属性分类大全",
+    "date": "2025-08-11",
+    "summary": "一部完整的CSS属性百科全书，按功能分类，包括文本与排版、盒模型、布局与定位（Flexbox、Grid）、背景、动画等。",
+    "category": "language",
+    "tags": [
+      "css",
+      "属性",
+      "前端",
+      "样式",
+      "布局"
+    ]
+  },
+  {
+    "file": "01语言或命令/02css/04css属性值.md",
+    "title": "CSS 属性值大全",
+    "date": "2025-08-11",
+    "summary": "一份详细的CSS属性值参考，涵盖关键字、数据类型如长度（px, rem, vw）、颜色、数字和函数。本文档重点介绍文本、盒模型、布局、背景和动画相关属性。",
+    "category": "language",
+    "tags": [
+      "css",
+      "属性值",
+      "前端",
+      "样式",
+      "单位"
+    ]
+  },
+  {
+    "file": "01语言或命令/02css/05css3新特性.md",
+    "title": "CSS3 新特性全面解析文档",
+    "date": "2025-08-11",
+    "summary": "全面解析CSS3的新特性，包括高级选择器、新的盒模型属性（box-sizing）、现代布局（Flexbox、Grid）、视觉效果（圆角、阴影）、变换、过渡和动画。",
+    "category": "language",
+    "tags": [
+      "css",
+      "css3",
+      "新特性",
+      "前端",
+      "动画",
+      "布局"
+    ]
+  },
+  {
+    "file": "01语言或命令/02css/06css代码规范.md",
+    "title": "Google CSS 样式指南 (分类详解)",
+    "date": "2025-08-11",
+    "summary": "详细剖析Google CSS样式指南，涵盖格式化规则、命名约定（类BEM）、声明顺序、选择器最佳实践以及预处理器使用规范，以确保代码的一致性和可维护性。",
+    "category": "language",
+    "tags": [
+      "css",
+      "代码规范",
+      "Google",
+      "前端",
+      "Sass"
+    ]
+  },
+  {
+    "file": "01语言或命令/02css/07css生疏或问题.md",
+    "title": "CSS 生疏点与问题记录",
+    "date": "2025-08-11",
+    "summary": "记录CSS学习中遇到的生疏概念（如容器查询、prefers-reduced-motion）和需要探索的问题，如实现用户自定义颜色和布局方案。",
+    "category": "language",
+    "tags": [
+      "css",
+      "笔记",
+      "问题记录",
+      "前端"
+    ]
+  },
+  {
+    "file": "01语言或命令/03js/02js选择器.md",
+    "title": "JavaScript DOM 选择器完整指南",
+    "date": "2025-08-11",
+    "summary": "一份完整的JavaScript DOM选择器指南，将其分为专用方法（getElementById, getElementsByClassName）和现代基于CSS的方法（querySelector, querySelectorAll），并附有对比和最佳实践。",
+    "category": "language",
+    "tags": [
+      "js",
+      "DOM",
+      "选择器",
+      "JavaScript",
+      "前端"
+    ]
+  },
+  {
+    "file": "01语言或命令/03js/03js事件.md",
+    "title": "JavaScript 事件（Events）完整分类与详解",
+    "date": "2025-08-11",
+    "summary": "一份全面的JavaScript事件指南，涵盖事件流（冒泡/捕获）、事件对象和委托等核心概念。将事件分为鼠标、键盘、表单和现代指针事件等类别，并提供最佳实践。",
+    "category": "language",
+    "tags": [
+      "js",
+      "事件",
+      "DOM",
+      "JavaScript",
+      "前端"
+    ]
+  },
+  {
+    "file": "01语言或命令/03js/04js语法.md",
+    "title": "JavaScript (JS) 核心语法大全",
+    "date": "2025-08-11",
+    "summary": "一部内容详尽的JavaScript核心语法指南，分类讲解基础、数据类型、变量、运算符、控制流、函数、对象、数组、ES6+特性和异步编程。",
+    "category": "language",
+    "tags": [
+      "js",
+      "语法",
+      "JavaScript",
+      "ES6",
+      "前端"
+    ]
+  },
+  {
+    "file": "01语言或命令/03js/05es6标准.md",
+    "title": "JavaScript ES6 (ECMAScript 2015) 核心特性分类详解",
+    "date": "2025-08-11",
+    "summary": "详细剖析ES6的核心特性，包括let/const、解构、箭头函数、类、Promise、模块、新的数据结构（Set、Map）和模板字符串，标志着现代JavaScript的开端。",
+    "category": "language",
+    "tags": [
+      "js",
+      "ES6",
+      "JavaScript",
+      "新特性",
+      "Promise"
+    ]
+  },
+  {
+    "file": "01语言或命令/03js/06js代码规范.md",
+    "title": "Google JavaScript 风格指南 (Style Guide) 分类详解",
+    "date": "2025-08-11",
+    "summary": "一份分类指南，解读Google JavaScript风格指南，涵盖文件结构、格式化、语言特性（var vs let/const、类、模块）、命名约定和JSDoc，旨在编写高质量、可维护的代码。",
+    "category": "language",
+    "tags": [
+      "js",
+      "代码规范",
+      "Google",
+      "JavaScript",
+      "最佳实践"
+    ]
+  },
+  {
+    "file": "01语言或命令/03js/07css生疏或问题.md",
+    "title": "JavaScript 生疏点与问题记录",
+    "date": "2025-08-11",
+    "summary": "记录JavaScript学习中遇到的生疏概念和待解决的问题。",
+    "category": "language",
+    "tags": [
+      "js",
+      "笔记",
+      "问题记录"
+    ]
+  },
+  {
+    "file": "01语言或命令/03js/08其它/02BOM.md",
+    "title": "BOM (Browser Object Model) 综合文档",
+    "date": "2025-08-11",
+    "summary": "一份关于浏览器对象模型（BOM）的综合文档，详细介绍核心对象（window、navigator、history、location）、现代API（Fetch、History API）、交互机制、存储方案（localStorage、sessionStorage）和多页面通信技术。",
+    "category": "language",
+    "tags": [
+      "其它",
+      "BOM",
+      "JavaScript",
+      "浏览器",
+      "Web API"
+    ]
+  },
+  {
+    "file": "01语言或命令/04java/02java语法.md",
+    "title": "Java 语法大全 (分类详解)",
+    "date": "2025-08-11",
+    "summary": "一份全面的Java语法指南，分类讲解基础、运算符、控制流、核心OOP概念（封装、继承、多态）、高级主题如泛型、异常、集合以及Lambda表达式和Stream等现代特性。",
+    "category": "language",
+    "tags": [
+      "java",
+      "语法",
+      "面向对象",
+      "Java8",
+      "后端"
+    ]
+  },
+  {
+    "file": "01语言或命令/04java/03java生命周期.md",
+    "title": "Java生命周期全景解析文档",
+    "date": "2025-08-11",
+    "summary": "对Java生态系统中的生命周期进行全景式分析，分类讲解Java程序、类、对象和线程的生命周期，提供从源代码到执行和垃圾回收的完整视图。",
+    "category": "language",
+    "tags": [
+      "java",
+      "生命周期",
+      "JVM",
+      "GC",
+      "线程"
+    ]
+  },
+  {
+    "file": "01语言或命令/04java/04java jdk8&17新特性.md",
+    "title": "Java JDK 8 vs JDK 17：核心新特性演进与分类详解",
+    "date": "2025-08-11",
+    "summary": "详细对比和剖析从Java 8到Java 17的核心特性演进，按语言（Lambda、Record、Sealed Classes）、API（Stream、Optional）和JVM改进进行分类，展示了平台的现代化进程。",
+    "category": "language",
+    "tags": [
+      "java",
+      "JDK8",
+      "JDK17",
+      "新特性",
+      "LTS"
+    ]
+  },
+  {
+    "file": "01语言或命令/04java/05java代码规范.md",
+    "title": "Google Java Style Guide 完整分类解析",
+    "date": "2025-08-11",
+    "summary": "完整剖析Google Java风格指南，涵盖源文件结构、格式化规则（大括号、缩进）、命名约定、编程实践（@Override、异常处理）和Javadoc标准，以促进代码一致性。",
+    "category": "language",
+    "tags": [
+      "java",
+      "代码规范",
+      "Google",
+      "最佳实践"
+    ]
+  },
+  {
+    "file": "01语言或命令/04java/06css生疏或问题.md",
+    "title": "Java 生疏点与问题记录",
+    "date": "2025-08-11",
+    "summary": "记录Java学习中遇到的生疏概念和待解决的问题。",
+    "category": "language",
+    "tags": [
+      "java",
+      "笔记",
+      "问题记录"
+    ]
+  },
+  {
+    "file": "01语言或命令/05maven/02maven命令.md",
+    "title": "Maven 命令详解与分类",
+    "date": "2025-08-11",
+    "summary": "一份详细的Maven命令指南，分为核心生命周期命令（clean、compile、package、install）、常用插件目标（dependency:tree、archetype:generate）以及用于控制和调试构建过程的实用构建选项。",
+    "category": "language",
+    "tags": [
+      "maven",
+      "命令",
+      "构建工具",
+      "Java",
+      "后端"
+    ]
+  },
+  {
+    "file": "01语言或命令/05maven/03maven交叉编译.md",
+    "title": "Maven 交叉编译权威指南 (增强版)",
+    "date": "2025-08-11",
+    "summary": "一份关于Maven交叉编译的权威指南，涵盖使用Toolchains进行Java版本交叉编译和针对JNI项目的硬件平台交叉编译，并附有一个全面的多模块示例。",
+    "category": "language",
+    "tags": [
+      "maven",
+      "交叉编译",
+      "JNI",
+      "Toolchains",
+      "Java"
+    ]
+  },
+  {
+    "file": "01语言或命令/06git/02git命令.md",
+    "title": "Git 命令分类详解文档",
+    "date": "2025-08-11",
+    "summary": "一份全面的Git命令分类指南，用于日常工作流程，涵盖初始设置、仓库创建、核心操作（add、commit、status）、分支管理（branch、switch、merge、rebase）、远程协作（push、pull、fetch）和历史修改。",
+    "category": "language",
+    "tags": [
+      "git",
+      "命令",
+      "版本控制",
+      "VCS"
+    ]
+  },
+  {
+    "file": "01语言或命令/07linux/02linux命令.md",
+    "title": "Linux 命令分类大全",
+    "date": "2025-08-11",
+    "summary": "一部系统性的常见Linux命令百科全书，按功能分类：文件/目录管理（ls、cp、rm）、文本处理（grep、sed、awk）、系统监控（top、ps、free）、权限（chmod、chown）、网络（ping、ip、ssh）和软件包管理（apt、yum）。",
+    "category": "language",
+    "tags": [
+      "linux",
+      "命令",
+      "Shell",
+      "操作系统",
+      "运维"
+    ]
+  },
+  {
+    "file": "01语言或命令/07linux/03第三方库命令.md",
+    "title": "Linux 常用第三方命令行工具",
+    "date": "2025-08-11",
+    "summary": "一份精选的Linux必备第三方命令行工具列表，分类介绍网络工具（curl、wget、rsync）、分析工具（tcpdump、nmap、jq）、系统监控（htop、iotop）和生产力增强工具（tmux、fzf、zsh）。",
+    "category": "language",
+    "tags": [
+      "linux",
+      "命令行",
+      "工具",
+      "第三方库",
+      "运维"
+    ]
+  },
+  {
+    "file": "01语言或命令/08docker/02docker命令.md",
+    "title": "Docker 命令分类大全",
+    "date": "2025-08-11",
+    "summary": "一份全面的Docker命令指南，按功能分类：镜像管理（pull、build、rmi）、容器生命周期（run、ps、stop、rm）、操作（exec、logs、cp）、网络、数据卷管理和系统清理。",
+    "category": "language",
+    "tags": [
+      "docker",
+      "命令",
+      "容器化",
+      "DevOps"
+    ]
+  },
+  {
+    "file": "01语言或命令/09nginx/02nginx语法.md",
+    "title": "Nginx 配置语法权威指南",
+    "date": "2025-08-11",
+    "summary": "一份权威的Nginx配置语法指南，涵盖基础规则、核心块结构（http、server、location）以及按功能分类的指令，包括反向代理、负载均衡、SSL/TLS、缓存和日志记录。",
+    "category": "language",
+    "tags": [
+      "nginx",
+      "语法",
+      "配置",
+      "反向代理",
+      "Web服务器"
+    ]
+  },
+  {
+    "file": "01语言或命令/10mysql/02mysql语法.md",
+    "title": "MySQL 语法分类文档",
+    "date": "2025-08-11",
+    "summary": "一份系统性的MySQL语法指南，分为DDL（数据定义）、DML（数据操作）、DCL（数据控制）和TCL（事务控制），涵盖创建表、查询数据、管理用户和处理事务等命令。",
+    "category": "language",
+    "tags": [
+      "mysql",
+      "语法",
+      "SQL",
+      "数据库",
+      "DDL",
+      "DML"
+    ]
+  },
+  {
+    "file": "01语言或命令/10mysql/03mysql优化.md",
+    "title": "MySQL 性能优化完整指南",
+    "date": "2025-08-11",
+    "summary": "一份完整的MySQL性能优化指南，分类讲解硬件/操作系统调优、配置参数调整（my.cnf）、Schema设计、SQL查询与索引优化，以及复制和分片等架构策略。",
+    "category": "language",
+    "tags": [
+      "mysql",
+      "性能优化",
+      "索引",
+      "数据库",
+      "架构"
+    ]
+  },
+  {
+    "file": "02框架/01vue/02vue语法.md",
+    "title": "Vue.js 语法分类大全 (Vue 3)",
+    "date": "2025-08-11",
+    "summary": "一份全面的Vue 3语法指南，涵盖模板语法、响应式核心（ref、reactive）、组件开发（props、事件、插槽）、生命周期钩子以及组合式函数和自定义指令等高级特性。",
+    "category": "framework",
+    "tags": [
+      "vue",
+      "语法",
+      "Vue3",
+      "前端框架",
+      "组件化"
+    ]
+  },
+  {
+    "file": "02框架/01vue/03vue原理.md",
+    "title": "Vue.js 核心原理解析文档",
+    "date": "2025-08-11",
+    "summary": "深入解析Vue.js核心原理，分类讲解响应式系统（Proxy vs. Object.defineProperty）、模板编译与虚拟DOM（Diff算法）、组件系统以及整体渲染流程。",
+    "category": "framework",
+    "tags": [
+      "vue",
+      "原理",
+      "响应式",
+      "虚拟DOM",
+      "前端框架"
+    ]
+  },
+  {
+    "file": "02框架/01vue/04vue组件.md",
+    "title": "Vue 组件生态全景指南",
+    "date": "2025-08-11",
+    "summary": "一份Vue组件生态的全景指南，将组件分为官方内置（Component、Transition、KeepAlive）和精选的第三方UI库（Element Plus、Ant Design Vue、Vant）及功能性组件（布局、数据输入、可视化）。",
+    "category": "framework",
+    "tags": [
+      "vue",
+      "组件",
+      "UI库",
+      "生态",
+      "前端"
+    ]
+  },
+  {
+    "file": "02框架/01vue/05css生疏或问题.md",
+    "title": "Vue 生疏点与问题记录",
+    "date": "2025-08-11",
+    "summary": "记录Vue学习中遇到的生疏概念和待解决的问题。",
+    "category": "framework",
+    "tags": [
+      "vue",
+      "笔记",
+      "问题记录"
+    ]
+  },
+  {
+    "file": "02框架/02springboot/02springboot原理.md",
+    "title": "Spring Boot 核心原理深度解析文档",
+    "date": "2025-08-11",
+    "summary": "深入解析Spring Boot的核心原理，重点讲解其四大机制：起步依赖、自动配置（含条件注解）、内嵌Web服务器和Actuator，所有这些都由“约定优于配置”的理念驱动。",
+    "category": "framework",
+    "tags": [
+      "springboot",
+      "原理",
+      "自动配置",
+      "Java",
+      "微服务"
+    ]
+  },
+  {
+    "file": "02框架/02springboot/03springboot的生命周期.md",
+    "title": "Spring Boot 应用生命周期全解析",
+    "date": "2025-08-11",
+    "summary": "全面解析Spring Boot应用的生命周期，将其分为启动（初始化、环境准备、上下文刷新）、运行（处理请求）和关闭（优雅释放资源）三个主要阶段，并详细介绍关键的扩展点，如监听器和Runner。",
+    "category": "framework",
+    "tags": [
+      "springboot",
+      "生命周期",
+      "ApplicationContext",
+      "Java",
+      "后端"
+    ]
+  },
+  {
+    "file": "02框架/02springboot/04sprinboot的组件.md",
+    "title": "Spring Boot 核心组件与启动器大全",
+    "date": "2025-08-11",
+    "summary": "一部全面的Spring Boot核心组件和启动器百科全书，按功能分类：Web开发（MVC、WebFlux）、数据访问（JPA、JDBC、NoSQL）、消息队列（Kafka、RabbitMQ）、安全、云原生（Config、Gateway）、测试等。",
+    "category": "framework",
+    "tags": [
+      "springboot",
+      "组件",
+      "启动器",
+      "生态",
+      "微服务"
+    ]
+  },
+  {
+    "file": "02框架/02springboot/05css生疏或问题.md",
+    "title": "Spring Boot 生疏点与问题记录",
+    "date": "2025-08-11",
+    "summary": "记录Spring Boot学习中遇到的生疏概念和待解决的问题。",
+    "category": "framework",
+    "tags": [
+      "springboot",
+      "笔记",
+      "问题记录"
+    ]
+  },
+  {
+    "file": "03架构/02设计模式.md",
+    "title": "设计模式分类详解文档",
+    "date": "2025-08-11",
+    "summary": "一份详细的GoF 23种经典设计模式指南，系统地分为创建型、结构型和行为型模式，并涵盖了六大基本设计原则（SOLID）。",
+    "category": "architecture",
+    "tags": [
+      "设计模式",
+      "GoF",
+      "架构",
+      "面向对象",
+      "SOLID"
+    ]
+  },
+  {
+    "file": "03架构/03uml.md",
+    "title": "UML（统一建模语言）完整分类与解析",
+    "date": "2025-08-11",
+    "summary": "一份全面的统一建模语言（UML）指南，将其14种图分为结构图（类图、组件图、部署图）和行为图（用例图、活动图、顺序图），并解释了每种图的核心用途和关键元素。",
+    "category": "architecture",
+    "tags": [
+      "uml",
+      "建模",
+      "架构",
+      "软件设计",
+      "图表"
+    ]
+  },
+  {
+    "file": "03架构/04敏捷开发.md",
+    "title": "敏捷开发（Agile Development）的系统性分类文档",
+    "date": "2025-08-11",
+    "summary": "系统性地对敏捷开发进行分类，从抽象层次（理念、原则、框架）、应用焦点（流程管理、工程、规模化）和方法论重量（轻量级 vs. 重量级）等维度，涵盖Scrum、Kanban、XP和SAFe。",
+    "category": "architecture",
+    "tags": [
+      "敏捷开发",
+      "Scrum",
+      "Kanban",
+      "架构",
+      "项目管理"
+    ]
+  },
+  {
+    "file": "03架构/05xp极限开发.md",
+    "title": "极限编程（XP）完整分类与解析文档",
+    "date": "2025-08-11",
+    "summary": "全面解析极限编程（XP），分类讲解其核心价值观（沟通、简洁、反馈）、原则和核心实践（TDD、结对编程、CI），并详细介绍其生命周期、角色和适用场景。",
+    "category": "architecture",
+    "tags": [
+      "xp极限开发",
+      "敏捷开发",
+      "TDD",
+      "结对编程",
+      "架构"
+    ]
+  },
+  {
+    "file": "03架构/06restful风格.md",
+    "title": "RESTful 风格深度解析与分类文档",
+    "date": "2025-08-11",
+    "summary": "深入解析RESTful风格，通过Richardson成熟度模型（0-3级）进行理论成熟度分类，并从版本控制、数据格式（JSON、HAL）和认证方法等实践设计选择进行分类。",
+    "category": "architecture",
+    "tags": [
+      "restful风格",
+      "API",
+      "架构",
+      "HATEOAS",
+      "HTTP"
+    ]
+  },
+  {
+    "file": "03架构/07领域驱动设计 (DDD).md",
+    "title": "领域驱动设计 (Domain-Driven Design, DDD) 分类全解文档",
+    "date": "2025-08-11",
+    "summary": "一份全面的领域驱动设计（DDD）指南，系统地分为战略设计（限界上下文、子域、上下文映射图）和战术设计（实体、聚合、仓储），并以通用语言和模型驱动设计为核心理念。",
+    "category": "architecture",
+    "tags": [
+      "领域驱动设计 (DDD)",
+      "DDD",
+      "架构",
+      "微服务",
+      "限界上下文"
+    ]
+  },
+  {
+    "file": "03架构/08测试驱动开发 (TDD).md",
+    "title": "测试驱动开发 (TDD) 分类与详解",
+    "date": "2025-08-11",
+    "summary": "详细剖析测试驱动开发（TDD），按思想流派（经典派 vs. 模拟派）、开发流程（ATDD、BDD）、测试范围（单元、集成、端到端）和应用领域进行分类，提供全面的方法论视图。",
+    "category": "architecture",
+    "tags": [
+      "测试驱动开发 (TDD)",
+      "TDD",
+      "BDD",
+      "测试",
+      "敏捷开发"
+    ]
+  },
+  {
+    "file": "03架构/09微服务架构.md",
+    "title": "微服务架构分类详解文档",
+    "date": "2025-08-11",
+    "summary": "从多个维度详细分类微服务架构：通信模式（同步 vs. 异步）、数据管理（每个服务一个数据库 vs. 共享）、编排 vs. 协作、业务领域、有状态 vs. 无状态以及部署环境。",
+    "category": "architecture",
+    "tags": [
+      "微服务架构",
+      "微服务",
+      "架构",
+      "分布式系统",
+      "DDD"
+    ]
+  },
+  {
+    "file": "03架构/10DevOps.md",
+    "title": "DevOps 综合分类与解析文档",
+    "date": "2025-08-11",
+    "summary": "一份全面的DevOps解析文档，按CALMS框架（文化、自动化、精益、度量、共享）、生命周期阶段（计划、编码、构建、测试、部署）、工具链以及DevSecOps和GitOps等现代扩展方向进行分类。",
+    "category": "architecture",
+    "tags": [
+      "DevOps",
+      "CI/CD",
+      "自动化",
+      "架构",
+      "运维"
+    ]
+  },
+  {
+    "file": "03架构/11持续集成&持续交付 (CI&CD).md",
+    "title": "持续集成与持续交付 (CI/CD) 深度解析",
+    "date": "2025-08-11",
+    "summary": "深度解析CI/CD的核心概念、原则和实践。内容涵盖持续集成、持续交付与持续部署的区别，自动化流水线的关键阶段（构建、测试、发布），以及蓝绿部署、金丝雀发布等高级部署策略。",
+    "category": "architecture",
+    "tags": [
+      "持续集成&持续交付 (CI&CD)",
+      "CI/CD",
+      "DevOps",
+      "自动化",
+      "架构"
+    ]
+  },
+  {
+    "file": "03架构/12看板方法 (Kanban).md",
+    "title": "看板方法（Kanban Method）综合分类文档",
+    "date": "2025-08-11",
+    "summary": "一份全面的看板方法分类文档，从应用范围（个人、团队、组合）、物理形态（物理 vs. 数字）、应用领域和成熟度级别（基于KMM）等维度进行剖析。",
+    "category": "architecture",
+    "tags": [
+      "看板方法 (Kanban)",
+      "Kanban",
+      "敏捷开发",
+      "精益",
+      "项目管理"
+    ]
+  },
+  {
+    "file": "03架构/13行为驱动开发 (BDD).md",
+    "title": "行为驱动开发 (BDD) 分类与全面解析",
+    "date": "2025-08-11",
+    "summary": "全面解析行为驱动开发（BDD），按其核心原则（协作、通用语言）、工作流程（由外而内）、关键要素（Gherkin、Feature文件）及其与TDD和ATDD的关系进行分类。",
+    "category": "architecture",
+    "tags": [
+      "行为驱动开发 (BDD)",
+      "BDD",
+      "TDD",
+      "敏捷开发",
+      "测试"
+    ]
+  },
+  {
+    "file": "03架构/14命令查询职责分离 (CQRS).md",
+    "title": "命令查询职责分离 (CQRS) 权威分类文档",
+    "date": "2025-08-11",
+    "summary": "一份权威的命令查询职责分离（CQRS）指南，按分离级别（逻辑 vs. 物理）、模型复杂度以及与事件溯源等其他模式的组合进行分类，并详细说明其应用场景和反模式。",
+    "category": "architecture",
+    "tags": [
+      "命令查询职责分离 (CQRS)",
+      "CQRS",
+      "架构",
+      "DDD",
+      "事件溯源"
+    ]
+  },
+  {
+    "file": "03架构/15结对编程.md",
+    "title": "结对编程（Pair Programming）的全面分类与详解",
+    "date": "2025-08-11",
+    "summary": "全面分类和详解结对编程，从经验水平组合（专家-专家、专家-新手）、协作模式（驾驶员-导航员、乒乓）、工作空间（同地 vs. 远程）和目标意图等维度进行剖析。",
+    "category": "architecture",
+    "tags": [
+      "结对编程",
+      "敏捷开发",
+      "XP极限开发",
+      "协作"
+    ]
+  },
+  {
+    "file": "03架构/16技术债务 (Technical Debt).md",
+    "title": "技术债务（Technical Debt）完整分类与解析",
+    "date": "2025-08-11",
+    "summary": "一份全面的技术债务解析文档，按成因（故意 vs. 无意）、领域（代码、设计、测试、文档）、可见性以及马丁·福勒的象限进行分类，提供一个识别和管理的框架。",
+    "category": "architecture",
+    "tags": [
+      "技术债务 (Technical Debt)",
+      "技术债务",
+      "重构",
+      "架构",
+      "代码质量"
+    ]
+  },
+  {
+    "file": "04软件/02浏览器开发工具.md",
+    "title": "浏览器开发者工具 (DevTools) 深度指南",
+    "date": "2025-08-11",
+    "summary": "深入剖析浏览器开发者工具，重点介绍核心面板如Elements（DOM/CSS编辑）、Console（JS Shell）、Sources（调试）、Network（请求分析）、Performance和Application（存储），为Web开发和调试提供全面的指南。",
     "category": "software",
-    "tags": ["Windows", "Scoop", "CLI", "效率"]
+    "tags": [
+      "浏览器开发工具",
+      "DevTools",
+      "前端",
+      "调试",
+      "性能优化"
+    ]
   },
   {
-    "file": "software/使用/下载/linux.md",
-    "title": "Linux 命令行下载工具对比：Wget, Curl 和 Aria2",
-    "date": "2025-07-22",
-    "summary": "本文详细对比了 Linux 下三款主流命令行下载工具：wget、curl 和 aria2。通过功能特性表和常用命令示例，分析了它们在简单下载、API 交互、多线程加速及 BT 下载等场景下的优劣，帮助用户根据需求选择最合适的工具。",
+    "file": "04软件/03Vue Devtools.md",
+    "title": "Vue Devtools 终极使用指南",
+    "date": "2025-08-11",
+    "summary": "Vue Devtools的终极指南，涵盖组件检查器、针对Pinia/Vuex的时间旅行状态管理调试、用于性能和事件分析的时间线，以及其他实用面板，提供全面的Vue.js调试体验。",
     "category": "software",
-    "tags": ["Linux", "CLI", "Wget", "Curl", "Aria2"]
+    "tags": [
+      "Vue Devtools",
+      "Vue",
+      "调试",
+      "前端",
+      "开发工具"
+    ]
   },
   {
-    "file": "software/使用/虚拟机/linux/win子系统.md",
-    "title": "WSL 入门到实践：安装、配置 SSH 与 Docker 的完整指南",
-    "date": "2025-07-20",
-    "summary": "提供在 Windows 10/11 上安装与配置 WSL (Windows Subsystem for Linux) 的详尽指南。内容涵盖自动化与手动安装、Ubuntu 初始设置、配置 SSH 服务以实现远程连接、网络代理设置，以及在 WSL2 环境下通过 Docker Desktop 高效使用 Docker 的最佳实践。",
+    "file": "04软件/04IDEA Ultimate.md",
+    "title": "IntelliJ IDEA Ultimate 旗舰版深度指南",
+    "date": "2025-08-11",
+    "summary": "深入介绍IntelliJ IDEA Ultimate，对比社区版并详细说明其核心特性：智能代码辅助、强大导航、安全重构，以及对企业框架（Spring）、Web开发（WebStorm）、数据库（DataGrip）和性能分析的集成工具。",
     "category": "software",
-    "tags": ["Linux", "WSL", "Docker", "Windows"]
+    "tags": [
+      "IDEA Ultimate",
+      "IDEA",
+      "JetBrains",
+      "Java",
+      "开发工具"
+    ]
   },
   {
-    "file": "software/使用/虚拟机/android.md",
-    "title": "在 Windows 上运行安卓应用：WSA 与安卓模拟器深度对比指南",
-    "date": "2025-07-18",
-    "summary": "本文详细对比了在 Windows 电脑上运行安卓应用的两种主流方案：官方的 Windows Subsystem for Android (WSA) 与第三方安卓模拟器。通过分析各自的优缺点、系统集成度、游戏性能和纯净度，并提供详细的安装教程，帮助用户根据自身需求（如日常使用或游戏娱乐）做出最佳选择。",
-    "category": "software",
-    "tags": ["Windows", "Android", "WSA", "模拟器"]
+    "file": "05资源/02资源.md",
+    "title": "前端开发模拟 API 与占位资源大全",
+    "date": "2025-08-11",
+    "summary": "一份精选的前端开发演示用免费API列表，分为图片（DummyImage、Picsum Photos、DiceBear）、文本（Hipster Ipsum、Quotable）和结构化模拟数据（JSONPlaceholder、DummyJSON、Fake Store API）。",
+    "category": "resource",
+    "tags": [
+      "资源",
+      "API",
+      "前端",
+      "开发工具",
+      "Mock"
+    ]
   },
   {
-    "file": "software/使用/笔记软件.md",
-    "title": "现代笔记软件选择与 Obsidian 深度使用指南",
-    "date": "2025-07-16",
-    "summary": "本文旨在帮助用户选择合适的笔记软件，并精通 Obsidian。首先横向对比了 Notion、Obsidian、Typora 和有道云笔记的优劣；随后提供了一份详尽的 Obsidian 入门与进阶指南，涵盖核心语法、双向链接、插件生态及个人最佳实践，助你从零开始构建强大的个人知识库。",
-    "category": "software",
-    "tags": ["Obsidian", "笔记", "效率", "Markdown"]
+    "file": "05资源/03灵感.md",
+    "title": "设计师与开发者灵感网站精选",
+    "date": "2025-08-11",
+    "summary": "一份为设计师和开发者精选的顶级灵感网站列表，包括用于网页设计的Awwwards、用于UI/UX的Mobbin、用于配色的Coolors、用于高质量图片的Unsplash以及用于创意前端代码的Codepen。",
+    "category": "resource",
+    "tags": [
+      "灵感",
+      "设计",
+      "UI/UX",
+      "前端",
+      "资源"
+    ]
   },
   {
-    "file": "software/使用/markdown.md",
-    "title": "Markdown 语法详解",
-    "date": "2025-07-15",
-    "summary": "Markdown 是一种轻量级标记语言，广泛用于编写文档、博客、说明书、GitHub README 等。",
-    "category": "software",
-    "tags": ["Markdown", "语法"]
+    "file": "05资源/04原生组件.md",
+    "title": "原生前端组件用例集",
+    "date": "2025-08-11",
+    "summary": "一个使用原生HTML、CSS和JavaScript构建的、美观实用的前端组件集合，包括虚拟列表、穿梭框、分页、遮罩和模态框，展示了现代设计和响应式布局。",
+    "category": "resource",
+    "tags": [
+      "原生组件",
+      "JavaScript",
+      "CSS",
+      "HTML",
+      "前端"
+    ]
   },
   {
-    "file": "zcool/原则/grow.md",
-    "title": "GROW 原则：明确目标，实现成长",
-    "date": "2025-07-12",
-    "summary": "了解管理学中的 GROW 原则：目标（Goal）、现实（Reality）、选择（Options）、意愿（Will），一种有效解决问题、实现个人与团队成长的强大框架。",
-    "category": "zcool",
-    "tags": ["思维模型", "成长", "管理"]
+    "file": "05资源/05提示词.md",
+    "title": "AI 提示词工程 (Prompt Engineering) 策略",
+    "date": "2025-08-11",
+    "summary": "一份关于为大型语言模型进行有效提示词工程的指南，分为拆解、补充和调整策略，以生成高质量、结构化和全面的响应。",
+    "category": "resource",
+    "tags": [
+      "提示词",
+      "AI",
+      "Prompt",
+      "LLM",
+      "GPT"
+    ]
   },
   {
-    "file": "zcool/原则/star.md",
-    "title": "STAR 法则：在面试中清晰展示你的价值",
-    "date": "2025-07-11",
-    "summary": "学习如何在面试中运用 STAR 法则（情境、任务、行动、结果），结构化地讲述你的经历，给面试官留下深刻印象。",
-    "category": "zcool",
-    "tags": ["思维模型", "面试", "沟通"]
-  },
-  {
-    "file": "zcool/原则/pdca.md",
-    "title": "PDCA 循环：持续改进的质量管理秘诀",
-    "date": "2025-07-10",
-    "summary": "掌握戴明环 PDCA（计划-执行-检查-行动）原则，将其应用于任何工作与活动中，实现问题的有效解决与效率的持续提升。",
-    "category": "zcool",
-    "tags": ["思维模型", "质量管理", "效率"]
-  },
-  {
-    "file": "zcool/原则/mece.md",
-    "title": "MECE 原则：做到“相互独立，完全穷尽”的思考艺术",
-    "date": "2025-07-09",
-    "summary": "探索麦肯锡的 MECE 原则，学习如何对事物进行清晰分类，确保分析全面、无重叠、无遗漏，提升你的结构化思维能力。",
-    "category": "zcool",
-    "tags": ["思维模型", "结构化思维", "麦肯锡"]
-  },
-  {
-    "file": "zcool/原则/five-second-rule.md",
-    "title": "五秒法则：克服拖延，立即行动的心理技巧",
-    "date": "2025-07-08",
-    "summary": "了解梅尔·罗宾斯的“五秒法则”，一个简单而强大的心理工具，通过倒数5秒来战胜犹豫，将想法转化为即时行动。",
-    "category": "zcool",
-    "tags": ["心理学", "拖延症", "行动力"]
-  },
-  {
-    "file": "programming/3-deep-dive-js.md",
-    "title": "深入 JavaScript 异步编程",
-    "date": "2025-07-07",
-    "summary": "从回调地狱到 Promise，再到 Async/Await，一文看懂 JavaScript 异步的演进之路。",
-    "category": "programming",
-    "tags": ["JavaScript", "异步", "Promise", "AsyncAwait"]
+    "file": "05资源/06其它.md",
+    "title": "个人成长与其他资源",
+    "date": "2025-08-11",
+    "summary": "记录与个人成长相关的探索，如人格类型（entp）及其他杂项资源。",
+    "category": "resource",
+    "tags": [
+      "其它",
+      "个人成长",
+      "ENTP"
+    ]
   },
   {
     "file": "programming/1-getting-started.md",
     "title": "欢迎来到我的博客",
-    "date": "2025-07-06",
-    "summary": "我的第一篇文章！介绍了这个博客是如何用纯前端技术构建的。",
-    "category": "programming",
-    "tags": ["博客", "前端", "JavaScript"]
+    "date": "2025-08-11",
+    "summary": "我的第一篇文章！介绍了这个博客是如何用纯前端技术（HTML, CSS, JS）构建的，内容动态加载自 Markdown 文件。",
+    "category": "misc",
+    "tags": [
+      "programming",
+      "博客",
+      "JavaScript",
+      "Markdown"
+    ]
   },
   {
     "file": "programming/2-markdown-syntax.md",
     "title": "Markdown 语法演示",
-    "date": "2025-07-05",
+    "date": "2025-08-11",
     "summary": "展示了在这个博客中可以使用的各种 Markdown 语法，包括列表、代码块和引用。",
-    "category": "programming",
-    "tags": ["Markdown", "示例"]
+    "category": "misc",
+    "tags": [
+      "programming",
+      "博客",
+      "Markdown",
+      "语法"
+    ]
+  },
+  {
+    "file": "programming/3-deep-dive-js.md",
+    "title": "深入 JavaScript 异步编程",
+    "date": "2025-08-11",
+    "summary": "从回调地狱到 Promise，再到 Async/Await，一文看懂 JavaScript 异步的演进之路。",
+    "category": "misc",
+    "tags": [
+      "programming",
+      "博客",
+      "JavaScript",
+      "异步",
+      "Promise"
+    ]
+  },
+  {
+    "file": "software/使用/markdown.md",
+    "title": "Markdown 完整语法手册",
+    "date": "2025-08-11",
+    "summary": "一份全面的Markdown语法参考手册，涵盖标题、文本格式、列表、链接、图片、代码块、表格、任务列表等所有常用语法，并包含HTML混用和LaTeX公式。",
+    "category": "software",
+    "tags": [
+      "使用",
+      "Markdown",
+      "语法",
+      "文档"
+    ]
+  },
+  {
+    "file": "software/使用/笔记软件.md",
+    "title": "主流笔记软件对比与 Obsidian 深度指南",
+    "date": "2025-08-11",
+    "summary": "对比Notion、Obsidian、Typora等主流笔记软件，并提供一份全面的Obsidian入门与进阶指南，包括核心语法、标签、模板以及插件推荐。",
+    "category": "software",
+    "tags": [
+      "使用",
+      "Obsidian",
+      "笔记软件",
+      "知识管理",
+      "Notion"
+    ]
+  },
+  {
+    "file": "software/使用/软件管理.md",
+    "title": "Windows 软件管理终极指南：Scoop",
+    "date": "2025-08-11",
+    "summary": "阐述传统Windows软件安装的痛点，并提供一个使用命令行包管理器Scoop实现干净、自动化软件管理的完整指南，包括安装、配置和常用命令。",
+    "category": "software",
+    "tags": [
+      "使用",
+      "Scoop",
+      "Windows",
+      "软件管理",
+      "命令行"
+    ]
+  },
+  {
+    "file": "software/使用/下载/linux.md",
+    "title": "Linux 常用下载工具对比与使用",
+    "date": "2025-08-11",
+    "summary": "对比并详细介绍Linux下三大主流命令行下载工具：wget（文件下载）、curl（数据传输与API测试）和aria2（多线程高速下载），并提供常用命令和选择建议。",
+    "category": "software",
+    "tags": [
+      "下载",
+      "Linux",
+      "wget",
+      "curl",
+      "aria2"
+    ]
+  },
+  {
+    "file": "software/使用/虚拟机/android.md",
+    "title": "在 Windows 上运行安卓应用的两种主流方法对比指南",
+    "date": "2025-08-11",
+    "summary": "详细对比在Windows上运行安卓应用的两种主流方法：官方的Windows Subsystem for Android (WSA)和第三方安卓模拟器，分析各自的优缺点、安装步骤和适用场景。",
+    "category": "software",
+    "tags": [
+      "虚拟机",
+      "Android",
+      "WSA",
+      "模拟器",
+      "Windows"
+    ]
+  },
+  {
+    "file": "software/使用/虚拟机/linux/win子系统.md",
+    "title": "Windows Subsystem for Linux (WSL) 安装与配置指南",
+    "date": "2025-08-11",
+    "summary": "一份完整的WSL安装与配置指南，涵盖自动化与手动安装步骤、基础配置、SSH服务设置、网络代理以及与Docker Desktop的无缝集成方案。",
+    "category": "software",
+    "tags": [
+      "win子系统",
+      "WSL",
+      "Linux",
+      "Windows",
+      "Docker"
+    ]
+  },
+  {
+    "file": "zcool/原则/five-second-rule.md",
+    "title": "五秒法则：克服拖延的行动心理学",
+    "date": "2025-08-11",
+    "summary": "介绍梅尔·罗宾斯提出的五秒法则，一种通过 5-4-3-2-1 倒数来屏蔽负面情绪、克服犹豫并立即采取行动的简单心理学技巧。",
+    "category": "misc",
+    "tags": [
+      "原则",
+      "五秒法则",
+      "心理学",
+      "效率",
+      "自我管理"
+    ]
+  },
+  {
+    "file": "zcool/原则/grow.md",
+    "title": "GROW 模型：结构化问题解决方法",
+    "date": "2025-08-11",
+    "summary": "介绍管理学中经典的GROW模型（Goal, Reality, Options, Will），一种通过明确目标、分析现实、探索选择和制定意愿四个步骤来有效解决问题的结构化方法。",
+    "category": "misc",
+    "tags": [
+      "原则",
+      "GROW模型",
+      "管理学",
+      "问题解决"
+    ]
+  },
+  {
+    "file": "zcool/原则/mece.md",
+    "title": "MECE 原则：结构化思维的基石",
+    "date": "2025-08-11",
+    "summary": "介绍麦肯锡提出的MECE（相互独立，完全穷尽）原则，一种用于对事物进行全面、无重叠、无遗漏分类的思维方法，适用于问题分析、决策制定等多种场景。",
+    "category": "misc",
+    "tags": [
+      "原则",
+      "MECE",
+      "思维模型",
+      "逻辑思维",
+      "麦肯锡"
+    ]
+  },
+  {
+    "file": "zcool/原则/pdca.md",
+    "title": "PDCA 循环：持续改进的管理方法",
+    "date": "2025-08-11",
+    "summary": "介绍质量管理中的PDCA（Plan, Do, Check, Act）循环，一种通过计划、执行、检查和行动四个阶段来持续改进工作流程和解决问题的经典方法。",
+    "category": "misc",
+    "tags": [
+      "原则",
+      "PDCA",
+      "质量管理",
+      "戴明环",
+      "持续改进"
+    ]
+  },
+  {
+    "file": "zcool/原则/star.md",
+    "title": "STAR 法则：结构化面试回答技巧",
+    "date": "2025-08-11",
+    "summary": "介绍面试中常用的STAR法则（Situation, Task, Action, Result），一种通过描述情境、任务、行动和结果来清晰、有力地展示个人能力和经验的回答方法。",
+    "category": "misc",
+    "tags": [
+      "原则",
+      "STAR法则",
+      "面试技巧",
+      "求职"
+    ]
   }
 ]

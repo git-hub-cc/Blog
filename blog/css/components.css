@@ -474,6 +474,45 @@ a.tag-cloud-item span {
     margin-left: 0.4em;
 }
 
+/* 标签云展开功能样式 - 已修正 */
+.tag-cloud-hidden-tags {
+    display: none; /* 默认隐藏额外的标签容器 */
+}
+.tag-cloud-toggle-button {
+    display: inline-block;
+    width: 100%;
+    margin-top: 1rem;
+    text-align: center;
+    color: var(--color-fg-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.5rem;
+    border-radius: var(--border-radius-medium);
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+    transition: all var(--transition-speed);
+}
+.tag-cloud-toggle-button:hover {
+    color: var(--accent-color);
+    background-color: var(--accent-color-light);
+    border-color: var(--accent-color);
+}
+
+/* 当标签云展开时的样式 */
+.tag-cloud-list.is-expanded .tag-cloud-hidden-tags {
+    display: flex; /* 显示隐藏的标签 */
+    /* 将布局样式移到这里 */
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+    align-items: center;
+}
+.tag-cloud-list.is-expanded .tag-cloud-toggle-button {
+    display: none; /* 隐藏 "展开更多" 按钮 */
+}
+
+
 /* 分页 */
 #pagination-container {
     display: flex;

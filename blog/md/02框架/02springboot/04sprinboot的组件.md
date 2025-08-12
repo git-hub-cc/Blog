@@ -483,7 +483,7 @@ Spring也为大数据处理框架提供了集成方案，使得Spring Boot应用
 *   **官方文档**: [https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html)
 *   **简介**: 提供生产级的应用监控和管理功能。通过HTTP端点（Endpoints）或JMX，可以实时查看应用健康状况、度量指标（Metrics）、环境信息、Bean列表、线程快照等。它是构建可观测性（Observability）系统的基石，是微服务运维的必备组件。
 
-### 完整案例
+*   **完整案例**:
 
 #### a. Maven 依赖 (`pom.xml`)
 一个基本的Web应用需要 `spring-boot-starter-web`，然后我们添加 `spring-boot-starter-actuator`。
@@ -605,7 +605,7 @@ public class ActuatorDemoApplication {
 *   **GitHub**: (作为Spring Boot的一部分) [https://github.com/spring-projects/spring-boot](https://github.com/spring-projects/spring-boot)
 *   **简介**: 一套专注于提升开发效率的工具集。它能实现应用程序的自动重启（LiveReload），当代码变更时，应用会快速重启以加载新代码。此外，它还集成了LiveReload服务器，支持浏览器端自动刷新，并为Thymeleaf等模板引擎提供了禁用缓存的默认配置。
 
-### 完整案例
+*   **完整案例**:
 
 #### a. Maven 依赖 (`pom.xml`)
 只需在已有项目中添加 `spring-boot-devtools` 依赖。`optional=true` 是推荐做法，这样该依赖不会被打包到生产环境的包中。
@@ -671,7 +671,7 @@ public class DevtoolsDemoApplication {
 *   **简介**: 一个非常流行的Java库，通过注解在编译期自动生成样板代码，如构造函数、Getter/Setter、`toString()`、`equals()`和`hashCode()`等。它能极大简化实体类（Entity）、DTO等数据对象的编写，让代码更整洁、更易读。
 *   **重要提示**: 使用Lombok需要在你的IDE中安装Lombok插件才能获得正常的编译支持和代码提示。
 
-### 完整案例
+*   **完整案例**:
 
 #### a. Maven 依赖 (`pom.xml`)
 
@@ -761,7 +761,7 @@ public class LombokDemoApplication {
 *   **官方文档**: [https://docs.spring.io/spring-boot/docs/current/reference/html/configuration-metadata.html#configuration-metadata.annotation-processor](https://docs.spring.io/spring-boot/docs/current/reference/html/configuration-metadata.html#configuration-metadata.annotation-processor)
 *   **简介**: 该处理器用于生成元数据文件（`spring-configuration-metadata.json`），IDE（如IntelliJ IDEA, VS Code）可以利用这些元数据，为`application.properties`或`application.yml`文件中的自定义配置项提供智能提示和自动补全功能，极大提升了配置文件的编写体验。
 
-### 完整案例
+*   **完整案例**:
 
 #### a. Maven 依赖 (`pom.xml`)
 该处理器是一个注解处理器，通常只在编译时需要。
@@ -886,7 +886,7 @@ myapp.security.token=ABC-XYZ-123
 *   **实现 (Hibernate Validator)**: [https://hibernate.org/validator/](https://hibernate.org/validator/)
 *   **简介**: 提供对Java Bean Validation API（JSR-380）的支持，并默认集成了Hibernate Validator作为实现。通过在DTO或实体类的字段上添加`@NotNull`, `@Size`, `@Email`等注解，可以在Controller层自动对请求参数进行校验，简化了数据验证逻辑。
 
-### 完整案例
+*   **完整案例**:
 
 #### a. Maven 依赖 (`pom.xml`)
 `spring-boot-starter-web` 提供了Web环境，`spring-boot-starter-validation` 提供了校验能力。
@@ -1013,7 +1013,7 @@ public class UserController {
 *   **官方文档**: [https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#spring-web](https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#spring-web)
 *   **简介**: 构建Web应用（包括RESTful API）的核心启动器。它集成了Spring MVC框架，并默认内嵌了Tomcat作为Servlet容器，让Web应用的开发和部署变得极其简单。它还包含了数据绑定、类型转换、JSON序列化（默认使用Jackson）等构建Web服务所需的全套功能。
 
-### 完整案例
+*   **完整案例**:
 
 #### a. Maven 依赖 (`pom.xml`)
 `spring-boot-starter-web` 是唯一必须的依赖。
@@ -1108,7 +1108,7 @@ public class GreetingController {
 *   **简介**: 用于构建完全异步、非阻塞的响应式Web应用。它基于Project Reactor，提供了函数式编程模型和传统的基于注解的控制器模型。默认使用Netty作为嵌入式服务器，适用于高并发、低延迟的场景，是构建响应式微服务系统的首选。
 *   **注意**: `spring-boot-starter-web` (MVC) 和 `spring-boot-starter-webflux` 通常不应同时使用。选择其中一个作为你的Web技术栈。
 
-### 完整案例
+*   **完整案例**:
 
 本案例将同时展示**基于注解的控制器**和**函数式路由**两种风格。
 
@@ -1317,7 +1317,7 @@ public class FunctionalRoutesConfig {
 *   **GitHub**: [https://github.com/spring-projects/spring-hateoas](https://github.com/spring-projects/spring-hateoas)
 *   **简介**: 帮助你轻松实现HATEOAS（Hypermedia as the Engine of Application State）原则的REST服务。它提供了一套API，用于创建包含链接（Links）的资源表示模型，使客户端可以根据服务端返回的链接来发现和导航API，增强了服务的自描述性和演进能力。
 
-### 完整案例
+*   **完整案例**:
 
 #### a. Maven 依赖 (`pom.xml`)
 HATEOAS是建立在Web栈之上的，所以需要 `starter-web`。
@@ -1487,7 +1487,7 @@ public class BookController {
 *   **官方文档**: [https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#websocket](https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#websocket)
 *   **简介**: 为Spring Boot应用添加WebSocket支持，用于构建需要实时、双向通信的应用，例如在线聊天、实时数据推送、在线协作工具等。它提供了高级的STOMP（Simple Text Oriented Messaging Protocol）协议支持，简化了客户端与服务端的消息处理。
 
-### 完整案例
+*   **完整案例**:
 本案例将构建一个简单的广播消息系统：客户端发送消息到服务器的一个地址，服务器处理后将消息广播给所有订阅了另一个地址的客户端。
 
 #### a. Maven 依赖 (`pom.xml`)
@@ -1694,7 +1694,7 @@ public class ChatController {
 *   **GitHub**: [https://github.com/thymeleaf/thymeleaf](https://github.com/thymeleaf/thymeleaf)
 *   **简介**: Spring Boot官方推荐的现代服务端Java模板引擎。其最大的特点是“自然模板”，即模板文件可以直接在浏览器中打开并正确显示，便于UI/UX设计师独立工作。它与Spring MVC集成良好，提供了丰富的方言（Dialects）来展示动态数据和处理表单。
 
-### 完整案例
+*   **完整案例**:
 
 #### a. Maven 依赖 (`pom.xml`)
 Thymeleaf需要Web环境，所以需要 `starter-web`。
@@ -1826,7 +1826,7 @@ public class ProductController {
 *   **官方网站**: [https://freemarker.apache.org/](https://freemarker.apache.org/)
 *   **简介**: 一款成熟且功能强大的Java模板引擎。它拥有自己的模板语言（FTL），支持宏、函数以及复杂的逻辑处理。在很多历史悠久或对模板功能要求较高的项目中仍然非常流行。Spring Boot为其提供了完善的自动配置，使用起来非常方便。
 
-### 完整案例
+*   **完整案例**:
 
 #### a. Maven 依赖 (`pom.xml`)
 
@@ -1930,7 +1930,7 @@ FreeMarker使用自己的`FTL`（FreeMarker Template Language）语法，如 `<#
 *   **Java 实现 (JMustache)**: [https://github.com/samskivert/jmustache](https://github.com/samskivert/jmustache)
 *   **简介**: 一种“逻辑无关”的模板引擎，意味着模板中几乎不包含任何业务逻辑，强制实现了视图和逻辑的分离。它的语法极其简单，并且在多种编程语言中都有实现，适合需要跨技术栈共享模板的场景。Spring Boot集成了JMustache作为其实现。
 
-### 完整案例
+*   **完整案例**:
 
 #### a. Maven 依赖 (`pom.xml`)
 
@@ -2047,7 +2047,7 @@ Mustache的语法非常简洁，主要使用 `{{...}}` 标签。
 *   **官方文档 (Spring Framework)**: [https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#jdbc](https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#jdbc)
 *   **简介**: 提供了使用原生JDBC进行数据库操作的基础支持。它自动配置了`DataSource`（数据源）和`JdbcTemplate`。`JdbcTemplate`是Spring对JDBC的经典封装，它简化了资源管理（如连接的打开与关闭）、异常处理，让开发者能更专注于SQL本身。
 
-### 完整案例
+*   **完整案例**:
 本案例将使用H2内存数据库，展示如何使用`JdbcTemplate`进行增删改查操作。
 
 #### a. Maven 依赖 (`pom.xml`)
@@ -2235,7 +2235,7 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
 *   **官方网站**: [https://spring.io/projects/spring-data-jpa](https://spring.io/projects/spring-data-jpa)
 *   **简介**: 提供了基于JPA（Java Persistence API）规范的对象关系映射（ORM）支持，是Java世界中最主流的数据持久化方案。它默认使用Hibernate作为JPA实现，通过`Repository`接口，开发者只需定义方法名就能自动生成SQL查询，极大地简化了数据访问层的开发。
 
-### 完整案例
+*   **完整案例**:
 
 #### a. Maven 依赖 (`pom.xml`)
 
@@ -2394,7 +2394,7 @@ public class JpaDemoRunner implements CommandLineRunner {
 *   **官方网站**: [https://spring.io/projects/spring-data-jdbc](https://spring.io/projects/spring-data-jdbc)
 *   **简介**: Spring Data家族的一员，它提供了一种比JPA更简单、更贴近SQL的持久化方案。它不提供缓存、懒加载等复杂的ORM特性，而是专注于将领域实体与数据库表进行直接映射。它旨在保持ORM的便利性，同时让开发者对SQL有更强的控制力。
 
-### 完整案例
+*   **完整案例**:
 
 #### a. Maven 依赖 (`pom.xml`)
 
@@ -2538,7 +2538,7 @@ public class DataJdbcDemoRunner implements CommandLineRunner {
 *   **GitHub**: [https://github.com/jOOQ/jOOQ](https://github.com/jOOQ/jOOQ)
 *   **简介**: 一款强大的数据库映射和SQL构建工具。它能根据数据库Schema生成Java类，让你可以在Java中以类型安全的方式编写SQL查询，避免了拼接字符串带来的语法错误和SQL注入风险。对于需要编写大量复杂、动态SQL的场景，jOOQ是一个绝佳选择。
 
-### 完整案例
+*   **完整案例**:
 jOOQ的核心工作流是“代码生成”。我们将配置Maven插件，让它根据数据库Schema生成Java代码，然后使用这些生成的代码来执行查询。
 
 #### a. Maven 依赖与插件配置 (`pom.xml`)
@@ -2785,7 +2785,7 @@ public class BookController {
 *   **Spring Boot Starter GitHub**: [https://github.com/mybatis/mybatis-spring-boot-starter](https://github.com/mybatis/mybatis-spring-boot-starter)
 *   **简介**: 一款非常流行的半自动ORM框架。它将Java方法与SQL语句直接映射在XML文件或注解中，让开发者可以完全掌控SQL，同时又免去了手动处理JDBC的繁琐细节。因其灵活性和对复杂SQL的良好支持，在中国及许多亚洲国家有着广泛的应用。
 
-### 完整案例
+*   **完整案例**:
 我们将创建一个简单的用户管理功能，使用XML映射文件来定义SQL。
 
 #### a. Maven 依赖 (`pom.xml`)
@@ -2969,7 +2969,7 @@ public class MyBatisDemoRunner implements CommandLineRunner {
 *   **GitHub**: [https://github.com/flyway/flyway](https://github.com/flyway/flyway)
 *   **简介**: 一个流行的数据库迁移工具。它通过版本化的SQL脚本来管理数据库Schema的演进，支持自动化、可重复的数据库变更。Spring Boot检测到Flyway在classpath上时会自动执行迁移。
 
-### 完整案例
+*   **完整案例**:
 我们将使用Flyway来创建并演进一个简单的数据库表。
 
 #### a. Maven 依赖 (`pom.xml`)
@@ -3072,7 +3072,7 @@ INSERT INTO person (name, email) VALUES ('Jane Smith', 'jane.smith@flyway.org');
 *   **GitHub**: [https://github.com/liquibase/liquibase](https://github.com/liquibase/liquibase)
 *   **简介**: 另一个功能强大的数据库迁移工具。与Flyway不同，它支持使用XML、YAML、JSON或SQL等多种格式来定义数据库变更集（Changesets），并提供了更丰富的重构和回滚功能。Spring Boot检测到Liquibase在classpath上时会自动执行迁移。
 
-### 完整案例
+*   **完整案例**:
 我们将使用Liquibase的XML格式来定义数据库的演进，这在企业级应用中非常常见，因为它提供了更强的结构化和更多的功能（如前提条件检查、回滚定义等）。
 
 #### a. Maven 依赖 (`pom.xml`)
@@ -3227,7 +3227,7 @@ Liquibase使用一个主`changelog`文件来组织所有的变更。
 *   **Spring Data Redis 文档**: [https://spring.io/projects/spring-data-redis](https://spring.io/projects/spring-data-redis)
 *   **简介**: 集成Redis，一个高性能的内存键值数据库。常被用作缓存、分布式锁、会话存储和简单的消息代理。Spring Boot自动配置了连接工厂（支持Jedis和Lettuce客户端，Lettuce为默认），并提供了`RedisTemplate`和`StringRedisTemplate`用于方便地操作各种数据结构。
 
-### 完整案例
+*   **完整案例**:
 本案例将展示如何使用`StringRedisTemplate`进行基本的字符串操作，以及如何使用`RedisTemplate`来存储Java对象。
 
 #### a. Maven 依赖 (`pom.xml`)
@@ -3399,7 +3399,7 @@ public class DemoController {
 *   **Spring Data MongoDB 文档**: [https://spring.io/projects/spring-data-mongodb](https://spring.io/projects/spring-data-mongodb)
 *   **简介**: 集成MongoDB，一个领先的面向文档的NoSQL数据库。它以类JSON的BSON格式存储数据，具有灵活的模式和强大的查询能力，非常适合内容管理、物联网和大数据等场景。Spring Boot提供了`MongoTemplate`进行复杂操作，并支持通过Spring Data Repositories进行便捷的CRUD。
 
-### 完整案例
+*   **完整案例**:
 本案例将创建一个简单的产品目录，使用Spring Data MongoDB的Repository模式来操作数据。
 
 #### a. Maven 依赖 (`pom.xml`)
@@ -3567,7 +3567,7 @@ public class ProductController {
 *   **简介**: 集成Apache Cassandra，一个高度可扩展、高可用的分布式宽列存储数据库。它为大规模数据集提供了无单点故障的线性扩展能力，适用于需要处理海量写入和高可用性要求的场景。
 *   **重要提示**: 使用Cassandra需要你对它的数据模型（特别是分区键和集群键）有一定的了解，因为这直接影响查询性能。
 
-### 完整案例
+*   **完整案例**:
 本案例将创建一个简单的视频元数据存储系统，演示如何定义Cassandra表实体和使用Spring Data Cassandra Repository。
 
 #### a. Maven 依赖 (`pom.xml`)
@@ -3743,7 +3743,7 @@ public class VideoController {
 *   **Spring Data Couchbase 文档**: [https://spring.io/projects/spring-data-couchbase](https://spring.io/projects/spring-data-couchbase)
 *   **简介**: 集成Couchbase，一个分布式的多模型NoSQL数据库，结合了键值存储的速度和文档数据库的灵活性。它提供了强大的N1QL（发音为"nickel"）查询语言，类似于SQL，并内置了缓存层和全文搜索功能。
 
-### 完整案例
+*   **完整案例**:
 本案例将创建一个用户个人资料系统，演示Couchbase的文档存储和N1QL查询能力。
 
 #### a. Maven 依赖 (`pom.xml`)
@@ -3907,7 +3907,7 @@ public class UserProfileController {
 *   **Spring Data Neo4j 文档**: [https://spring.io/projects/spring-data-neo4j](https://spring.io/projects/spring-data-neo4j)
 *   **简介**: 集成Neo4j，一个原生的图数据库。它专门用于存储、查询和管理实体及其之间的复杂关系，是构建社交网络、推荐引擎、欺诈检测和知识图谱等应用的理想选择。
 
-### 完整案例
+*   **完整案例**:
 我们将构建一个简单的电影和演员关系图谱，演示如何定义节点和关系，并使用Cypher查询语言进行图遍历。
 
 #### a. Maven 依赖 (`pom.xml`)
@@ -4141,7 +4141,7 @@ public class MovieController {
 *   **简介**: 集成Elasticsearch，一个基于Apache Lucene的分布式搜索和分析引擎。它能提供近乎实时的搜索、聚合和分析功能，广泛用于全文搜索、日志分析（ELK Stack）、应用性能监控（APM）等领域。Spring Boot为其配置了客户端，并提供`ElasticsearchRestTemplate`和Repository支持。
 *   **注意**: Spring Boot 3.x 使用新的 Elasticsearch Java Client，配置和依赖与旧版本有较大不同。本案例基于Spring Boot 3.x。
 
-### 完整案例
+*   **完整案例**:
 本案例将创建一个文章索引系统，演示如何创建索引、存入文档、进行全文搜索和短语匹配。
 
 #### a. Maven 依赖 (`pom.xml`)
@@ -4396,7 +4396,7 @@ public class ArticleController {
 *   **简介**: 集成Apache Solr，另一个成熟的、功能丰富的开源搜索平台，同样基于Lucene。它提供了强大的全文搜索、分面搜索、动态集群等功能。虽然近年来Elasticsearch在微服务生态中更受关注，但Solr依然是企业级搜索的有力选择。
 *   **注意**: Spring Data Solr 项目目前处于社区维护状态，更新可能不如其他Spring Data项目频繁。
 
-### 完整案例
+*   **完整案例**:
 本案例将创建一个产品搜索引擎，演示如何定义Solr Schema，索引数据并进行查询。
 
 #### a. Maven 依赖 (`pom.xml`)
@@ -4567,7 +4567,7 @@ public class ProductController {
 *   **Spring AMQP 文档**: [https://spring.io/projects/spring-amqp](https://spring.io/projects/spring-amqp)
 *   **简介**: 集成RabbitMQ，一个实现了AMQP（高级消息队列协议）的强大消息代理。它支持多种消息模式（如点对点、发布/订阅、路由），并以其可靠性和灵活性著称。Spring Boot自动配置了`RabbitTemplate`用于发送消息，以及`@RabbitListener`注解用于声明式地消费消息。
 
-### 完整案例
+*   **完整案例**:
 本案例将演示一个典型的“主题交换机（Topic Exchange）”使用场景。我们将发送带有不同“路由键（routing key）”的消息，并设置多个队列根据路由键的模式来接收消息。
 
 #### a. Maven 依赖 (`pom.xml`)
@@ -4787,7 +4787,7 @@ public class MessageController {
 *   **Spring for Apache Kafka 文档**: [https://spring.io/projects/spring-kafka](https://spring.io/projects/spring-kafka)
 *   **简介**: 集成Apache Kafka，一个分布式事件流平台。它不仅仅是消息队列，更是为处理实时数据流而设计的，具有极高的吞吐量、持久性和可扩展性。常用于日志聚合、事件溯源和流处理。Spring Boot提供了`KafkaTemplate`和`@KafkaListener`简化了与Kafka的交互。
 
-### 完整案例
+*   **完整案例**:
 本案例将演示如何发送和接收简单的字符串消息，以及如何发送和接收JSON格式的复杂对象消息。
 
 #### a. Maven 依赖 (`pom.xml`)
@@ -4995,7 +4995,7 @@ public class OrderController {
 *   **JMS 2.0 Spec**: [https://javaee.github.io/jms-spec/](https://javaee.github.io/jms-spec/)
 *   **简介**: 为Java消息服务（JMS）API提供支持，这是Java EE中定义的消息传递标准。`spring-boot-starter-activemq`默认集成了Apache ActiveMQ "Classic"作为消息代理。Spring Boot会自动配置`JmsTemplate`和连接工厂，使得遵循JMS标准的消息收发变得简单。
 
-### 完整案例
+*   **完整案例**:
 本案例将演示如何向一个JMS队列发送和接收文本消息。
 
 #### a. Maven 依赖 (`pom.xml`)
@@ -5103,7 +5103,7 @@ public class JmsMessageConsumer {
 *   **简介**: 集成ActiveMQ Artemis，这是Apache的下一代高性能异步消息代理。它支持JMS 2.0以及AMQP、MQTT等多种协议，拥有非阻塞的核心架构。对于追求更高性能和现代特性的新项目，Artemis是一个优秀的选择。
 *   **注意**: Spring Boot 通过 `spring-boot-starter-artemis` 提供对 Artemis 的集成。它同样实现了JMS标准，所以代码层面与使用 ActiveMQ "Classic" 非常相似，但性能和特性更优。
 
-### 完整案例
+*   **完整案例**:
 本案例将演示如何使用JMS 2.0 API（通过Artemis实现）发送和接收消息，并利用Artemis的特性自动创建队列。
 
 #### a. Maven 依赖 (`pom.xml`)
@@ -5274,7 +5274,7 @@ public class NotificationController {
 *   **GitHub**: [https://github.com/spring-projects/spring-integration](https://github.com/spring-projects/spring-integration)
 *   **简介**: 集成Spring Integration框架，它实现了经典的“企业集成模式”（EIP）。该框架提供了一套轻量级的消息驱动架构，通过各种适配器（Adapter）、通道（Channel）、转换器（Transformer）等组件，可以轻松地将异构系统连接起来，非常适合构建复杂的数据管道和集成流程。
 
-### 完整案例
+*   **完整案例**:
 本案例将构建一个文件处理管道：
 1.  **文件输入适配器**: 监控一个输入目录。
 2.  **通道**: 当新文件出现时，消息（包含文件内容）被发送到通道。
@@ -5385,7 +5385,7 @@ public class FileProcessingIntegrationFlow {
 *   **官方网站**: [https://spring.io/projects/spring-security](https://spring.io/projects/spring-security)
 *   **简介**: 这是为Spring应用添加认证（Authentication）和授权（Authorization）支持的核心启动器。一旦引入，它会默认启用HTTP Basic认证并保护所有端点。它高度可配置，支持表单登录、OAuth2、JWT、LDAP等多种安全机制，是保护Web应用和API的首选。
 
-### 完整案例
+*   **完整案例**:
 本案例将演示如何配置一个简单的、基于内存用户的Spring Security，包含以下特性：
 *   一个公共API (`/api/public`)
 *   一个需要用户登录后才能访问的API (`/api/user`)
@@ -5536,7 +5536,7 @@ public class ApiController {
 *   **官方文档**: [https://docs.spring.io/spring-security/reference/servlet/oauth2/client/index.html](https://docs.spring.io/spring-security/reference/servlet/oauth2/client/index.html)
 *   **简介**: 让你的应用能够作为一个OAuth2/OpenID Connect 1.0 (OIDC)客户端。这主要用于实现第三方登录功能，例如“使用Google/GitHub/Okta登录”。它封装了所有繁琐的重定向和令牌交换流程，让开发者可以轻松地集成外部身份提供商。
 
-### 完整案例
+*   **完整案例**:
 本案例将演示如何配置Spring Boot应用，以允许用户通过GitHub账号进行登录。
 
 #### a. 在GitHub上创建OAuth2 App
@@ -5697,7 +5697,7 @@ public class HomeController {
 *   **官方文档**: [https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/index.html](https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/index.html)
 *   **简介**: 将你的应用配置为一个OAuth2资源服务器。其核心职责是保护API端点，要求客户端在请求时必须提供一个有效的访问令牌（Access Token）。它支持对不透明令牌（Opaque Tokens）的内省和对JWT（JSON Web Tokens）的本地校验，是构建受保护微服务的关键。
 
-### 完整案例
+*   **完整案例**:
 本案例将创建一个受保护的API资源服务器，它将使用JWT（JSON Web Token）作为访问令牌。我们将使用一个外部的认证服务器（如Okta、Keycloak或Auth0）来签发JWT。为了简化，我们假设已经从认证服务器获得了一个有效的JWT。
 
 #### a. 准备认证服务器和JWT
@@ -5831,7 +5831,7 @@ public class MessagesController {
 *   **官方网站 (Spring Security LDAP)**: [https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/ldap.html](https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/ldap.html)
 *   **简介**: 提供与LDAP（轻量级目录访问协议）服务器的集成。这在企业环境中非常常见，用于将应用的认证和用户管理委托给中央目录服务，如Microsoft Active Directory或OpenLDAP。Spring Boot可以自动配置LDAP认证和`LdapTemplate`。
 
-### 完整案例
+*   **完整案例**:
 本案例将配置Spring Security，使其通过一个嵌入式的内存LDAP服务器进行用户认证。这避免了需要搭建一个真实的LDAP服务器来进行开发和测试。
 
 #### a. Maven 依赖 (`pom.xml`)
@@ -5983,10 +5983,7 @@ public class HomeController {
 4.  **查看结果**: 登录成功后，你会看到 "Welcome to the LDAP-secured page!" 的消息。这证明Spring Security成功地连接到LDAP服务器，找到了`ben`用户，并验证了他提供的密码。
 
 
-
-## 九、 云原生与微服务 (Cloud Native & Microservices)
-
-### 1. Spring Cloud Config
+## 36. Spring Cloud Config
 
 *   **简介**: 提供分布式应用的外部化配置支持。Config Server是一个独立的微服务，用于集中管理所有环境的配置文件（通常存储在Git、SVN或本地文件系统）。客户端应用在启动时会从Config Server拉取自己的配置。
 *   **官网/源码地址**:
@@ -6127,7 +6124,7 @@ public class HomeController {
 
 ---
 
-### 2. Spring Cloud Gateway
+## 37. Spring Cloud Gateway
 
 *   **简介**: 一个基于Spring WebFlux和Project Reactor构建的API网关。负责请求路由、负载均衡、安全认证、限流熔断等。
 *   **官网/源码地址**:
@@ -6208,7 +6205,7 @@ public class HomeController {
 
 ---
 
-### 3. Spring Cloud OpenFeign
+## 38. Spring Cloud OpenFeign
 
 *   **简介**: 一个声明式的REST客户端，让微服务间的调用像调用本地方法一样简单。
 *   **官网/源码地址**:
@@ -6303,7 +6300,7 @@ public class HomeController {
 
 ---
 
-### 4. 服务发现 (Service Discovery - Eureka)
+## 39. 服务发现 (Service Discovery - Eureka)
 
 *   **简介**: 集成Netflix Eureka，一个REST风格的服务注册与发现组件。服务实例注册到Eureka Server，客户端通过服务名来发现和调用服务。
 *   **官网/源码地址**:
@@ -6392,7 +6389,7 @@ public class HomeController {
 
 ---
 
-### 5. 熔断器 (Circuit Breaker - Resilience4j)
+## 40. 熔断器 (Circuit Breaker - Resilience4j)
 
 *   **简介**: 集成Resilience4j，一个轻量级、功能强大的容错库。当某个下游服务出现故障时，熔断器可以快速失败，防止故障蔓延。
 *   **官网/源码地址**:
@@ -6459,9 +6456,7 @@ public class HomeController {
 
 ---
 
-## 十、 批处理 (Batch Processing)
-
-### 1. Spring Batch
+## 41. Spring Batch
 
 *   **简介**: 一个专为健壮、可扩展的批处理应用而设计的轻量级框架。非常适合ETL、数据迁移、报表生成等场景。
 *   **官网/源码地址**:
@@ -6659,9 +6654,8 @@ public class HomeController {
 
 
 
-## 九、 云原生与微服务 (Cloud Native & Microservices) - 续
 
-### 7. 分布式追踪 (Distributed Tracing - Micrometer Tracing with Zipkin)
+## 42. 分布式追踪 (Distributed Tracing - Micrometer Tracing with Zipkin)
 
 *   **简介**: 作为Sleuth的继任者，Micrometer Tracing提供了一个厂商中立的分布式追踪API。我们将使用它与Brave桥接，并将追踪数据发送到Zipkin后端进行可视化。
 *   **官网/源码地址**:
@@ -6749,9 +6743,7 @@ public class HomeController {
 
 ---
 
-## 十一、 缓存 (Caching)
-
-### 8. 缓存抽象与Caffeine (本地缓存)
+## 43. 缓存抽象与Caffeine (本地缓存)
 
 *   **简介**: Spring Boot提供了一套缓存抽象API (`@Cacheable`, `@CachePut`, `@CacheEvict`)，Caffeine是一个高性能的Java 8本地（进程内）缓存库，是Spring Boot推荐的默认本地缓存实现。
 *   **官网/源码地址**:
@@ -6853,7 +6845,7 @@ public class HomeController {
     3.  立即再次访问 `http://localhost:8080/books/12345`。你会发现请求几乎是瞬间返回，并且控制台**不会**打印任何日志。这证明第二次请求命中了Caffeine缓存，`getBookByIsbn` 方法体没有被执行。
     4.  访问 `http://localhost:8080/books/67890`。请求会再次变慢，因为这是一个新的`key`，缓存中不存在。
 
-### 9. 缓存提供商 - Redis (分布式缓存)
+## 44. 缓存提供商 - Redis (分布式缓存)
 
 *   **简介**: 使用Redis作为Spring缓存抽象的后端实现，从而实现分布式缓存，让多个服务实例可以共享同一个缓存。
 *   **官网/源码地址**:
@@ -6910,9 +6902,8 @@ public class HomeController {
 
 ---
 
-## 十二、 测试 (Testing)
 
-### 10. Spring Boot Test
+## 45. Spring Boot Test
 
 *   **简介**: `spring-boot-starter-test`是进行Spring Boot应用测试的核心依赖，聚合了JUnit 5, Spring Test, AssertJ, Mockito等库。
 *   **官网/源码地址**:
@@ -7014,7 +7005,7 @@ public class HomeController {
     **步骤 4: 运行测试**
     在IDE中右键点击测试类或测试方法，选择 "Run"。或者使用Maven命令 `mvn test`。所有测试都应该通过。
 
-### 11. Testcontainers
+## 46. Testcontainers
 
 *   **简介**: 一个革命性的Java测试库，允许在JUnit测试中以编程方式启动和管理Docker容器，为测试提供真实的依赖服务。
 *   **官网/源码地址**:
@@ -7122,9 +7113,7 @@ public class HomeController {
 
 ---
 
-## 十三、 其他集成 (Miscellaneous Integrations)
-
-### 12. Mail
+## 47. Mail
 
 *   **简介**: 集成JavaMail API，用于发送电子邮件。
 *   **官网/源码地址**:
@@ -7224,9 +7213,7 @@ public class HomeController {
 
 
 
-## 十三、 其他集成 (Miscellaneous Integrations) - 续
-
-### 13. Quartz Scheduler
+## 48. Quartz Scheduler
 
 *   **简介**: 集成Quartz，一个功能强大的企业级开源作业调度框架。与Spring自带的`@Scheduled`相比，Quartz提供了更高级的功能，如持久化任务和集群调度。
 *   **官网/源码地址**:
@@ -7340,7 +7327,7 @@ public class HomeController {
 
 ---
 
-### 14. AOP (Aspect-Oriented Programming)
+## 49. AOP (Aspect-Oriented Programming)
 
 *   **简介**: 提供对面向切面编程的支持。通过AOP，可以将横切关注点（如日志记录、性能监控）从业务逻辑代码中分离出来。
 *   **官网/源码地址**:
@@ -7454,9 +7441,8 @@ public class HomeController {
 
 ---
 
-## 十四、 可观测性 (Observability)
 
-### 15. Micrometer Metrics with Prometheus
+## 50. Micrometer Metrics with Prometheus
 
 *   **简介**: Micrometer是一个应用度量门面，Prometheus是一个开源的监控和告警系统。Spring Boot通过Micrometer将应用指标暴露为Prometheus格式，供其抓取。
 *   **官网/源码地址**:
@@ -7576,9 +7562,7 @@ public class HomeController {
 
 ---
 
-## 十五、 响应式编程栈 (Reactive Stack)
-
-### 16. Project Reactor
+## 51. Project Reactor
 
 *   **简介**: Spring响应式编程栈的基石，提供`Mono`和`Flux`两种发布者类型来处理异步数据流。
 *   **官网/源码地址**:
@@ -7670,7 +7654,7 @@ public class HomeController {
         Flux Completed!
         ```
 
-### 17. R2DBC (Reactive Relational Database Connectivity)
+## 52. R2DBC (Reactive Relational Database Connectivity)
 
 *   **简介**: R2DBC是JDBC的响应式替代品，定义了一套用于异步、非阻塞地访问关系型数据库的API。
 *   **官网/源码地址**:
@@ -7792,10 +7776,7 @@ public class HomeController {
     整个请求处理链路，从WebFlux接收请求到R2DBC访问数据库，都是完全非阻塞的，能够用少量线程处理大量并发连接。
 
 
-
-## 十五、 响应式编程栈 (Reactive Stack) - 续
-
-### 18. 响应式 NoSQL 驱动 (MongoDB Reactive)
+## 53. 响应式 NoSQL 驱动 (MongoDB Reactive)
 
 *   **简介**: 许多现代NoSQL数据库的Java驱动本身就是响应式的。`spring-boot-starter-data-mongodb-reactive` 启动器为MongoDB的响应式操作提供了无缝集成。
 *   **官网/源码地址**:
@@ -7928,9 +7909,7 @@ public class HomeController {
 
 ---
 
-## 十六、 其他RPC与API协议
-
-### 19. gRPC
+## 54. gRPC
 
 *   **简介**: gRPC是Google开发的高性能RPC框架，使用HTTP/2和Protocol Buffers。`yidongnan/grpc-spring-boot-starter` 是一个广受欢迎的社区项目，极大地简化了集成。
 *   **官网/源码地址**:
@@ -8118,9 +8097,7 @@ public class HomeController {
 
 ---
 
-## 十七、 应用功能与工具 (Application Features & Utilities)
-
-### 20. 异步方法执行 (@Async)
+## 55. 异步方法执行 (@Async)
 
 *   **简介**: 通过`@Async`注解，让一个方法在后台线程池中异步执行，避免阻塞主线程。
 *   **官网/源码地址**: [https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#async](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#async)
@@ -8209,7 +8186,7 @@ public class HomeController {
         ```
     日志清晰地显示，`OrderController`在`http-nio`线程上快速完成了它的工作并返回了HTTP响应。而`sendNotification`方法则在Spring管理的另一个线程池（`task-1`）中独立运行，没有阻塞控制器。
 
-### 21. 任务调度 (@Scheduled)
+## 56. 任务调度 (@Scheduled)
 
 *   **简介**: 使用`@Scheduled`注解，以固定速率或cron表达式周期性地执行方法。
 *   **官网/源码地址**: [https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#scheduling](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#scheduling)
@@ -8277,7 +8254,7 @@ public class HomeController {
         *   `[Fixed Delay]` 任务会先执行2秒，然后等待5秒，所以它的日志大约每7秒出现一次。
         *   `[Cron]` 任务只会在你的系统时间的秒针走到15时才会打印日志。
 
-### 22. 国际化 (i18n)
+## 57. 国际化 (i18n)
 
 *   **简介**: Spring Boot遵循Spring框架的国际化支持，通过`MessageSource`自动从`messages*.properties`文件中加载消息。
 *   **官网/源码地址**: [https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.internationalization](https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.internationalization)
@@ -8346,9 +8323,7 @@ public class HomeController {
 
 
 
-## 十七、 应用功能与工具 (Application Features & Utilities) - 续
-
-### 23. 序列化格式支持 (JSON - Jackson 定制)
+## 58. 序列化格式支持 (JSON - Jackson 定制)
 
 *   **简介**: Spring Boot 默认使用 Jackson 进行 JSON 序列化和反序列化。我们可以通过多种方式轻松定制其行为，例如通过`application.properties`或自定义`Jackson2ObjectMapperBuilderCustomizer`。
 *   **官网/源码地址**:
@@ -8458,7 +8433,7 @@ public class HomeController {
 
 ---
 
-### 24. 容器化支持 (Cloud Native Buildpacks)
+## 59. 容器化支持 (Cloud Native Buildpacks)
 
 *   **简介**: 通过Buildpacks插件 (`spring-boot-maven-plugin`的`build-image`目标)，无需编写Dockerfile就能构建出优化过的、生产级的容器镜像。
 *   **官网/源码地址**:
@@ -8537,9 +8512,7 @@ public class HomeController {
 
 ---
 
-## 十八、 Web服务器 (Web Servers)
-
-### 25. 切换内嵌Web服务器 (从Tomcat到Undertow)
+## 60. 切换内嵌Web服务器 (从Tomcat到Undertow)
 
 *   **简介**: Spring Boot允许轻松切换内嵌的Web服务器。Undertow是一个来自JBoss/Red Hat的高性能Web服务器，以其高性能和灵活性著称。
 *   **官网/源码地址**:
@@ -8585,9 +8558,7 @@ public class HomeController {
 
 ---
 
-## 十九、 UI框架集成 (UI Framework Integration)
-
-### 26. Vaadin
+## 61. Vaadin
 
 *   **简介**: Vaadin是一个Java Web框架，允许开发者完全使用Java语言来构建现代Web UI，无需编写HTML、CSS或JavaScript。
 *   **官网/源码地址**:
@@ -8664,9 +8635,7 @@ public class HomeController {
 
 ---
 
-## 二十、 云服务商特定集成 (Cloud Provider Specific Integrations)
-
-### 27. Spring Cloud AWS (Amazon S3)
+## 62. Spring Cloud AWS (Amazon S3)
 
 *   **简介**: Spring Cloud AWS旨在简化Spring应用与AWS服务的集成。这里我们以对象存储服务S3为例。
 *   **官网/源码地址**:
@@ -8779,10 +8748,7 @@ public class HomeController {
     这个案例展示了Spring Cloud AWS如何将复杂的SDK配置和操作简化为几行代码和一个简单的`S3Template`。
 
 
-
-## 二十一、 大数据生态系统 (Big Data Ecosystem)
-
-### 28. Spring Cloud Data Flow
+## 63. Spring Cloud Data Flow
 
 *   **简介**: Spring Cloud Data Flow (SCDF) 是一个用于构建和编排数据密集型应用的工具包。它本身不是一个库，而是一个独立的服务器，用于部署和管理由Spring Boot和Spring Cloud Stream构建的流处理微服务。
 *   **官网/源码地址**:
@@ -8869,9 +8835,7 @@ public class HomeController {
 
 ---
 
-## 十八、 Web服务器 (Web Servers) - 补遗
-
-### 29. Tomcat (默认行为)
+## 64. Tomcat (默认行为)
 
 *   **简介**: Apache Tomcat是`spring-boot-starter-web`默认内嵌的服务器。无需任何额外配置，即可获得一个功能齐全的Servlet容器。
 *   **官网/源码地址**: [https://tomcat.apache.org/](https://tomcat.apache.org/)
@@ -8932,7 +8896,7 @@ public class HomeController {
     3.  访问 `http://localhost:8090/`，你会得到响应 "Hello from default Tomcat server!"。
     4.  查看项目根目录，会发现一个`logs`文件夹被创建，里面包含了`access_log.log`文件，记录了你的访问信息。这证明了Tomcat的特定配置已生效。
 
-### 30. Jetty
+## 65. Jetty
 
 *   **简介**: Eclipse Jetty是一个轻量级、高性能的HTTP服务器和Servlet容器，是Tomcat的流行替代品。
 *   **官网/源码地址**: [https://www.eclipse.org/jetty/](https://www.eclipse.org/jetty/)

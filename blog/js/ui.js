@@ -54,6 +54,7 @@ export function applyScheme(scheme) {
 
 /**
  * 初始化主题切换器功能。
+ * (已更新，实现圆形扩散/收起过渡动画)
  */
 export function initializeTheme() {
     if (!toggleSwitch) return;
@@ -62,19 +63,68 @@ export function initializeTheme() {
     const currentScheme = document.documentElement.getAttribute('data-scheme');
     toggleSwitch.checked = (currentScheme === 'dark');
 
-    // 监听切换器变化
-    toggleSwitch.addEventListener('change', (e) => {
-        applyScheme(e.target.checked ? 'dark' : 'light');
+    // 监听切换器点击事件
+    toggleSwitch.addEventListener('click', (e) => {
+        // 检查浏览器是否支持 View Transitions API
+        if (!document.startViewTransition) {
+            // 不支持则使用旧版无动画切换
+            applyScheme(e.target.checked ? 'dark' : 'light');
+            return;
+        }
+
+        // 获取点击坐标
+        const { clientX, clientY } = e;
+        // 计算到屏幕最远角落的距离作为半径
+        const radius = Math.hypot(
+            Math.max(clientX, window.innerWidth - clientX),
+            Math.max(clientY, window.innerHeight - clientY)
+        );
+
+        // 获取切换前的主题状态
+        const isDark = document.documentElement.dataset.scheme === 'dark';
+
+        // 开始视图过渡
+        const transition = document.startViewTransition(() => {
+            // 在回调中更新 DOM
+            applyScheme(toggleSwitch.checked ? 'dark' : 'light');
+        });
+
+        // 自定义动画
+        transition.ready.then(() => {
+            const clipPath = [
+                `circle(0px at ${clientX}px ${clientY}px)`,
+                `circle(${radius}px at ${clientX}px ${clientY}px)`
+            ];
+
+            // 使用自定义的 clip-path 动画
+            document.documentElement.animate(
+                {
+                    // 如果之前是暗色 (要切换到亮色)，则动画反向（收起）
+                    // 如果之前是亮色 (要切换到暗色)，则动画正向（展开）
+                    clipPath: isDark ? clipPath.reverse() : clipPath
+                },
+                {
+                    duration: 500,
+                    easing: 'ease-in-out',
+                    // 指定动画作用的伪元素：
+                    // 如果之前是暗色，则在旧视图上执行收起动画
+                    // 如果之前是亮色，则在新视图上执行展开动画
+                    pseudoElement: isDark ? '::view-transition-old(root)' : '::view-transition-new(root)'
+                }
+            );
+        });
     });
 
     // 监听操作系统主题变化，仅在用户未手动选择时跟随系统
     const osDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
     osDarkScheme.addEventListener('change', (e) => {
         if (!localStorage.getItem(colorSchemeKey)) {
+            // 注意：系统切换不应用圆形动画，直接切换
             applyScheme(e.matches ? 'dark' : 'light');
         }
     });
 }
+
 
 /**
  * 在渲染新内容前重置 UI 状态。
@@ -263,6 +313,12 @@ export function renderTagCloud(tags, currentCategory = null) {
     const sortedTags = Array.from(tags.entries()).sort((a, b) => b[1] - a[1]);
     const maxCount = sortedTags.length > 0 ? sortedTags[0][1] : 1;
     const minCount = sortedTags.length > 0 ? sortedTags[sortedTags.length - 1][1] : 1;
+    const TAG_CLOUD_DISPLAY_LIMIT = 30;
+
+    // 确定标签链接的基础路径
+    const baseHref = currentCategory
+        ? `#/category/${encodeURIComponent(currentCategory)}/tag/`
+        : '#/tag/';
 
     // 根据标签数量计算样式（字体大小和不透明度）
     const getStyle = (count) => {
@@ -272,18 +328,44 @@ export function renderTagCloud(tags, currentCategory = null) {
         return `font-size: ${fontSize.toFixed(2)}em; opacity: ${opacity.toFixed(2)};`;
     };
 
-    let tagsHTML = `<h2>标签云</h2><div class="tag-cloud-list">`;
-    // 确定标签链接的基础路径
-    const baseHref = currentCategory
-        ? `#/category/${encodeURIComponent(currentCategory)}/tag/`
-        : '#/tag/';
-    sortedTags.forEach(([tag, count]) => {
-        tagsHTML += `<a href="${baseHref}${encodeURIComponent(tag)}" class="tag-cloud-item" style="${getStyle(count)}">${tag} <span>${count}</span></a>`;
-    });
-    tagsHTML += '</div>';
+    // 生成单个标签的 HTML
+    const createTagHTML = ([tag, count]) =>
+        `<a href="${baseHref}${encodeURIComponent(tag)}" class="tag-cloud-item" style="${getStyle(count)}">${tag} <span>${count}</span></a>`;
 
-    tagCloudContainer.innerHTML = tagsHTML;
+
+    let listContentHTML = '';
+    if (sortedTags.length > TAG_CLOUD_DISPLAY_LIMIT) {
+        const visibleTags = sortedTags.slice(0, TAG_CLOUD_DISPLAY_LIMIT);
+        const hiddenTags = sortedTags.slice(TAG_CLOUD_DISPLAY_LIMIT);
+
+        listContentHTML += visibleTags.map(createTagHTML).join('');
+        listContentHTML += `<div class="tag-cloud-hidden-tags">${hiddenTags.map(createTagHTML).join('')}</div>`;
+        listContentHTML += `<a href="#" class="tag-cloud-toggle-button">展开其余 ${hiddenTags.length} 个标签...</a>`;
+    } else {
+        listContentHTML += sortedTags.map(createTagHTML).join('');
+    }
+
+    const finalHTML = `
+        <h2>标签云</h2>
+        <div class="tag-cloud-list">${listContentHTML}</div>
+    `;
+
+    tagCloudContainer.innerHTML = finalHTML;
     tagCloudContainer.style.display = 'block';
+}
+
+// 使用事件委托处理标签云的 "展开更多" 按钮点击事件
+if (tagCloudContainer) {
+    tagCloudContainer.addEventListener('click', (event) => {
+        const toggleButton = event.target.closest('.tag-cloud-toggle-button');
+        if (toggleButton) {
+            event.preventDefault();
+            const listContainer = toggleButton.closest('.tag-cloud-list');
+            if (listContainer) {
+                listContainer.classList.add('is-expanded');
+            }
+        }
+    });
 }
 
 

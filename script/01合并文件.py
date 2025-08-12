@@ -7,11 +7,13 @@ START_DIRECTORY = '.'
 # 输出文件名
 OUTPUT_FILE = 'res.md'
 # 允许的文件扩展名 (请使用小写)
-ALLOWED_EXTENSIONS = ['.html', '.css', '.js', '.json']
+ALLOWED_EXTENSIONS = ['.md']
 # 行数限制
 LINE_LIMIT = 1000
 # 要排除的目录名
 EXCLUDED_DIRS = ['node_modules', '.git', '__pycache__', '.venv', 'venv', 'package.json', 'package-lock.json', 'lib']
+# 【新增】要排除的特定文件名
+EXCLUDED_FILES = ['01base.md', 'about.md']
 # --- 配置结束 ---
 
 def find_files_recursively(start_dir: str) -> list[str]:
@@ -31,16 +33,18 @@ def find_files_recursively(start_dir: str) -> list[str]:
         for filename in filenames:
             # 构造完整的文件路径
             full_path = os.path.join(dirpath, filename)
-            
+
             # 检查文件扩展名是否在允许列表中
             # os.path.splitext() 会将 "file.txt" 分割成 ("file", ".txt")
             file_ext = os.path.splitext(filename)[1].lower()
-            
-            # 确保不把输出文件本身和不符合扩展名的文件包含进去
-            if filename != OUTPUT_FILE and file_ext in ALLOWED_EXTENSIONS:
+
+            # 【修改】确保不把输出文件本身、不符合扩展名的文件以及在排除列表中的文件包含进去
+            if (filename != OUTPUT_FILE and
+                    file_ext in ALLOWED_EXTENSIONS and
+                    filename not in EXCLUDED_FILES): # <-- 新增的判断条件
                 # 使用 os.path.normpath 来规范化路径（例如，将 './' 转换为 '.'）
                 target_files.append(os.path.normpath(full_path))
-                
+
     return target_files
 
 def main():
@@ -54,7 +58,7 @@ def main():
         target_files = find_files_recursively(START_DIRECTORY)
 
         if not target_files:
-            print(f'🤷 在当前目录及子目录中未找到任何 {", ".join(ALLOWED_EXTENSIONS)} 文件。')
+            print(f'🤷 在当前目录及子目录中未找到任何符合条件的文件。')
             return
 
         print(f'🔍 找到了 {len(target_files)} 个文件，准备处理...')
@@ -68,7 +72,7 @@ def main():
                 # errors='ignore' 可以避免因个别文件编码问题导致整个脚本失败
                 with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
                     lines = f.readlines()
-                
+
                 content_to_append = "".join(lines)
 
                 # 3. 检查行数是否超限
@@ -88,7 +92,7 @@ def main():
 
                 file_header = f"\n\n---\n\n## 📄 文件: {file_path}\n\n---\n\n"
                 code_block_wrapper = f"```{lang}\n{content_to_append.strip()}\n```"
-                
+
                 final_content.append(file_header + code_block_wrapper)
 
             except IOError as read_error:

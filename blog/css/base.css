@@ -24,7 +24,7 @@
 
     --color-fg: #212529;                          /* 前景色: 深色文本，保证高对比度 */
     --color-fg-muted: #6c757d;                    /* 柔和前景色: 用于次要文本、元信息等 */
-    --color-fg-subtle: #adb5bd;                    /* 微妙前景色: 用于占位符、禁用状态等 */
+    --color-fg-subtle: #adb5bd;                   /* 微妙前景色: 用于占位符、禁用状态等 */
     --color-border: #e6eaf0;                      /* 边框色: 极浅、干净的边框 */
 
     --color-card-base: 255, 255, 255;              /* 卡片背景色的 RGB 值 (用于 rgba) */
@@ -175,6 +175,18 @@ a:hover {
     border-width: 0;
 }
 
+/* === 新增：View Transitions API 主题切换动画样式 === */
+/* 禁用默认的淡入淡出动画 */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+
+/* 当从深色切换到亮色时 (收起动画)，需要让旧视图(深色)在顶层 */
+[data-scheme="light"]::view-transition-old(root) {
+    z-index: 9999;
+}
 
 /* ========================================================================= */
 /* 3. 打印样式 (Print Styles)                                              */

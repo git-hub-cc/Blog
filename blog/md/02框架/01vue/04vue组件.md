@@ -1392,7 +1392,6 @@ function onSubmit() {
 4.  **组合式 API:** `useQuasar()` 返回一个包含了 Quasar 所有插件和工具的对象，例如 `$q.notify` 可以方便地弹出通知，而无需在模板中添加组件。
 5.  **CSS 辅助类:** Quasar 提供了大量的 CSS 辅助类（如 `q-pa-md`, `q-gutter-md`, `text-h6`），可以快速调整间距、排版等，极大地提高了开发效率。
 
-
 ### **11. Vue Grid Layout (`vue-grid-layout`)**
 
 *   **GitHub 地址:** [https://github.com/jbaysolutions/vue-grid-layout](https://github.com/jbaysolutions/vue-grid-layout)
@@ -1883,7 +1882,6 @@ const slides = ref([
 2.  **模块注册:** 将需要使用的功能模块数组绑定到 `<swiper>` 组件的 `:modules` 属性上。
 3.  **配置:** `<swiper>` 组件的属性直接对应 Swiper.js 的配置项。例如 `:navigation="true"` 启用前进/后退按钮，`:pagination="{ clickable: true }"` 启用可点击的分页器，`:autoplay` 配置自动播放。
 4.  **结构:** 轮播的每一页都由一个 `<swiper-slide>` 组件构成，可以很方便地使用 `v-for` 进行循环渲染。
-
 
 ### **16. Vuelidate**
 
@@ -2413,7 +2411,6 @@ const color = ref('#194d33');
 3.  **实时同步:** 当你在任何一个颜色选择器中改变颜色时，`color` ref 的值会更新，这会立即反映在顶部的预览框 (`display-box`) 和所有其他的颜色选择器上，实现了状态的同步。
 4.  **灵活性:** 这种组件化的设计让你可以在页面的不同位置，根据空间和需求，放置不同样式的颜色选择器，但它们都可以控制同一个颜色状态。
 
-
 ### **21. Vue-Upload-Component**
 
 *   **官网/文档地址:** [https://lian-yue.github.io/vue-upload-component/](https://lian-yue.github.io/vue-upload-component/)
@@ -2810,7 +2807,6 @@ const toggleTheme = () => {
 2.  **扩展（Extensions）:** CodeMirror 6 的所有功能，包括语法高亮、主题、快捷键等，都是通过 "extensions" 来配置的。你需要将所需的扩展数组传递给 `<codemirror>` 组件的 `:extensions` 属性。
 3.  **动态配置:** 示例中，通过改变 `extensions` 数组的内容，我们实现了动态切换编辑器主题的功能。这是 CodeMirror 6 强大灵活性的体现。
 4.  **API 访问:** `@ready` 事件会返回编辑器实例的 `view` 和 `state`，可以保存它们以便在组件的其他地方通过编程方式操作编辑器（例如获取选中文本、插入内容等）。
-
 
 ### **25. AG Grid Vue**
 
@@ -3213,8 +3209,6 @@ const lazyLoad = (node) => {
     *   在节点数据中添加 `data: { lazy: true }` 来标记一个节点为懒加载。
     *   提供一个 `:lazy-load` 函数。当用户展开一个懒加载节点时，该函数会被调用，并传入当前节点信息。
     *   函数需要返回一个 Promise，Promise 解析后的值是该节点的子节点数组。
-
-
 
 ### **29. Vue-ECharts (`vue-echarts`)**
 
@@ -3622,8 +3616,6 @@ const jsonData = ref({
     *   `sort`: 对对象的键进行字母排序。
     *   `theme`: 设置主题，可选 `'jv-light'` 或 `'jv-dark'`。
 3.  **交互:** 渲染出的 JSON 树是可交互的，你可以点击键来展开或折叠对象和数组，这对于探索复杂的 JSON 结构非常有用。
-
-
 
 ### **33. Vue-Toastification**
 
@@ -4059,8 +4051,6 @@ button { margin: 0 10px; }
     *   **`#popper` 插槽:** 放入浮动元素的内容。默认行为是点击触发器时显示/隐藏。
     *   **Popover vs. Dropdown:** 它们本质上是同一个组件，只是内容和交互方式不同。Popover 通常用于显示更丰富的信息，而 Dropdown 用于显示一个操作菜单。`floating-vue` 的灵活性让你能轻松实现这两种模式。
 
-
-
 ### **37. GSAP (GreenSock Animation Platform)**
 
 *   **官网地址:** [https://greensock.com/gsap/](https://greensock.com/gsap/)
@@ -4418,7 +4408,6 @@ AOS.init();
     *   `data-aos-easing`: 动画的缓动函数。
     *   `data-aos-offset`: 元素距离视口底部多少像素时触发动画。
 3.  **即时生效:** 你只需要在你的 Vue 模板中的任何元素上添加这些 `data-aos` 属性，当这些元素滚动进入视口时，预设的动画就会自动播放。这与 Vue 的响应式系统完全解耦，使用起来非常简单直接。
-
 
 ### **41. Pinia**
 
@@ -4812,19 +4801,6 @@ export default defineEventHandler((event) => {
 4.  **自动导入:** Nuxt 会自动导入 Vue 的 API（如 `ref`, `computed`）、Nuxt 的组合式函数（如 `useRoute`, `useFetch`）和 `components` 目录下的组件，你无需手动 `import`。
 5.  **组件:** Nuxt 提供了 `<NuxtLink>` (替代 `router-link`) 和 `<NuxtPage>` (替代 `router-view`) 等专用组件。
 
-好的，遵从您的要求，我将对之前提到的 Vue 组件进行详细补充，为每一个组件提供官网/GitHub 地址、简介，以及一个完整的单文件组件（SFC）代码案例。
-
-由于组件数量众多，为保证每个案例的详尽和清晰，预计将分为 **大约 8 次** 输出，每次介绍 5 个组件。
-
----
-
-### **分批输出 (第 1 次 / 共约 8 次)**
-
-本次输出将聚焦于 Vue 官方提供的 5 个核心内置组件。
-
----
-
-### **一、 官方内置组件**
 
 #### **1. `<KeepAlive>`**
 
@@ -5176,23 +5152,6 @@ const data = await fetchData();
 }
 </style>
 ```
-
-
-以上是第一批 5 个官方内置组件的介绍及完整案例。我将在下一次回复中继续介绍 **Element Plus**、**Ant Design Vue** 等第三方 UI 组件库。
-
-好的，我们继续。
-
----
-
-### **分批输出 (第 2 次 / 共约 8 次)**
-
-本次输出将开始介绍第三方 Vue 组件库，首先是几个最主流、功能最全面的 UI 框架，它们通常用于构建完整的应用程序界面。
-
----
-
-### **二、 第三方 UI 组件库 (主流桌面端 & 移动端)**
-
-这些库提供了从按钮、表单到复杂数据表格、布局等一整套的 UI 解决方案，极大地提高了开发效率。
 
 #### **6. Element Plus**
 
@@ -5582,9 +5541,6 @@ const onSubmit = () => {
 ```
 
 
-
-### **二、 第三方 UI 组件库 (更多企业级选择)**
-
 #### **11. TDesign**
 
 *   **官网地址:** [https://tdesign.tencent.com/vue-next/](https://tdesign.tencent.com/vue-next/)
@@ -5933,22 +5889,7 @@ p {
 </style>
 ```
 
----
 
-以上是第三批 5 个第三方组件库的介绍。在下一次回复中，我将开始介绍**功能性组件**，这些组件通常用于解决某一特定问题，如文件上传、富文本编辑、图表展示等。
-
-
-好的，我们继续。
-
----
-
-### **分批输出 (第 4 次 / 共约 8 次)**
-
-本次输出将开始介绍**功能性组件**。这些组件库不像 UI 框架那样提供一整套界面，而是专注于解决某一特定、复杂的功能需求，例如表单校验、文件上传或内容编辑。
-
----
-
-### **三、 第三方功能性组件 (内容、输入与编辑)**
 
 #### **16. VeeValidate**
 
@@ -6357,9 +6298,6 @@ h2 {
 </style>
 ```
 
-
-### **四、 第三方功能性组件 (数据可视化与展示)**
-
 #### **21. Vue-ECharts (`vue-echarts`)**
 
 *   **GitHub 地址:** [https://github.com/ecomfe/vue-echarts](https://github.com/ecomfe/vue-echarts)
@@ -6705,10 +6643,6 @@ h2 {
 }
 </style>
 ```
-
-
-
-### **五、 第三方功能性组件 (交互、性能与工具)**
 
 #### **26. Draggable (`vuedraggable`)**
 
@@ -7115,8 +7049,6 @@ main {
 ```
 
 
-### **六、 第三方功能性组件 (特定工具与辅助)**
-
 #### **31. Vue-PDF-App**
 
 *   **GitHub 地址:** [https://github.com/sandbook/vue-pdf-app](https://github.com/sandbook/vue-pdf-app)
@@ -7441,14 +7373,6 @@ button {
 
 ---
 
-### **分批输出 (第 8 次 / 共 8 次)**
-
-本次输出将介绍 Vue 生态中最核心的几个库，它们虽然不全是“组件”，但为 Vue 应用提供了不可或缺的功能，如路由、状态管理和国际化。同时，我们还会介绍一个极其实用的组合式函数工具集。
-
----
-
-### **七、 核心生态与工具库**
-
 #### **36. Vue Router**
 
 *   **官网地址:** [https://router.vuejs.org/zh/](https://router.vuejs.org/zh/)
@@ -7750,19 +7674,7 @@ input, button {
 </style>
 ```
 
-好的，根据您的要求，我将对之前提到的6个Vue第三方组件进行补充，提供它们的官网/GitHub地址以及一个完整的Vue 3 `<script setup>` 风格的代码案例。
-
-由于内容较多，我将分 **2** 次为您输出，每次包含3个组件的详细信息。
-
----
-
-### **分次输出 (1/2)**
-
-以下是前3个组件的详细介绍和使用案例：
-
----
-
-### **1. Tiptap**
+### **45. Tiptap**
 
 一个基于ProseMirror的“无头(Headless)”富文本编辑器框架。它提供了极致的灵活性和可扩展性，允许开发者通过插件化架构构建完全自定义的编辑体验，如Slash命令、气泡菜单等AI原生交互。是构建现代、高度定制化编辑器的首选。
 
@@ -7891,7 +7803,7 @@ onBeforeUnmount(() => {
 
 ---
 
-### **2. vue-diff**
+### **46. vue-diff**
 
 一个专门用于展示文本内容差异的Vue组件。它底层通常使用`jsdiff`等库，能清晰地高亮显示两个文本版本间的增、删、改内容。支持并排（side-by-side）和行内（inline）两种视图模式，是实现版本对比、代码审查等功能的理想选择。
 
@@ -8006,7 +7918,7 @@ textarea {
 
 ---
 
-### **3. WebDataRocks / PivotTable.js (Vue Wrapper)**
+### **47. WebDataRocks / PivotTable.js (Vue Wrapper)**
 
 专业的透视表库及其Vue封装。它们提供了完整的交互式数据透视功能，允许用户通过拖拽字段来动态生成多维度的聚合报表。内置多种聚合函数和图表集成能力，是构建商业智能（BI）和数据分析应用的成熟解决方案。
 
@@ -8103,13 +8015,7 @@ const onReportComplete = () => {
 
 ---
 
-### **分次输出 (2/2)**
-
-以下是后3个组件的详细介绍和使用案例：
-
----
-
-### **4. vue-kbar**
+### **48. vue-kbar**
 
 一个精美的、即插即用的全局命令面板（Command Palette）组件。它提供了快捷键唤出、模糊搜索、键盘导航等完整功能，并且UI设计现代、性能出色。开发者只需注册命令即可快速为应用添加一个强大的效率工具，提升用户操作效率。
 
@@ -8263,7 +8169,7 @@ kbd {
 
 ---
 
-### **5. tldraw (with vue-tldraw)**
+### **49. tldraw (with vue-tldraw)**
 
 一个功能极其强大的开源无限白板库。社区提供了`vue-tldraw`等封装，可以轻松地将其集成到Vue应用中。它内置了丰富的绘图工具、便签、图形、箭头等元素，并支持成熟的多人协作功能，是构建在线协作白板、设计工具或头脑风暴应用的行业级选择。
 
@@ -8310,7 +8216,7 @@ import '@tldraw/tldraw/tldraw.css';
 
 ---
 
-### **6. vue-pdf-embed**
+### **50. vue-pdf-embed**
 
 一个用于在Vue应用中优雅地渲染和展示PDF文件的组件。它基于Mozilla的`PDF.js`，能将PDF文档像图片一样嵌入到页面中，并提供了分页控制等基础功能。与标注库结合使用，可以实现PDF标注等高级应用，非常适合文档预览场景。
 
