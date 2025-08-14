@@ -3,5 +3,5 @@
    git rebase -i HEAD~7
 2. 强制推送，可能合并已经推送的commit
    git push origin main --force
-    
-
+3. 设置远程分支
+   git remote add origin https://github.com/git-hub-cc/WorkFLow.git
