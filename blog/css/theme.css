@@ -11,17 +11,17 @@
 /* ========================================================================= */
 .post-content pre {
     position: relative;
-    padding: 1.8rem;
+    padding: 1.5rem; /* 优化: 减小内边距 */
     border-radius: var(--border-radius-medium);
     overflow-x: auto;
-    margin: 1.8em 0;
+    margin: 1.5em 0; /* 优化: 减小外边距 */
     box-shadow: 0 4px 15px var(--color-shadow-medium);
     transition: background-color var(--transition-speed);
 }
 
 .post-content code {
     font-family: var(--font-mono);
-    font-size: 0.88em; /* 优化：微调代码字号 */
+    font-size: 0.86em; /* 优化：微调代码字号 */
 }
 
 /* 行内代码样式 */
@@ -32,18 +32,18 @@
     color: var(--accent-color);
     padding: 0.2em 0.4em;
     border-radius: var(--border-radius-small);
-    font-size: 0.85em; /* 确保行内代码不会过大 */
+    font-size: 0.83em; /* 优化: 确保行内代码不会过大 */
 }
 
 /* 代码复制按钮 */
 .copy-code-button {
     position: absolute;
-    top: 12px;
-    right: 12px;
+    top: 10px; /* 优化: 减小偏移 */
+    right: 10px; /* 优化: 减小偏移 */
     background: rgba(90, 90, 90, 0.6);
     color: #f0f0f0;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 5px 10px;
+    padding: 4px 8px; /* 优化: 减小内边距 */
     border-radius: var(--border-radius-small);
     cursor: pointer;
     font-size: 0.75em;

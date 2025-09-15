@@ -13,8 +13,8 @@
 .container {
     display: flex;
     max-width: 1500px; /* 限制最大宽度，在大屏上保持优雅 */
-    height: 96vh;      /* 保持 96% 的视口高度，营造浮动窗口感 */
-    margin: 2vh auto;  /* 垂直居中 */
+    height: 98vh;      /* 优化: 增加高度，减小外部间距 */
+    margin: 1vh auto;  /* 优化: 减小外部间距 */
 
     /* 核心视觉效果：液态玻璃 */
     background-color: var(--color-card-bg); /* 使用带透明度的卡片背景色 */
@@ -35,7 +35,7 @@
     backdrop-filter: blur(0px); /* 明确不模糊自身背景，只依赖父容器的 backdrop-filter */
     -webkit-backdrop-filter: blur(0px);
     border-right: 1px solid var(--color-border); /* 右侧边框作为分隔线 */
-    padding: 2.5rem 2rem;
+    padding: 2rem 1.5rem; /* 优化: 减小内边距 */
     display: flex;
     flex-direction: column;
     overflow-y: auto; /* 当内容溢出时显示垂直滚动条 */
@@ -47,7 +47,7 @@
     flex-grow: 1; /* 占据所有剩余空间 */
     overflow-y: auto; /* 垂直滚动 */
     min-width: 0; /* 允许内容区域收缩，防止 flex 布局溢出 */
-    padding: 0 2.5rem;
+    padding: 0 2rem; /* 优化: 减小水平内边距 */
     background-color: transparent; /* 背景透明，以透出 .container 的模糊效果 */
     position: relative;
     z-index: 1;
@@ -55,32 +55,32 @@
 
 .content-layout {
     display: flex;
-    gap: 2.5rem; /* 主内容与右侧 TOC 之间的间距 */
+    gap: 2rem; /* 优化: 减小主内容与右侧 TOC 之间的间距 */
 }
 
 #main-content-wrapper {
     flex: 1; /* 主内容区域占据大部分可用空间 */
     min-width: 0; /* 防止 flex 项目溢出 */
     transition: opacity var(--transition-speed) ease-out; /* 内容切换时的淡入淡出效果 */
-    min-height: 80vh; /* 保证内容区域有最小高度，避免页脚跳动 */
+    min-height: 60vh; /* 保证内容区域有最小高度，避免页脚跳动 */
     padding-top: 1px; /* 防止子元素外边距折叠 */
 }
 
 /* 文章目录侧边栏 */
 .toc-sidebar {
     display: none; /* 默认隐藏，仅在宽屏和文章页通过 JS 显示 */
-    width: 240px;
+    width: 220px; /* 优化: 减小宽度 */
     flex-shrink: 0;
     position: sticky; /* 粘性定位，随页面滚动 */
-    top: 2rem; /* 距离顶部的粘性位置 */
+    top: 1.5rem; /* 优化: 减小顶部距离 */
     align-self: flex-start; /* 粘性定位的容器内对齐方式 */
-    height: calc(96vh - 4rem); /* 高度限制，留出上下边距 */
+    height: calc(98vh - 3rem); /* 优化: 根据容器高度和顶部距离调整 */
     overflow-y: auto;
-    padding-right: 1rem;
+    padding-right: 0.5rem; /* 优化: 减小内边距 */
 }
 
 .main-content-footer {
-    padding: 1rem 0 2rem;
+    padding: 1rem 0 1.5rem; /* 优化: 减小底部内边距 */
 }
 
 /* ========================================================================= */

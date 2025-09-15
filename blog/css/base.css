@@ -41,7 +41,7 @@
     --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; /* 等宽字体 */
 
     /* -- 间距与尺寸 (Spacing & Dimensions) -- */
-    --sidebar-width: 280px;                       /* 侧边栏宽度 */
+    --sidebar-width: 260px;                       /* 侧边栏宽度 (优化: 减小) */
     --transition-speed: 0.3s;                     /* 全局过渡动画速度 */
     --border-radius-large: 16px;                  /* 大圆角，用于主容器和卡片 */
     --border-radius-medium: 10px;                 /* 中圆角，用于输入框、按钮等 */
@@ -102,14 +102,14 @@
 }
 
 html {
-    font-size: 16px; /* 优化：将基础字号设为 16px，符合现代 Web 可访问性标准 */
+    font-size: 15px; /* 优化：减小基础字号以提高信息密度 */
     scroll-behavior: smooth; /* 平滑滚动效果 */
 }
 
 body {
     font-family: var(--font-body);
     color: var(--color-fg);
-    line-height: 1.7; /* 优化：增加行高，提升长文案的可读性 */
+    line-height: 1.4; /* 优化：减小行高 */
     margin: 0;
     transition: background-color var(--transition-speed), color var(--transition-speed);
     z-index: 0; /* 确保内容在背景伪元素之上 */
