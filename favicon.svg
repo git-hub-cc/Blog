@@ -1,31 +1,28 @@
-<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <!-- 统一的样式定义 -->
+<svg width='64' height='64' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'>
     <style>
-        .bg { fill: url(#logo-gradient); }
+        .bg { fill: url(#grad-article); }
         .grad-stop-1 { stop-color: #007ACC; }
         .grad-stop-2 { stop-color: #009688; }
-        .main-element { fill: white; fill-opacity: 0.9; }
-        .accent-1 { fill: #007ACC; }
-        .accent-2 { fill: #009688; }
-
+        .bubble { fill: white; fill-opacity: 0.9; }
+        .dot-1 { fill: #007ACC; }
+        .dot-2 { fill: #009688; }
         @media (prefers-color-scheme: dark) {
         .bg { fill: transparent; }
         .grad-stop-1, .grad-stop-2 { stop-color: transparent; }
-        .main-element { fill: #D1D5DB; fill-opacity: 1; }
-        .accent-1, .accent-2 { fill: #4B5563; }
+        .bubble { fill: #D1D5DB; fill-opacity: 1; }
+        .dot-1, .dot-2 { fill: #4B5563; }
         }
     </style>
     <defs>
-        <linearGradient id="logo-gradient" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-            <stop class="grad-stop-1"/>
-            <stop offset="1" class="grad-stop-2"/>
+        <linearGradient id='grad-article' x1='0' y1='0' x2='64' y2='64' gradientUnits='userSpaceOnUse'>
+            <stop class='grad-stop-1'/>
+            <stop offset='1' class='grad-stop-2'/>
         </linearGradient>
     </defs>
-
-    <g id="icon-code-brackets">
-        <rect width="64" height="64" rx="12" class="bg"/>
-        <!-- 尖括号 -->
-        <path d="M25 18 L16 32 L25 46 L29 46 L20 32 L29 18 L25 18Z" class="main-element"/>
-        <path d="M39 46 L48 32 L39 18 L35 18 L44 32 L35 46 L39 46Z" class="main-element"/>
-    </g>
+    <rect width='64' height='64' rx='12' class='bg'/>
+    <path d='M20 12C17.79 12 16 13.79 16 16V48C16 50.21 17.79 52 20 52H44C46.21 52 48 50.21 48 48V24L36 12H20Z' class='bubble'/>
+    <rect x='22' y='24' width='16' height='3' rx='1.5' class='dot-1'/>
+    <rect x='22' y='32' width='20' height='3' rx='1.5' class='dot-2'/>
+    <rect x='22' y='40' width='14' height='3' rx='1.5' class='dot-1'/>
+    <path d='M36 12V22C36 23.1 36.9 24 38 24H48' fill-opacity="0.2"/>
 </svg>
