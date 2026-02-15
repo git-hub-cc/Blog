@@ -1,141 +1,19 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="favicon.svg">
-
-    <!-- SEO Meta 标签 -->
-    <meta name="description" content="Blog - 一个专注于编程技术、系统知识、效率原则和软件应用的静态博客。分享 JavaScript、Markdown，记录学习与成长。">
-    <meta name="keywords" content="Blog, 博客, 个人博客, 技术博客, 静态博客, 编程, 个人成长, Markdown, JavaScript, 系统, 软件">
-    <meta name="author" content="git-hub-cc">
-
-    <title>博客</title>
-
-    <!--
-      !!! 优化关键：此内联脚本在 CSS 加载前执行，用于消除主题切换时的闪烁（FOUC）!!!
-      它会立即根据 localStorage 或系统偏好设置 `data-scheme` 属性。
-    -->
-    <script>
-        (function() {
-            const colorSchemeKey = 'MyBlogColorScheme';
-            const osDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-
-            function getInitialScheme() {
-                const savedScheme = localStorage.getItem(colorSchemeKey);
-                if (savedScheme) {
-                    return savedScheme;
-                }
-                return osDarkScheme.matches ? 'dark' : 'light';
-            }
-
-            document.documentElement.setAttribute('data-scheme', getInitialScheme());
-        })();
-    </script>
-
-    <!-- 引入拆分后的样式表 (顺序至关重要) -->
-    <link rel="stylesheet" href="blog/css/base.css">
-    <link rel="stylesheet" href="blog/css/layout.css">
-    <link rel="stylesheet" href="blog/css/components.css">
-    <link rel="stylesheet" href="blog/css/theme.css">
-</head>
-<body>
-
-<!-- 主应用容器：采用液态玻璃效果的浮动窗口 -->
-<div class="container">
-    <!-- 左侧边栏：包含导航、搜索和功能区 -->
-    <aside class="left-sidebar sticky">
-        <!-- 移动端汉堡菜单按钮 (仅在小屏幕上显示) -->
-        <button class="hamburger" type="button" id="toggle-menu" aria-label="切换菜单">
-            <span class="hamburger-box">
-                <span class="hamburger-inner"></span>
-            </span>
-        </button>
-
-        <!-- 站点头部信息 -->
-        <header class="site-header">
-            <figure class="site-avatar">
-                <a href="#/">
-                    <img src="blog/img/head/my.png" width="100" height="100" class="site-logo" alt="站点头像" />
-                </a>
-            </figure>
-            <div class="site-meta">
-                <h1 class="site-name"><a href="#/">Blog</a></h1>
-                <h2 class="site-description">一个简单而优雅的静态博客</h2>
-            </div>
-        </header>
-
-        <!-- 搜索框 -->
-        <form class="search-form" id="search-form" role="search">
-            <label for="search-input" class="sr-only">搜索文章</label>
-            <input type="search" id="search-input" class="search-input" placeholder="搜索文章..." aria-label="搜索文章内容">
-            <button type="submit" class="search-button" aria-label="执行搜索">🔍</button>
-        </form>
-
-        <!-- 主导航菜单 -->
-        <nav class="site-nav">
-            <ul class="menu">
-                <li><a href="#/" class="nav-link active" data-nav-id="home">所有文章</a></li>
-                <li><a href="#/category/backend" class="nav-link" data-nav-id="backend">00底层</a></li>
-                <li><a href="#/category/language" class="nav-link" data-nav-id="language">01语言或命令</a></li>
-                <li><a href="#/category/framework" class="nav-link" data-nav-id="framework">02框架</a></li>
-                <li><a href="#/category/architecture" class="nav-link" data-nav-id="architecture">03架构</a></li>
-                <li><a href="#/category/software" class="nav-link" data-nav-id="software">04软件</a></li>
-                <li><hr class="nav-separator"></li> <!-- 分隔线 -->
-                <li><a href="#/about" class="nav-link" data-nav-id="about">关于</a></li>
-            </ul>
-        </nav>
-
-        <!-- 底部功能区：包含社交链接、主题切换和版权信息 -->
-        <div class="menu-bottom-section">
-            <div class="social-links">
-                <a href="https://github.com/git-hub-cc/Blog" target="_blank" rel="noopener noreferrer" aria-label="访问我的 GitHub 主页">G</a>
-                <a href="https://space.bilibili.com/269093875" target="_blank" rel="noopener noreferrer" aria-label="访问我的 Bilibili 空间">B</a>
-            </div>
-            <!-- 深色模式切换器 -->
-            <div class="dark-mode-toggle">
-                <label for="dark-mode-switch" aria-label="切换亮色/深色主题">
-                    <span>☀️</span> <!-- 亮色图标 -->
-                    <input type="checkbox" id="dark-mode-switch" role="switch" aria-checked="false" />
-                    <span class="slider"></span> <!-- 切换滑块 -->
-                    <span>🌙</span> <!-- 暗色图标 -->
-                </label>
-            </div>
-            <!-- 版权信息 -->
-            <div class="copyright">
-                © 2024 cc | 粤ICP备2024271251号
-            </div>
-        </div>
-    </aside>
-
-    <!-- 右侧主内容区域 -->
-    <main class="main-content" role="main">
-        <div class="content-layout">
-            <!-- 主要内容包裹器，用于动态加载内容 -->
-            <div id="main-content-wrapper">
-                <div class="loader">正在加载内容，请稍候...</div>
-            </div>
-            <!-- 文章目录容器 (仅在文章页和宽屏下显示) -->
-            <aside id="toc-container" class="toc-sidebar"></aside>
-        </div>
-
-        <footer class="main-content-footer">
-            <!-- 标签云容器 (在文章列表页显示) -->
-            <div id="tag-cloud-container"></div>
-            <!-- 分页控件容器 -->
-            <div id="pagination-container" role="navigation" aria-label="分页导航">
-                <!-- 分页链接将在此处通过 JavaScript 动态插入 -->
-            </div>
-        </footer>
-    </main>
-</div>
-
-<!-- 引入第三方库 (置于 body 底部，优化加载性能) -->
-<script src="blog/lib/marked.min.js"></script> <!-- Markdown 解析库 -->
-<script src="blog/lib/highlight.min.js"></script> <!-- 代码高亮库 -->
-
-<!-- 引入自定义应用脚本 (使用 ES Module) -->
-<script type="module" src="blog/js/app.js"></script>
-
-</body>
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="DocBlog — Write in Markdown, Publish in Style" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+    <title>DocBlog</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
 </html>
