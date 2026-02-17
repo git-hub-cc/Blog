@@ -286,7 +286,7 @@ html:not(.dark) .folder-name { color: #334155; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.25rem 1.5rem;
+  padding: 1rem;
   border-radius: var(--radius-lg);
   text-decoration: none;
   border: 1px solid transparent;

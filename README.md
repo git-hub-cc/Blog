@@ -1,114 +1,136 @@
-# An Exquisite Single-Page Static Blog
+# Blog - 极简主义文档博客系统
 
-This is a modern, responsive, single-page application (SPA) static blog built with pure HTML, CSS, and JavaScript. It requires no backend service or database. All content is driven by Markdown files, making it easy to deploy on any static site hosting platform (like GitHub Pages, Vercel, etc.).
+**Write in Markdown, Publish in Style.**
 
-The project's design is inspired by Apple's aesthetics, featuring a smooth "Frosted Glass" effect and a fully integrated dark/light mode toggle, aiming to provide the ultimate reading experience.
+这是一个基于 Vue 3 + Vite + Tailwind CSS 4 构建的极简文档博客系统。它专为喜欢用 Markdown 写作的人设计，提供类似 Typora 的阅读体验，并具备自动生成目录、全文搜索、双重高亮主题等现代功能。
 
-[中文版](./README-cn.md)
+## ✨ 核心特性
 
-## ✨ Key Features
+- 📄 **原生 Markdown 支持**：集成 `markdown-it` 全家桶，支持脚注、任务列表、锚点定位及容器说明（Callouts）。
+- 📂 **自动化目录树**：无需手动配置侧边栏，系统会根据 `/docs` 目录结构自动生成多级导航。
+- 🔍 **全文搜索**：基于本地索引的实时搜索，支持标题、描述及正文内容匹配。
+- 🌓 **完美深色模式**：自动跟随系统主题，支持手动切换。代码高亮在亮色模式下使用 GitHub 风格，深色模式下自动切换为 One Dark 风格。
+- 💻 **优雅的代码块**：支持一键复制、超长代码折叠、Mac 风格控制按钮及语言标签。
+- 📱 **响应式设计**：针对移动端深度优化，拥有抽屉式侧边栏和悬浮式目录（TOC）。
+- 🧭 **完善的导航**：内置面包屑、文章上下页切换、自动同步的侧边悬浮目录。
+- 🔗 **中文路径友好**：完美支持中文文件夹和文件名，URL 编码自动处理。
 
-- **Single-Page Application (SPA) Architecture**: Utilizes URL Hash for front-end routing, enabling smooth, refresh-free page transitions with fade-in/fade-out animations.
-- **Responsive & Mobile-First**: Perfectly adapted for desktop, tablet, and mobile devices. On mobile, the sidebar automatically collapses into a compact hamburger menu.
-- **Dark/Light Mode**:
-    - Automatically detects and matches the operating system's color preference.
-    - Provides a manual toggle switch and saves the user's choice locally.
-- **Markdown-Driven**: All posts and the "About" page are written in Markdown, making content creation and maintenance easy.
-- **Dynamic Content Loading**: The blog post index and Markdown content are loaded asynchronously via the `fetch` API for high performance.
-- **Client-Side Full-Text Search**: Instantly search through all post titles and summaries on the front-end, with no backend required.
-- **Post Categorization & Pagination**: Supports filtering posts by category and automatically generates pagination when the post list is long.
-- **Code Syntax Highlighting**: Integrates `highlight.js` to automatically beautify code blocks in posts, with support for multiple themes.
-- **One-Click Code Copy**: A "Copy" button automatically appears on hover in the top-right corner of each code block for reader convenience.
-- **Print-Friendly**: Provides dedicated print styles that automatically remove navigation, buttons, and other irrelevant elements, optimizing the post layout to save paper.
-- **SEO Optimized**: Includes basic `meta` tags in `index.html` to help with search engine optimization.
-- **Modern Design Aesthetics**: Employs an elegant system of typography, spacing, and shadows, combined with a "Frosted Glass" background for a stunning visual effect.
+---
 
-## 📸 Preview
+## 🚀 快速上手
 
-| Light Mode | Dark Mode |
-| :---: | :---: |
-| ![Light](screenshots/light.png) | ![Dark](screenshots/dark.png) |
-
-## 🛠️ Tech Stack
-
-- **Frontend**: `HTML5`, `CSS3` (Flexbox, CSS Variables), `JavaScript (ES6+)`
-- **Core Libraries**:
-    - `marked.js`: For parsing Markdown into HTML in real-time.
-    - `highlight.js`: For syntax highlighting of code blocks.
-- **Architecture**: Single-Page Application (SPA), Static Site
-
-## 🚀 How to Use
-
-### 1. Clone or Download the Project
-
+### 1. 克隆项目
 ```bash
 git clone https://github.com/git-hub-cc/Blog.git
 cd Blog
 ```
 
-### 2. Preview Locally
+### 2. 安装依赖
+```bash
+npm install
+```
 
-Because the project uses the `fetch` API to load local files, you **cannot** simply open `index.html` in your browser via the `file://` protocol. You need a local web server to preview it.
+### 3. 本地开发
+```bash
+npm run dev
+```
 
-Here are a few recommended simple methods:
+### 4. 构建发布
+```bash
+npm run build
+```
 
-- **Using VS Code's Live Server extension**: Right-click `index.html` and select "Open with Live Server".
-- **Using Node.js's `serve` package**:
-  ```bash
-  # If you don't have serve, install it globally first
-  npm install -g serve
-  # Run in the project root directory
-  serve
-  ```
-- **Using Python's built-in HTTP server**:
-  ```bash
-  # Python 3.x
-  python -m http.server
-  # Python 2.x
-  python -m SimpleHTTPServer
-  ```
-Then, visit the address displayed in your browser (e.g., `http://localhost:3000`).
+---
 
-### 3. Customize Your Blog
+## 📁 项目结构
 
-#### a. Modify Site Information
-Open `index.html` and you can change the following:
-- **Site Title**: `<title>Blog</title>`
-- **SEO Information**: `<meta name="description" ...>` and `<meta name="keywords" ...>`
-- **Avatar**: Modify the `src` attribute of `<img src="blog/img/head/my.png" ...>`.
-- **Site Description**: Modify `<h2 class="site-description">...</h2>`.
-- **Navigation Categories**: Modify the `<li>` elements within `<nav class="site-nav">`.
-    - The `href` attribute defines the category route, e.g., `#/category/programming`.
-    - The `data-nav-id` is used to highlight the active navigation item and should match the category name.
-- **Social Links**: Modify the `<a>` tags inside `<div class="social-links">`.
-- **Copyright Information**: Modify `<div class="copyright">...</div>`.
+```text
+Blog/
+├── public/              # 静态资源 (Logo, 微信二维码等)
+├── docs/                # Markdown 文档存放处 (按文件夹分类)
+├── src/
+│   ├── components/      # UI 组件 (搜索, 侧边栏, 目录等)
+│   ├── css/             # 样式系统 (Tailwind 4, Markdown 样式)
+│   ├── markdown/        # Markdown 渲染引擎逻辑
+│   ├── views/           # 页面视图 (DocView)
+│   ├── config.js        # 站点全局配置文件
+│   └── main.js          # 入口文件
+├── index.html
+└── package.json
+```
 
-#### b. Add or Modify Posts
-This is the core step, divided into two parts:
+---
 
-**Step 1: Create a Markdown File**
-Create or modify `.md` files in the `blog/md/` directory. It's recommended to use meaningful English filenames (e.g., `my-first-post.md`).
+## ⚙️ 配置说明
 
-**Step 2: Update the Post Index**
-Open the `blog/posts.json` file. It's a JSON array where each object represents a post. Add a new post object to the **beginning** of the array to maintain reverse chronological order:
+你可以通过修改 `src/config.js` 快速自定义你的博客：
 
-```json
-{
-  "file": "your-post-filename.md",
-  "title": "Your Post Title",
-  "date": "2024-08-15",
-  "category": "programming",
-  "summary": "This is a brief summary of the post, which will be displayed on the post list page. Plain text is supported."
+```javascript
+export default {
+    title: '我的博客',
+    description: '写在 Markdown，发布在风格。',
+    logo: '/logo.svg',       // 放置在 public 目录下
+
+    theme: {
+        primaryColor: '#197fe6',
+        defaultMode: 'dark', // 默认模式
+    },
+
+    search: {
+        enabled: true,
+        placeholder: '搜索文档...',
+    },
+
+    socialLinks: [
+        { icon: 'G', link: 'https://github.com/your-id' }, // 社交链接
+    ]
 }
 ```
 
-**Note**: The value of `category` should match the category ID (`data-nav-id`) and route (`#/category/{category}`) you set up in the `index.html` navigation menu.
+---
 
-#### c. Modify Styles and Themes
-- **Colors, Fonts, Spacing**: The `blog/css/style.css` file makes extensive use of CSS Variables. You can easily modify global styles in the `:root` and `[data-scheme="dark"]` selectors at the top of the file.
-- **Code Highlighting Theme**: If you don't like the default `atom-one-dark` theme, you can download other theme CSS files from the `highlight.js` website, replace `atom-one-dark.min.css` in `blog/lib/`, and update the link in `index.html`.
+## 📝 Markdown 进阶语法
 
-### 4. Deploy
-After making all your changes, simply upload the entire project folder to any server that supports static file hosting. For example:
-- **GitHub Pages**: Push your project to a GitHub repository and enable the GitHub Pages feature in the repository settings.
-- **Vercel / Netlify**: Connect your Git repository to them, and they will automatically handle the build and deployment process.
+### 1. Frontmatter
+在文档顶部添加，用于定义元数据：
+```markdown
+---
+title: 如何使用本系统
+description: 这是一个简单的教程说明
+date: 2024-03-20
+tags: [教程, Vue3]
+---
+```
+
+### 2. Callouts (提示块)
+使用 Blockquote 语法触发：
+```markdown
+> [!NOTE]
+> 这是一个普通提示。
+
+> [!TIP]
+> 这是一个成功/建议提示。
+
+> [!WARNING]
+> 这是一个警告信息。
+
+> [!DANGER]
+> 这是一个危险/错误警告。
+```
+
+---
+
+## 🛠 后续计划 (Roadmap)
+
+我们正致力于让 Blog 变得更智能、更易于分发：
+
+1.  **标签系统 (Tags)**：支持在 Frontmatter 中定义 tags 并对内容进行分类归纳。
+2.  **标签搜索**：在搜索界面增加标签过滤维度，快速定位相关主题。
+3.  **AI 自动打标**：接入轻量化小模型（如 Ollama/WebLLM），根据正文内容自动推荐或生成推荐 tags。
+4.  **NPM 发布**：将核心渲染引擎与 UI 封装，支持通过 `npm install` 快速集成到现有 Vite 项目中。
+
+---
+
+## 📄 开源协议
+
+本项目采用 [MIT License](LICENSE) 开源。

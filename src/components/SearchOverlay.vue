@@ -4,24 +4,22 @@
       <div v-if="isOpen" class="search-overlay" @click.self="close">
         <transition name="modal">
           <div v-if="isOpen" class="search-modal">
-            <!-- Search Input -->
             <div class="search-input-wrap">
               <span class="material-icons-round search-input-icon">search</span>
               <input
-                ref="inputRef"
-                v-model="query"
-                type="text"
-                class="search-input"
-                placeholder="Search documentation..."
-                @keydown.escape="close"
-                @keydown.down.prevent="moveDown"
-                @keydown.up.prevent="moveUp"
-                @keydown.enter.prevent="selectCurrent"
+                  ref="inputRef"
+                  v-model="query"
+                  type="text"
+                  class="search-input"
+                  placeholder="Search documentation..."
+                  @keydown.escape="close"
+                  @keydown.down.prevent="moveDown"
+                  @keydown.up.prevent="moveUp"
+                  @keydown.enter.prevent="selectCurrent"
               />
               <kbd class="esc-badge">ESC</kbd>
             </div>
 
-            <!-- Results -->
             <div class="search-results" v-if="debouncedQuery.trim()">
               <div v-if="results.length === 0" class="search-empty">
                 <span class="material-icons-round empty-icon">search_off</span>
@@ -35,12 +33,12 @@
                   </span>
                 </h3>
                 <div
-                  v-for="(result, i) in results"
-                  :key="result.link"
-                  class="result-item"
-                  :class="{ selected: selectedIndex === i }"
-                  @click="goTo(result.link)"
-                  @mouseenter="selectedIndex = i"
+                    v-for="(result, i) in results"
+                    :key="result.link"
+                    class="result-item"
+                    :class="{ selected: selectedIndex === i }"
+                    @click="goTo(result.link)"
+                    @mouseenter="selectedIndex = i"
                 >
                   <div class="result-icon-wrap" :class="{ 'icon-selected': selectedIndex === i }">
                     <span class="material-icons-round result-icon">description</span>
@@ -55,12 +53,10 @@
               </div>
             </div>
 
-            <!-- Initial State -->
             <div v-else class="search-initial">
               <p class="search-initial-text">Start typing to search the documentation</p>
             </div>
 
-            <!-- Footer Hints -->
             <div class="search-footer">
               <div class="hint">
                 <div class="hint-keys">
@@ -103,24 +99,24 @@ let debounceTimer = null
 /** Strip markdown syntax for cleaner search snippets */
 function stripMarkdown(text) {
   return text
-    .replace(/```[\s\S]*?```/g, ' ')
-    .replace(/^#{1,6}\s+/gm, '')
-    .replace(/\*\*(.+?)\*\*/g, '$1')
-    .replace(/__(.+?)__/g, '$1')
-    .replace(/\*(.+?)\*/g, '$1')
-    .replace(/_(.+?)_/g, '$1')
-    .replace(/`(.+?)`/g, '$1')
-    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
-    .replace(/!\[([^\]]*)\]\([^)]+\)/g, '')
-    .replace(/^[-*+]\s+/gm, '')
-    .replace(/^\d+\.\s+/gm, '')
-    .replace(/^>\s*/gm, '')
-    .replace(/\|/g, ' ')
-    .replace(/^-{3,}/gm, '')
-    .replace(/\n{2,}/g, ' ')
-    .replace(/\n/g, ' ')
-    .replace(/\s{2,}/g, ' ')
-    .trim()
+      .replace(/```[\s\S]*?```/g, ' ')
+      .replace(/^#{1,6}\s+/gm, '')
+      .replace(/\*\*(.+?)\*\*/g, '$1')
+      .replace(/__(.+?)__/g, '$1')
+      .replace(/\*(.+?)\*/g, '$1')
+      .replace(/_(.+?)_/g, '$1')
+      .replace(/`(.+?)`/g, '$1')
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+      .replace(/!\[([^\]]*)\]\([^)]+\)/g, '')
+      .replace(/^[-*+]\s+/gm, '')
+      .replace(/^\d+\.\s+/gm, '')
+      .replace(/^>\s*/gm, '')
+      .replace(/\|/g, ' ')
+      .replace(/^-{3,}/gm, '')
+      .replace(/\n{2,}/g, ' ')
+      .replace(/\n/g, ' ')
+      .replace(/\s{2,}/g, ' ')
+      .trim()
 }
 
 /** Extract a snippet around the keyword from plain text */
@@ -166,9 +162,9 @@ const allMatches = computed(() => {
   if (!debouncedQuery.value.trim()) return []
   const q = debouncedQuery.value.toLowerCase()
   return searchIndex.value.filter(item =>
-    item.title.toLowerCase().includes(q) ||
-    item.description.toLowerCase().includes(q) ||
-    item.contentLower.includes(q)
+      item.title.toLowerCase().includes(q) ||
+      item.description.toLowerCase().includes(q) ||
+      item.contentLower.includes(q)
   )
 })
 
@@ -179,19 +175,19 @@ const results = computed(() => {
   if (!debouncedQuery.value.trim()) return []
   const q = debouncedQuery.value
   return allMatches.value
-    .sort((a, b) => {
-      const aT = a.title.toLowerCase().includes(q.toLowerCase())
-      const bT = b.title.toLowerCase().includes(q.toLowerCase())
-      if (aT && !bT) return -1
-      if (!aT && bT) return 1
-      return 0
-    })
-    .slice(0, 10)
-    .map(item => {
-      const contentMatch = item.contentLower.includes(q.toLowerCase())
-      const snippet = contentMatch ? extractSnippet(item.plainContent, q) : ''
-      return { ...item, snippet }
-    })
+      .sort((a, b) => {
+        const aT = a.title.toLowerCase().includes(q.toLowerCase())
+        const bT = b.title.toLowerCase().includes(q.toLowerCase())
+        if (aT && !bT) return -1
+        if (!aT && bT) return 1
+        return 0
+      })
+      .slice(0, 10)
+      .map(item => {
+        const contentMatch = item.contentLower.includes(q.toLowerCase())
+        const snippet = contentMatch ? extractSnippet(item.plainContent, q) : ''
+        return { ...item, snippet }
+      })
 })
 
 function highlightMatch(text) {
@@ -235,8 +231,14 @@ watch(query, (val) => {
 
 watch(debouncedQuery, () => { selectedIndex.value = 0 })
 
-onMounted(() => { window.addEventListener('docblog:open-search', open) })
-onUnmounted(() => { window.removeEventListener('docblog:open-search', open) })
+onMounted(() => {
+  // [修改] 事件监听名更新为 blog:open-search
+  window.addEventListener('blog:open-search', open)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('blog:open-search', open)
+})
 </script>
 
 <style scoped>

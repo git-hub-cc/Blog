@@ -1,14 +1,11 @@
 <template>
   <div class="app-shell">
-    <!-- Mobile Header (visible ≤1024px) -->
     <header class="mobile-header">
       <button class="mobile-menu-btn" @click="sidebarOpen = true" aria-label="Open menu">
         <span class="material-icons-round">menu</span>
       </button>
       <router-link to="/" class="mobile-brand">
-        <div class="mobile-brand-icon">
-          <span class="material-icons-round">auto_awesome</span>
-        </div>
+        <img :src="config.logo" alt="Logo" class="mobile-brand-logo" />
         <span class="mobile-brand-name">{{ config.title }}</span>
       </router-link>
       <button class="mobile-search-btn" @click="openSearch" aria-label="Search">
@@ -16,7 +13,6 @@
       </button>
     </header>
 
-    <!-- Sidebar backdrop (mobile) -->
     <transition name="fade">
       <div v-if="sidebarOpen" class="sidebar-backdrop" @click="sidebarOpen = false"></div>
     </transition>
@@ -44,7 +40,8 @@ const route = useRoute()
 const sidebarOpen = ref(false)
 
 function openSearch() {
-  window.dispatchEvent(new CustomEvent('docblog:open-search'))
+  // [修改] 事件名更新为 blog:open-search，保持一致性
+  window.dispatchEvent(new CustomEvent('blog:open-search'))
 }
 
 // Close sidebar on route change (mobile)
@@ -140,20 +137,15 @@ html:not(.dark) .mobile-search-btn:hover {
   text-decoration: none;
 }
 
-.mobile-brand-icon {
+/* [修改] 新增 Logo 样式 */
+.mobile-brand-logo {
   width: 1.75rem;
   height: 1.75rem;
-  background: var(--color-primary);
   border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
+  object-fit: contain;
 }
 
-.mobile-brand-icon .material-icons-round {
-  font-size: 0.875rem;
-}
+/* 删除了原有的 .mobile-brand-icon 样式，因为已不再使用 */
 
 .mobile-brand-name {
   font-weight: 700;

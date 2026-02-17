@@ -1,15 +1,11 @@
 <template>
   <aside class="sidebar" :class="{ 'mobile-open': mobileOpen }">
-    <!-- Brand -->
     <div class="sidebar-header">
       <router-link to="/" class="brand">
-        <div class="brand-icon">
-          <span class="material-icons-round">auto_awesome</span>
-        </div>
+        <img :src="config.logo" alt="Logo" class="brand-logo" />
         <span class="brand-name">{{ config.title }}</span>
       </router-link>
 
-      <!-- Search Trigger -->
       <button class="search-trigger" @click="openSearch">
         <span class="material-icons-round search-icon">search</span>
         <span class="search-placeholder">{{ config.search.placeholder }}</span>
@@ -17,30 +13,28 @@
       </button>
     </div>
 
-    <!-- Navigation -->
     <nav class="sidebar-nav">
       <NavGroup
-        v-for="(group, gi) in sidebarGroups"
-        :key="gi"
-        :group="group"
-        :depth="0"
+          v-for="(group, gi) in sidebarGroups"
+          :key="gi"
+          :group="group"
+          :depth="0"
       />
     </nav>
 
-    <!-- Footer -->
     <div class="sidebar-footer">
       <button class="theme-toggle" @click="toggleTheme" :title="isDark ? 'Switch to Light' : 'Switch to Dark'">
         <span class="material-icons-round">{{ isDark ? 'light_mode' : 'dark_mode' }}</span>
       </button>
       <div class="social-links">
         <a
-          v-for="(link, i) in config.socialLinks"
-          :key="i"
-          :href="link.link"
-          target="_blank"
-          rel="noopener"
-          class="social-link"
-          :aria-label="link.label || link.icon"
+            v-for="(link, i) in config.socialLinks"
+            :key="i"
+            :href="link.link"
+            target="_blank"
+            rel="noopener"
+            class="social-link"
+            :aria-label="link.label || link.icon"
         >
           <span class="material-icons-round">{{ link.icon }}</span>
         </a>
@@ -75,11 +69,13 @@ const sidebarGroups = computed(() => {
 function toggleTheme() {
   isDark.value = !isDark.value
   document.documentElement.classList.toggle('dark', isDark.value)
-  localStorage.setItem('docblog-theme', isDark.value ? 'dark' : 'light')
+  // [修改] 更新 localStorage 键名为 blog-theme
+  localStorage.setItem('blog-theme', isDark.value ? 'dark' : 'light')
 }
 
 function openSearch() {
-  window.dispatchEvent(new CustomEvent('docblog:open-search'))
+  // [修改] 更新事件名为 blog:open-search
+  window.dispatchEvent(new CustomEvent('blog:open-search'))
 }
 
 function handleKeydown(e) {
@@ -90,7 +86,8 @@ function handleKeydown(e) {
 }
 
 onMounted(() => {
-  const saved = localStorage.getItem('docblog-theme')
+  // [修改] 读取 localStorage 时使用新的键名 blog-theme
+  const saved = localStorage.getItem('blog-theme')
   if (saved === 'light') {
     isDark.value = false
     document.documentElement.classList.remove('dark')
@@ -147,20 +144,16 @@ html:not(.dark) .sidebar {
   margin-bottom: 1.5rem;
 }
 
-.brand-icon {
+/* [修改] Logo 样式调整 */
+.brand-logo {
   width: 2rem;
   height: 2rem;
-  background: var(--color-primary);
   border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
+  object-fit: contain;
+  /* 移除背景色和居中，让图片自适应 */
 }
 
-.brand-icon .material-icons-round {
-  font-size: 1rem;
-}
+/* 删除了原有的 .brand-icon 样式，因为已不再使用 */
 
 .brand-name {
   font-weight: 700;
@@ -323,7 +316,7 @@ html:not(.dark) .social-link:hover { color: var(--color-primary); }
     z-index: 50;
     transform: translateX(-100%);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                box-shadow 0.3s ease;
+    box-shadow 0.3s ease;
     box-shadow: none;
   }
 

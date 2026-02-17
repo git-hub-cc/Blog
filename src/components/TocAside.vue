@@ -227,6 +227,7 @@ html.dark .toc-link.active {
   color: var(--color-primary);
   border-left-color: var(--color-primary);
   font-weight: 500;
+  font-size: 16px;
 }
 
 html:not(.dark) .toc-link { color: #94a3b8; }
@@ -235,6 +236,7 @@ html:not(.dark) .toc-link.active {
   color: var(--color-primary);
   border-left-color: var(--color-primary);
   font-weight: 500;
+  font-size: 16px;
 }
 
 /* Help Card */
