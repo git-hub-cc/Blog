@@ -1,0 +1,1 @@
+1. 把本地化运行gpt上传到dockerhub
