@@ -1,0 +1,118 @@
+/* --- 1. 代码高亮变量 (Dual-Mode) --- */
+:root {
+    /* Light Mode (GitHub Light) */
+    --hl-base: #24292f;
+    --hl-comment: #6e7781;
+    --hl-keyword: #cf222e;
+    --hl-string: #0a3069;
+    --hl-number: #0550ae;
+    --hl-type: #953800;
+    --hl-function: #8250df;
+    --hl-variable: #24292f;
+    --hl-tag: #116329;
+    --hl-attr: #0550ae;
+    --hl-symbol: #0550ae;
+    --hl-bg-selection: #b3d7ff;
+}
+
+html.dark {
+    /* Dark Mode (Atom One Dark) */
+    --hl-base: #abb2bf;
+    --hl-comment: #7f848e;
+    --hl-keyword: #c678dd;
+    --hl-string: #98c379;
+    --hl-number: #d19a66;
+    --hl-type: #e5c07b;
+    --hl-function: #61afef;
+    --hl-variable: #e06c75;
+    --hl-tag: #e06c75;
+    --hl-attr: #d19a66;
+    --hl-symbol: #56b6c2;
+    --hl-bg-selection: #3e4451;
+}
+
+/* --- 2. 容器样式 (Wrapper) --- */
+.code-block-wrapper {
+    margin: 1.5em 0;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-code-block);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Header & Mac Dots */
+.code-block-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.5rem 1rem;
+    background-color: var(--bg-code-block);
+    border-bottom: 1px solid var(--border-light);
+    font-family: var(--font-mono); font-size: 12px; user-select: none;
+}
+.code-mac-dots {
+    display: flex; gap: 6px; position: relative; margin-left: 14px;
+    background-color: #f59f00; width: 10px; height: 10px; border-radius: 50%;
+}
+.code-mac-dots::before, .code-mac-dots::after {
+    content: ""; position: absolute; width: 10px; height: 10px; border-radius: 50%;
+}
+.code-mac-dots::before { left: -16px; background-color: #ff5f56; }
+.code-mac-dots::after { left: 16px; background-color: #27c93f; }
+
+/* Actions & Content */
+.code-actions { display: flex; align-items: center; gap: 12px; }
+.code-lang-tag { color: var(--text-muted); text-transform: uppercase; font-weight: 600; font-size: 0.75rem; }
+.code-copy-btn {
+    background: transparent; border: none; cursor: pointer; color: var(--text-muted);
+    display: flex; align-items: center; padding: 4px; border-radius: 4px; transition: all 0.2s;
+}
+.code-copy-btn:hover { background-color: rgba(128,128,128,0.1); color: var(--color-primary); }
+.code-copy-btn .material-icons-round { font-size: 16px; }
+.code-copy-btn .copy-status { display: none; margin-left: 4px; font-size: 12px; }
+.code-copy-btn.copied .icon-copy { display: none; }
+.code-copy-btn.copied .copy-status { display: block; color: #2da44e; }
+
+.code-scroll-container { overflow-x: auto; padding: 1rem; }
+.code-scroll-container pre { margin: 0; padding: 0; background: transparent; }
+.code-scroll-container code { font-family: var(--font-mono); font-size: 13px; line-height: 1.6; }
+
+/* Inline Code */
+.markdown-body :not(pre) > code {
+    font-family: var(--font-mono); font-size: 0.85em; padding: 0.2em 0.4em;
+    background-color: rgba(175, 184, 193, 0.2); border-radius: 6px; color: var(--text-main);
+}
+
+/* Expand Logic */
+.code-block-wrapper.collapsed .code-scroll-container {
+    max-height: 400px; overflow-y: hidden;
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+.code-expand-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 60px;
+    display: flex; align-items: center; justify-content: center; z-index: 10;
+}
+.code-expand-btn {
+    background-color: var(--bg-body); border: 1px solid var(--border-color);
+    border-radius: 20px; padding: 6px 16px; font-size: 12px; cursor: pointer;
+    box-shadow: var(--shadow-md); color: var(--text-main); display: flex; align-items: center; gap: 6px;
+}
+.code-expand-btn:hover { transform: translateY(-2px); color: var(--color-primary); }
+
+/* --- 3. Highlight.js 映射 --- */
+.hljs { color: var(--hl-base); background: transparent; }
+.hljs-comment, .hljs-quote { color: var(--hl-comment); font-style: italic; }
+.hljs-doctag, .hljs-keyword, .hljs-formula { color: var(--hl-keyword); }
+.hljs-section, .hljs-name, .hljs-selector-tag, .hljs-deleted, .hljs-subst { color: var(--hl-variable); }
+.hljs-literal { color: var(--hl-number); }
+.hljs-string, .hljs-regexp, .hljs-addition, .hljs-attribute, .hljs-meta .hljs-string { color: var(--hl-string); }
+.hljs-attr, .hljs-variable, .hljs-template-variable, .hljs-type, .hljs-selector-class, .hljs-selector-attr, .hljs-selector-pseudo, .hljs-number { color: var(--hl-number); }
+.hljs-title, .hljs-title.function_ { color: var(--hl-function); }
+.hljs-tag, .hljs-tag .hljs-name { color: var(--hl-tag); }
+.hljs-attr { color: var(--hl-attr); }
+.hljs-class .hljs-title, .hljs-type, .hljs-built_in, .hljs-params { color: var(--hl-type); }
+.hljs-symbol, .hljs-bullet, .hljs-link { color: var(--hl-symbol); }
+.hljs-strong { font-weight: bold; }
+.hljs-emphasis { font-style: italic; }
+.code-scroll-container ::selection { background-color: var(--hl-bg-selection); }

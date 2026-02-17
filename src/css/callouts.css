@@ -1,0 +1,31 @@
+.callout {
+    margin: 1.5em 0; padding: 1rem; border-left: 4px solid; border-radius: 0 4px 4px 0;
+    display: flex; gap: 12px; align-items: flex-start;
+}
+.callout-icon-wrapper { margin-top: 2px; flex-shrink: 0; }
+.callout-content-wrapper { flex: 1; min-width: 0; }
+.callout-content-wrapper > :first-child { margin-top: 0; }
+.callout-content-wrapper > :last-child { margin-bottom: 0; }
+
+/* Note */
+.callout-note { background-color: rgba(9, 105, 218, 0.1); border-color: #0969da; }
+.callout-note .material-icons-round { color: #0969da; }
+/* Tip */
+.callout-tip { background-color: rgba(31, 136, 61, 0.1); border-color: #1a7f37; }
+.callout-tip .material-icons-round { color: #1a7f37; }
+/* Warning */
+.callout-warning { background-color: rgba(154, 103, 0, 0.1); border-color: #d29922; }
+.callout-warning .material-icons-round { color: #d29922; }
+/* Danger */
+.callout-danger { background-color: rgba(207, 34, 46, 0.1); border-color: #cf222e; }
+.callout-danger .material-icons-round { color: #cf222e; }
+
+/* Dark Mode 适配 */
+html.dark .callout-note { background-color: rgba(56, 139, 253, 0.15); border-color: #58a6ff; }
+html.dark .callout-note .material-icons-round { color: #58a6ff; }
+html.dark .callout-tip { background-color: rgba(46, 160, 67, 0.15); border-color: #3fb950; }
+html.dark .callout-tip .material-icons-round { color: #3fb950; }
+html.dark .callout-warning { background-color: rgba(187, 128, 9, 0.15); border-color: #d29922; }
+html.dark .callout-warning .material-icons-round { color: #d29922; }
+html.dark .callout-danger { background-color: rgba(248, 81, 73, 0.15); border-color: #f85149; }
+html.dark .callout-danger .material-icons-round { color: #f85149; }
