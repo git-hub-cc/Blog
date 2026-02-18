@@ -1,1 +1,0 @@
-start /b cmd /c "C:\Users\wyswy\middleware\frp_0.53.2_windows_amd64\frpc.exe -c frpc.ini"

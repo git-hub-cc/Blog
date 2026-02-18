@@ -1,8 +1,0 @@
-@echo off
-setlocal enabledelayedexpansion
-
-for %%f in (*) do (
-set "filename=%%~nf"
-set "newfilename=!filename:[SPOTIFY-DOWNLOADER.COM]=!"
-ren "%%f" "!newfilename!%%~xf"
-)
