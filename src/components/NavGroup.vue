@@ -6,13 +6,12 @@
         'active': isGroupActive,
         'clickable': hasLink
       }"
-        @dblclick="handleDoubleClick"
+        @click="handleHeaderClick"
     >
       <component
           :is="hasLink ? 'router-link' : 'div'"
           :to="hasLink ? group.link : undefined"
           class="group-label"
-          @click="handleLabelClick"
       >
         <span
             class="material-icons-round group-icon"
@@ -146,19 +145,11 @@ const contentStyle = computed(() => {
   }
 })
 
-// 如果没有链接，点击标签也触发展开/折叠
-function handleLabelClick(e) {
-  if (!hasLink.value && props.group.collapsible) {
-    toggle()
-  }
-}
-
-// === 新增：处理双击事件 ===
-function handleDoubleClick(e) {
+// === 处理点击事件 ===
+function handleHeaderClick(e) {
   // 仅针对可折叠的组生效
   if (props.group.collapsible) {
-    e.preventDefault() // 阻止浏览器默认的“选中文字”行为
-    toggle()           // 执行折叠/展开逻辑
+    toggle()
   }
 }
 
