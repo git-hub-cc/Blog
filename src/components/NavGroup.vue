@@ -8,11 +8,16 @@
       }"
         @click="handleHeaderClick"
     >
-      <component
-          :is="hasLink ? 'router-link' : 'div'"
-          :to="hasLink ? group.link : undefined"
-          class="group-label"
+      <button
+          v-if="group.collapsible"
+          class="collapse-btn"
+          :class="{ collapsed: isCollapsed }"
+          aria-label="Toggle folder"
       >
+        <span class="material-icons-round collapse-icon">expand_more</span>
+      </button>
+
+      <div class="group-label">
         <span
             class="material-icons-round group-icon"
             :class="{ 'folder-open': !isCollapsed }"
@@ -20,19 +25,9 @@
           {{ getIcon() }}
         </span>
         <span class="group-title-text">{{ group.title }}</span>
-      </component>
+      </div>
 
-      <button
-          v-if="group.collapsible"
-          class="collapse-btn"
-          :class="{ rotated: !isCollapsed }"
-          @click.stop.prevent="toggle"
-          aria-label="Toggle folder"
-      >
-        <span class="material-icons-round collapse-icon">expand_more</span>
-      </button>
-
-      <span v-else-if="group.items" class="group-count">{{ totalCount }}</span>
+      <span v-if="!group.collapsible && group.items" class="group-count">{{ totalCount }}</span>
     </div>
 
     <div
@@ -65,7 +60,7 @@
 
 <script setup>
 import { ref, computed, onMounted, nextTick, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 const props = defineProps({
   group: { type: Object, required: true },
@@ -73,6 +68,7 @@ const props = defineProps({
 })
 
 const route = useRoute()
+const router = useRouter()
 const isCollapsed = ref(false)
 const contentRef = ref(null)
 const contentHeight = ref('auto')
@@ -84,7 +80,11 @@ const hasLink = computed(() => !!props.group.link)
 // 判断当前组本身是否处于激活状态（用户正好点击了该目录）
 const isGroupActive = computed(() => {
   // 移除尾部斜杠比较
-  const current = route.path.replace(/\/$/, '')
+  let current = route.path
+  try {
+    current = decodeURIComponent(current)
+  } catch (e) {}
+  current = current.replace(/\/$/, '')
   const link = (props.group.link || '').replace(/\/$/, '')
   return hasLink.value && current === link
 })
@@ -99,7 +99,11 @@ function getIcon() {
 
 // 判断子项目是否激活
 function isActive(link) {
-  return route.path === link || route.path === link + '/'
+  let current = route.path
+  try {
+    current = decodeURIComponent(current)
+  } catch (e) {}
+  return current === link || current === link + '/'
 }
 
 // 递归检查当前路由是否在组内（用于自动展开）
@@ -147,9 +151,12 @@ const contentStyle = computed(() => {
 
 // === 处理点击事件 ===
 function handleHeaderClick(e) {
-  // 仅针对可折叠的组生效
+  // 点击整个 header 一致地触发折叠并导航
   if (props.group.collapsible) {
     toggle()
+  }
+  if (hasLink.value) {
+    router.push(props.group.link)
   }
 }
 
@@ -186,6 +193,7 @@ onMounted(() => {
 })
 
 watch(() => route.path, () => {
+  if (isAnimating.value) return // 防止点击引起的路由跳转马上把折叠状态复原
   if (props.group.collapsible && isRouteInGroup(props.group)) {
     isCollapsed.value = false
   }
@@ -260,9 +268,9 @@ html:not(.dark) .nav-group-header:not(.active) .group-icon { color: #94a3b8; }
   text-overflow: ellipsis;
 }
 
-/* === 右侧折叠按钮 === */
+/* === 左侧折叠按钮 === */
 .collapse-btn {
-  width: 2rem;
+  width: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -271,7 +279,7 @@ html:not(.dark) .nav-group-header:not(.active) .group-icon { color: #94a3b8; }
   cursor: pointer;
   color: inherit;
   border-radius: var(--radius-sm);
-  margin-left: 0.25rem;
+  margin-right: 0.125rem;
 }
 
 html.dark .collapse-btn { color: #64748b; }
@@ -290,7 +298,7 @@ html:not(.dark) .collapse-btn { color: #94a3b8; }
   transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.collapse-btn.rotated .collapse-icon {
+.collapse-btn.collapsed .collapse-icon {
   transform: rotate(-90deg);
 }
 

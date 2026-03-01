@@ -1,11 +1,11 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import DocView from '../views/DocView.vue'
 
 // 这里的 loader 导入是为了保留可能的扩展性，但在本文件逻辑中主要依赖组件内部处理
 // import { getFlatDocs } from '../docs/loader.js'
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(),
     routes: [
         {
             path: '/',

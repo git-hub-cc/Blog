@@ -17,7 +17,12 @@
       <div v-if="sidebarOpen" class="sidebar-backdrop" @click="sidebarOpen = false"></div>
     </transition>
 
-    <Sidebar :mobile-open="sidebarOpen" @close="sidebarOpen = false" />
+    <Sidebar
+        :mobile-open="sidebarOpen"
+        :style="`--sidebar-width: ${sidebarWidth}px`"
+        @close="sidebarOpen = false"
+        @resize-start="onResizeStart"
+    />
     <main class="main-area">
       <router-view v-slot="{ Component }">
         <transition name="page-fade" mode="out-in">
@@ -38,6 +43,40 @@ import config from './config.js'
 
 const route = useRoute()
 const sidebarOpen = ref(false)
+
+// === Sidebar Resize ===
+const sidebarWidth = ref(parseInt(localStorage.getItem('blog-sidebar-width') || '272'))
+const isResizing = ref(false)
+let startX = 0
+let startWidth = 0
+
+function onResizeStart(clientX) {
+  isResizing.value = true
+  startX = clientX
+  startWidth = sidebarWidth.value
+  document.addEventListener('mousemove', onMouseMove)
+  document.addEventListener('mouseup', onMouseUp)
+  document.body.style.cursor = 'ew-resize'
+  document.body.style.userSelect = 'none'
+}
+
+function onMouseMove(e) {
+  if (!isResizing.value) return
+  const diff = e.clientX - startX
+  let newWidth = startWidth + diff
+  // 设置最小和最大宽度限制
+  newWidth = Math.max(200, Math.min(newWidth, 600))
+  sidebarWidth.value = newWidth
+}
+
+function onMouseUp() {
+  isResizing.value = false
+  document.removeEventListener('mousemove', onMouseMove)
+  document.removeEventListener('mouseup', onMouseUp)
+  document.body.style.cursor = ''
+  document.body.style.userSelect = ''
+  localStorage.setItem('blog-sidebar-width', sidebarWidth.value.toString())
+}
 
 function openSearch() {
   // [修改] 事件名更新为 blog:open-search，保持一致性

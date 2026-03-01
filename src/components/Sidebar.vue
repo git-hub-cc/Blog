@@ -40,6 +40,7 @@
         </a>
       </div>
     </div>
+    <div class="sidebar-resizer" @mousedown="startResize" title="Drag to resize"></div>
   </aside>
 </template>
 
@@ -51,10 +52,11 @@ import { getDocTree } from '../docs/loader.js'
 import NavGroup from './NavGroup.vue'
 
 const props = defineProps({
-  mobileOpen: { type: Boolean, default: false }
+  mobileOpen: { type: Boolean, default: false },
+  width: { type: Number, default: 272 }
 })
 
-const emit = defineEmits(['close'])
+const emit = defineEmits(['close', 'resize-start'])
 
 const route = useRoute()
 const isDark = ref(true)
@@ -103,6 +105,11 @@ onMounted(() => {
   window.addEventListener('keydown', handleKeydown)
 })
 
+function startResize(e) {
+  e.preventDefault()
+  emit('resize-start', e.clientX)
+}
+
 onUnmounted(() => {
   window.removeEventListener('keydown', handleKeydown)
 })
@@ -110,7 +117,8 @@ onUnmounted(() => {
 
 <style scoped>
 .sidebar {
-  width: 272px;
+  /* 由 props.width 传入组件上的 style 覆盖，这里作为默认/兜底 */
+  width: var(--sidebar-width, 272px);
   height: 100vh;
   position: sticky;
   top: 0;
@@ -324,5 +332,32 @@ html:not(.dark) .social-link:hover { color: var(--color-primary); }
     transform: translateX(0);
     box-shadow: 4px 0 24px rgb(0 0 0 / 0.25);
   }
+
+  .sidebar-resizer {
+    display: none;
+  }
+}
+
+/* ============ Sidebar Resizer ============ */
+.sidebar-resizer {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  cursor: ew-resize;
+  z-index: 10;
+  background-color: transparent;
+  transition: background-color 0.2s ease;
+}
+
+.sidebar-resizer:hover,
+.sidebar-resizer:active {
+  background-color: var(--color-primary);
+}
+
+html.dark .sidebar-resizer:hover,
+html.dark .sidebar-resizer:active {
+  background-color: var(--color-primary);
 }
 </style>
