@@ -7,7 +7,7 @@ export default {
     title: 'Blog',
     description: 'A minimalist documentation blog — Write in Markdown, Publish in Style.',
     // Logo 路径，指向 public/logo.svg
-    logo: '/logo.svg',
+    logo: './logo.svg',
 
     theme: {
         primaryColor: '#197fe6',

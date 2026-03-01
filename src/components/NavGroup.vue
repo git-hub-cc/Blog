@@ -35,6 +35,13 @@
         ref="contentRef"
         :style="contentStyle"
     >
+      <NavGroup
+          v-for="(child, ci) in group.children"
+          :key="'child-' + ci"
+          :group="child"
+          :depth="depth + 1"
+      />
+
       <ul v-if="group.items && group.items.length" class="nav-list">
         <li v-for="(item, ii) in group.items" :key="ii">
           <router-link
@@ -47,13 +54,6 @@
           </router-link>
         </li>
       </ul>
-
-      <NavGroup
-          v-for="(child, ci) in group.children"
-          :key="'child-' + ci"
-          :group="child"
-          :depth="depth + 1"
-      />
     </div>
   </div>
 </template>
